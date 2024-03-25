@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="{% static 'Museum/parent.css' %}"/>
-    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'Museum/favicon_museum.png' %}">
+    <link rel="stylesheet" href="{% static 'Museum/css/parent.css' %}"/>
+    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'Museum/images/favicon_museum.png' %}">
     <title>
         {% block title %}
             Base Template
@@ -15,18 +15,6 @@
     </title>
 </head>
 <body>
-<header class="header-section">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-6">
-                <img src="{% static 'Museum/emily_dickinson.jpg' %}" alt="logo" class="img-fluid"/>
-            </div>
-            <div class="col-6">
-                <h1 class="museum-title">The<br/>Dickinsonian<br/>Museum</h1>
-            </div>
-        </div>
-    </div>
-</header>
 <nav class="shadow-lg navbar navbar-expand-lg navbar-dark justify-content-center">
     <div class="container-fluid">
         <a class="navbar-brand"></a>
@@ -57,6 +45,18 @@
     </div>
 
 </nav>
+<header class="header-section">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-6">
+                <img src="{% static 'Museum/images/emily_dickinson.jpg' %}" alt="logo" class="img-fluid"/>
+            </div>
+            <div class="col-6">
+                <h1 class="museum-title">The<br/>Dickinsonian<br/>Museum</h1>
+            </div>
+        </div>
+    </div>
+</header>
 {% block content %}
 
 {% endblock %}
@@ -138,5 +138,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+<script src="{% static 'Museum/js/parent.js' %}"></script>
 </body>
 </html>
