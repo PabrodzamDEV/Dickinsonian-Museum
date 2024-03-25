@@ -7,6 +7,53 @@ html {
   color: white;
 }
 
+hr:before {
+  content: '';
+}
+
+hr:after {
+  content: '';
+}
+
+.dots {
+  margin: 1.5em 0;
+  text-align: center;
+  border: none;
+}
+
+.dots:before {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #eee;
+  margin: 0 0.4em;
+}
+
+.dots:after {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #eee;
+  margin: 0 0.4em;
+}
+
+
+.accessory {
+  border: 0;
+  margin: 1.35em auto;
+  max-width: 100%;
+  background-position: 50%;
+  box-sizing: border-box;
+  height: 6px;
+  background-image: radial-gradient(
+          closest-side,
+          hsla(0, 0%, 50%, 1.0),
+          hsla(0, 0%, 50%, 0) 100%);
+  position: relative;
+}
+
 .menu li {
   width: 125px;
   height: 50px;

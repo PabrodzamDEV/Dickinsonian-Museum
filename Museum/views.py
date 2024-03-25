@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from Museum.models import Poem
+
 
 # Create your views here.
 def home(request):
@@ -7,7 +9,8 @@ def home(request):
 
 
 def poems(request):
-    return render(request, "Museum/poems.html")
+    poems = Poem.objects.all()
+    return render(request, "Museum/poems.html", {"poems": poems})
 
 
 def gallery(request):
