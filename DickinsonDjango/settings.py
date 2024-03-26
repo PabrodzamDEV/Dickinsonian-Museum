@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-xk#2ic_#lal9lwk_&hnn5$!e6@n9^28bp^8ko9cji-a)jwnkb^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "192.168.1.43"]
+ALLOWED_HOSTS = ["127.0.0.1", "192.168.1.43", "localhost"]
 
 # Application definition
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_ckeditor_5',
     'Museum.apps.MuseumConfig',
+    "members.apps.MembersConfig"
 ]
 
 MIDDLEWARE = [

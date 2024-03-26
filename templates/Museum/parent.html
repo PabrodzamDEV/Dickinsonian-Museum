@@ -31,16 +31,22 @@
                 <li class="nav-item {% if 'poems' in request.path %}active{% endif %}">
                     <a class="nav-link" href="{% url 'poems' %}">Poems</a>
                 </li>
-                <li class="nav-item {% if 'gallery' in request.path %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
-                </li>
                 <li class="nav-item {% if 'essays' in request.path %}active{% endif %}">
                     <a class="nav-link" href="{% url 'essays' %}">Essays</a>
+                </li>
+                <li class="nav-item {% if 'gallery' in request.path %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
                 </li>
                 <li class="nav-item {% if 'contact' in request.path %}active{% endif %}">
                     <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                 </li>
             </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item ml-auto">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                </ul>
+
         </div>
     </div>
 
