@@ -7,11 +7,17 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
     <title>Login</title>
 </head>
-<body>
+<body class="bg-dark text-light">
 <div class="container">
     <div class="row justify-content-center mt-4">
         <div class="col-md-6">
-            <form>
+            {% for message in messages %}
+                <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <form action="" method="post">
+                {% csrf_token %}
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" name="username" class="form-control" id="username">
