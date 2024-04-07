@@ -20,20 +20,20 @@
             {% if user.is_authenticated %}
                 <form action="{% url 'create_profile' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <div class="mb-3">
-                        <label for="id_bio" class="form-label">Bio</label>
+                    <div class="form-group mb-3">
+                        <label for="id_bio" class="form-label">Bio</label><br>
                         {{ form.bio }}
                     </div>
-                    <div class="mb-3">
-                        <label for="id_avatar" class="form-label">Avatar</label>
+                    <div class="form-group mb-3">
+                        <label for="id_avatar" class="form-label">Avatar</label><br>
                         {{ form.avatar }}
                     </div>
-                    <div class="mb-3">
-                        <label for="id_location" class="form-label">Location</label>
+                    <div class="form-group mb-3">
+                        <label for="id_location" class="form-label">Location</label><br>
                         {{ form.location }}
                     </div>
                     <div class="mb-3">
-                        <label for="id_birth_date" class="form-label">Birth Date</label>
+                        <label for="id_birth_date" class="form-label">Birth Date</label><br>
                         {{ form.birth_date }}
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
