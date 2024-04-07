@@ -6,9 +6,10 @@
 
     <h1>This is the html poems section</h1>
     {% for poem in poems %}
-        <p><b>{{ poem.title }}</b></p>
+        <h3><b>{{ poem.title }}</b></h3>
         {{ poem.content|safe }}
         <p>By: <b>{{ poem.author }}</b></p>
         <p> Uploaded by: <b>{{ poem.uploaded_by.username }}</b></p>
+        <img src="{{ poem.uploaded_by.profile.avatar.url }}" alt="jeje"></img>
     {% endfor %}
 {% endblock %}
