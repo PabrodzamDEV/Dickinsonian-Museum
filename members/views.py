@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from .models import Profile
 
 from members.forms import ProfileForm
 
@@ -28,3 +29,22 @@ def logout_member(request):
     logout(request)
     messages.success(request, "You have been logged out")
     return redirect("login")
+
+
+def create_profile(request):
+    try:
+        # Attempt to get the profile for the current user
+        profile = request.user.profile
+        # If profile exists, set instance attribute of the form to the existing profile
+        form = ProfileForm(request.POST or None, request.FILES or None, instance=profile)
+    except Profile.DoesNotExist:
+        # If profile doesn't exist, initialize form without instance
+        form = ProfileForm(request.POST or None, request.FILES or None)
+
+    if request.method == "POST":
+        if form.is_valid():
+            # Save the form
+            form.save()
+            return redirect("home")
+
+    return render(request, "members/create_profile.html", {"form": form})

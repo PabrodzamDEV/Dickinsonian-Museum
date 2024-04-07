@@ -13,7 +13,5 @@ class Poem(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     uploaded_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    # uploaded_by = models.CharField(max_length=100, default="The Dickinsonian Museum staff")
-
     def __str__(self):
         return self.title
