@@ -31,7 +31,7 @@ def logout_member(request):
 
 
 @login_required()
-def create_profile(request):
+def update_profile(request):
     try:
         # Attempt to get the profile for the current user
         profile = request.user.profile
@@ -47,4 +47,4 @@ def create_profile(request):
             form.save()
             return redirect("home")
 
-    return render(request, "members/create_profile.html", {"form": form})
+    return render(request, "members/update_profile.html", {"form": form})

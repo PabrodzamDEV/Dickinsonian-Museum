@@ -6,7 +6,7 @@ urlpatterns = [
     path('', my_views.login_member, name="login"),
     path('login_user/', my_views.login_member, name="login"),
     path('logout_user/', my_views.logout_member, name="logout"),
-    path('create_profile/', my_views.create_profile, name="create_profile"),
+    path('update_profile/', my_views.update_profile, name="update_profile"),
     path('password_change/', auth_views.PasswordChangeView.as_view()),
     # path('password')
 
