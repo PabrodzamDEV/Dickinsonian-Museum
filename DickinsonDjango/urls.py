@@ -22,6 +22,7 @@ from DickinsonDjango import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('Museum.urls'), name="Museum"),
     path('Museum/', include('Museum.urls'), name="Museum"),
 ]
 

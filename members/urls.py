@@ -1,8 +1,13 @@
-from django.urls import path, include
-from . import views
+from django.urls import path
+from . import views as my_views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('login_user/', views.login_member, name="login"),
-    path('logout_user/', views.logout_member, name="logout"),
-    path('create_profile/', views.create_profile, name="create_profile"),
+    path('', my_views.login_member, name="login"),
+    path('login_user/', my_views.login_member, name="login"),
+    path('logout_user/', my_views.logout_member, name="logout"),
+    path('create_profile/', my_views.create_profile, name="create_profile"),
+    path('password_change/', auth_views.PasswordChangeView.as_view()),
+    # path('password')
+
 ]

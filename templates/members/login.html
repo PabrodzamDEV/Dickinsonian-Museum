@@ -35,10 +35,6 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            <form>
-            {% csrf_token %}
-            {{ prof_form.as_p }}
-            </form>
         {% endif %}
             <a href="{% url 'home' %}" class="btn btn-outline-light mt-4">Home</a>
         </div>
