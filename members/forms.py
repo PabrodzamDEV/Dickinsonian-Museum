@@ -15,10 +15,9 @@ class SignUpForm(UserCreationForm):
             raise ValidationError("Email already exists")
         return self.cleaned_data
 
-
-class Meta:
-    model = User
-    fields = ('username', 'email', 'password1', 'password2')
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password1', 'password2')
 
 
 class ProfileForm(ModelForm):

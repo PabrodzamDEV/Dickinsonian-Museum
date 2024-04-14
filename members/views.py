@@ -11,20 +11,18 @@ from members.forms import ProfileForm, SignUpForm
 # Create your views here.
 def login_member(request):
     if request.method == "POST":
-        form = AuthenticationForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password")
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect("home")
-            else:
-                messages.error(request, "There was an error logging in. Please try again")
-                return render(request, "members/login.html")
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("home")
+        else:
+            messages.error(request, "There was an error logging in. Please try again")
+            return redirect("login")
     else:
         form = AuthenticationForm()
-        return render(request, "members/login.html", {"form": form})
+    return render(request, "members/login.html", {"form": form})
 
 
 @login_required()

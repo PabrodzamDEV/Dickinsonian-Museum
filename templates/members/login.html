@@ -26,14 +26,14 @@
         {% else %}
             <h4 class="text-center mb-3"><b>Enter your username and password</b></h4>
             <hr class="accessory">
-            <form action="" method="POST">
+            <form action="{% url 'login' %}" method="POST">
                 {% csrf_token %}
                 <fieldset class="form-group mb-3">
-                    <label class="mb-2" for="username">Username</label><br>
+                    <label class="mb-2" for="id_username">Username</label><br>
                     {{form.username}}
                 </fieldset>
                 <fieldset class="form-group mb-3">
-                    <label class="mb-2" for="password">Password</label><br>
+                    <label class="mb-2" for="id_password">Password</label><br>
                     {{form.password}}
                 </fieldset>
                 <button type="submit" class="btn btn-primary">Log in</button>
