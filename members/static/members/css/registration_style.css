@@ -1,0 +1,99 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+hr:before {
+  content: "";
+}
+
+hr:after {
+  content: "";
+}
+
+#flexSwitchCheckDefault {
+  margin-left: auto;
+}
+
+#showpass {
+  color: white;
+}
+
+.accessory {
+  border: 0;
+  margin: 1.35em auto;
+  max-width: 100%;
+  background-position: 50%;
+  box-sizing: border-box;
+  height: 6px;
+  background-image: radial-gradient(closest-side, hsl(0, 0%, 50%), hsla(0, 0%, 50%, 0) 100%);
+  position: relative;
+}
+
+.container {
+  background-color: #1d2123;
+  font-family: "Raleway", sans-serif;
+  color: white;
+  margin-top: 5em;
+  margin-bottom: 5em;
+  min-width: 50%;
+  max-width: 100%;
+  border-radius: 0.4em;
+}
+
+input {
+  border-radius: 8px;
+  background-color: #1d2123;
+  color: white;
+  border: 2px solid #40484d;
+  font-size: 1.5em;
+  width: 100%;
+}
+
+label {
+  font-size: 1.5em;
+  color: #8C8045;
+}
+
+#about {
+  max-width: 666px;
+}
+
+input,
+#about {
+  transition: border-color 0.3s ease-in-out;
+  outline: none;
+  padding: 3px 0 3px 3px;
+  margin: 5px 1px 3px 0;
+}
+
+input:hover:not(#flexSwitchCheckDefault) {
+  box-shadow: 0 0 5px #436000;
+  padding: 3px 0 3px 3px;
+  margin: 5px 1px 3px 0;
+  border: 2px solid #436000;
+}
+
+input:focus:not(#flexSwitchCheckDefault) {
+  box-shadow: 0 0 5px #79AC00;
+  padding: 3px 0 3px 3px;
+  margin: 5px 1px 3px 0;
+  border: 2px solid #79AC00;
+}
+
+.btn {
+  background-color: #79AC00;
+  color: black;
+  font-size: 1.5em;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn:hover,
+.btn:active,
+.btn:focus {
+  background-color: #8bc600;
+  color: black;
+  outline: 0 !important;
+}
+
+::selection {
+  background-color: #79AC00;
+}
+
+/*# sourceMappingURL=registration_style.css.map */

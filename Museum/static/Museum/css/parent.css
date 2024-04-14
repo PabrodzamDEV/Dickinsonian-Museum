@@ -15,31 +15,6 @@ hr:after {
   content: '';
 }
 
-.dots {
-  margin: 1.5em 0;
-  text-align: center;
-  border: none;
-}
-
-.dots:before {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #eee;
-  margin: 0 0.4em;
-}
-
-.dots:after {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #eee;
-  margin: 0 0.4em;
-}
-
-
 .accessory {
   border: 0;
   margin: 1.35em auto;
