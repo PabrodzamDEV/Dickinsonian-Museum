@@ -1,0 +1,15 @@
+{% extends 'Museum/parent.html' %}
+{% load static %}
+{% block title %}
+    Profile
+{% endblock %}
+{% block content %}
+    <h1>Profile</h1>
+    <p>Profile picture: <img src="{{ user.profile.avatar.url }}" alt="profile picture"></p>
+    <p>Username: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <P>Bio: {{ user.profile.bio }}</P>
+    <P>Location: {{ user.profile.location }}</P>
+    <P>Birth date: {{ user.profile.birth_date }}</P>
+    <p>Update my profile <a href="{% url 'update_profile' %}">here</a></p>
+{% endblock %}

@@ -48,6 +48,11 @@ def register_member(request):
 
 
 @login_required()
+def user_profile(request):
+    return render(request, "members/user_profile.html")
+
+
+@login_required()
 def update_profile(request):
     try:
         # Attempt to get the profile for the current user

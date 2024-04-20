@@ -102,6 +102,10 @@ hr:after {
   height : 24px;
 }
 
+.copy {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
 @keyframes line {
   0% {
     background-position-x: 390px;

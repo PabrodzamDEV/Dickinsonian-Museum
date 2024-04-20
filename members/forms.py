@@ -21,6 +21,9 @@ class SignUpForm(UserCreationForm):
 
 
 class ProfileForm(ModelForm):
+    avatar = forms.ImageField(label='Profile Picture', required=False, widget=forms.FileInput(
+        attrs={"id": "image_field"}))
+
     class Meta:
         model = Profile
         fields = ['bio', 'avatar', 'location', 'birth_date']

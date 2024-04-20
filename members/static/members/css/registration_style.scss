@@ -49,7 +49,7 @@ hr:after {
   border-radius: 0.4em;
 }
 
-input {
+input:not(#id_avatar) {
   border-radius: 8px;
   background-color: $backgroundColor;
   color: $color;
@@ -67,7 +67,7 @@ label {
   max-width: 666px;
 }
 
-input,
+input:not(#id_avatar),
 #about {
   transition: border-color 0.30s ease-in-out;
   outline: none;
@@ -75,14 +75,14 @@ input,
   margin: 5px 1px 3px 0;
 }
 
-input:hover:not(#flexSwitchCheckDefault), {
+input:hover:not(#flexSwitchCheckDefault, #id_avatar), {
   box-shadow: 0 0 5px $darkGreen;
   padding: 3px 0 3px 3px;
   margin: 5px 1px 3px 0;
   border: 2px solid $darkGreen;
 }
 
-input:focus:not(#flexSwitchCheckDefault), {
+input:focus:not(#flexSwitchCheckDefault, #id_avatar), {
   box-shadow: 0 0 5px $green;
   padding: 3px 0 3px 3px;
   margin: 5px 1px 3px 0;
@@ -106,5 +106,10 @@ input:focus:not(#flexSwitchCheckDefault), {
 
 ::selection {
   background-color: $green;
+}
+
+#profile_image {
+  max-width: 25%;
+  height: auto;
 }
 
