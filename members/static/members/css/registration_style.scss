@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway);
+
 $backgroundColor: #1d2123;
 $color: white;
 $labelColor: #8C8045;
@@ -8,101 +9,102 @@ $darkGreen: darken($green, 15%);
 $lightGreen: lighten($green, 5%);
 
 hr:before {
-    content: '';
+  content: '';
 }
 
 hr:after {
-    content: '';
+  content: '';
 }
 
 #flexSwitchCheckDefault {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 #showpass {
-    color: $color;
+  color: $color;
 }
 
 .accessory {
-    border: 0;
-    margin: 1.35em auto;
-    max-width: 100%;
-    background-position: 50%;
-    box-sizing: border-box;
-    height: 6px;
-    background-image: radial-gradient(
-                    closest-side,
-                    hsla(0, 0%, 50%, 1.0),
-                    hsla(0, 0%, 50%, 0) 100%);
-    position: relative;
+  border: 0;
+  margin: 1.35em auto;
+  max-width: 100%;
+  background-position: 50%;
+  box-sizing: border-box;
+  height: 6px;
+  background-image: radial-gradient(
+                  closest-side,
+                  hsla(0, 0%, 50%, 1.0),
+                  hsla(0, 0%, 50%, 0) 100%);
+  position: relative;
 }
 
 .container {
-    background-color: $backgroundColor;
-    font-family: 'Raleway', sans-serif;
-    color: $color;
-    margin-top: 5em;
-    margin-bottom: 5em;
-    min-width: 50%;
-    max-width: 100%;
-    border-radius: 0.4em;
+  background-color: $backgroundColor;
+  font-family: 'Raleway', sans-serif;
+  color: $color;
+  margin-top: 2em;
+  margin-bottom: 5em;
+  min-width: 50%;
+  max-width: 100%;
+  border-radius: 0.4em;
 }
 
 input {
-    border-radius: 8px;
-    background-color: $backgroundColor;
-    color: $color;
-    border: 2px solid $borderColor;
-    font-size: 1.5em;
-    width: 100%;
+  border-radius: 8px;
+  background-color: $backgroundColor;
+  color: $color;
+  border: 2px solid $borderColor;
+  font-size: 1.5em;
+  width: 100%;
 }
 
 label {
-    font-size: 1.5em;
-    color: $labelColor;
+  font-size: 1.5em;
+  color: $labelColor;
 }
 
 #about {
-    max-width: 666px;
+  max-width: 666px;
 }
 
 input,
 #about {
-    transition: border-color 0.30s ease-in-out;
-    outline: none;
-    padding: 3px 0 3px 3px;
-    margin: 5px 1px 3px 0;
+  transition: border-color 0.30s ease-in-out;
+  outline: none;
+  padding: 3px 0 3px 3px;
+  margin: 5px 1px 3px 0;
 }
 
 input:hover:not(#flexSwitchCheckDefault), {
-    box-shadow: 0 0 5px $darkGreen;
-    padding: 3px 0 3px 3px;
-    margin: 5px 1px 3px 0;
-    border: 2px solid $darkGreen;
+  box-shadow: 0 0 5px $darkGreen;
+  padding: 3px 0 3px 3px;
+  margin: 5px 1px 3px 0;
+  border: 2px solid $darkGreen;
 }
 
 input:focus:not(#flexSwitchCheckDefault), {
-    box-shadow: 0 0 5px $green;
-    padding: 3px 0 3px 3px;
-    margin: 5px 1px 3px 0;
-    border: 2px solid $green;
+  box-shadow: 0 0 5px $green;
+  padding: 3px 0 3px 3px;
+  margin: 5px 1px 3px 0;
+  border: 2px solid $green;
 }
 
 .btn {
-    background-color: $green;
-    color: black;
-    font-size: 1.5em;
-    transition: all 0.15s ease-in-out;
+  background-color: $green;
+  color: black;
+  font-size: 1.5em;
+  transition: all 0.15s ease-in-out;
 }
 
 .btn:hover,
 .btn:active,
 .btn:focus {
-    background-color: $lightGreen;
-    color: black;
-    outline: 0 !important;
+  background-color: $lightGreen;
+  color: black;
+  outline: 0 !important;
 }
 
 ::selection {
-    background-color: $green;
+  background-color: $green;
 }
+
