@@ -11,7 +11,7 @@
 </head>
 <body class="container">
 <div class="row justify-content-center">
-    <div class="col-lg-8 col-md-6 col-11">
+    <div class="col-lg-6 col-md-8 col-11">
         {% for message in messages %}
             <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %} alert-dismissible fade show"
                  role="alert">
@@ -20,6 +20,8 @@
             </div>
         {% endfor %}
         {% if user.is_authenticated %}
+            <h4 class="text-center mb-3"><img class="me-4" src="{% static 'members/images/meet.svg' %}" alt="baby"><b>Pleased to meet you !</b></h4>
+            <hr class="accessory">
             <form action="{% url 'update_profile' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group mb-3">
@@ -39,16 +41,19 @@
                     <label for="id_birth_date" class="form-label">Birth Date</label><br>
                     {{ form.birth_date }}
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="mt-4 d-flex flex-column align-items-center">
+                    <button type="submit" class="btn">Update profile</button>
+                </div>
             </form>
         {% else %}
             <p>You are not logged in</p>
+            <a href="{% url 'home' %}" class="btn btn-outline-light mt-4">Home</a>
         {% endif %}
-        <a href="{% url 'home' %}" class="btn btn-outline-light mt-4">Home</a>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+<script src="{% static 'members/js/functions.js' %}"></script>
 </body>
 </html>

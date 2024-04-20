@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
+from django_ckeditor_5.widgets import CKEditor5Widget
+
 from .models import Profile
 
 

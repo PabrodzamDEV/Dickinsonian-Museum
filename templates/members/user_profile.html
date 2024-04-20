@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
     <h1>Profile</h1>
-    <p>Profile picture: <img src="{{ user.profile.avatar.url }}" alt="profile picture"></p>
+    <p>Profile picture: <img id="profile_image" src="{{ user.profile.avatar.url }}" alt="profile picture"></p>
     <p>Username: {{ user.username }}</p>
     <p>Email: {{ user.email }}</p>
     <P>Bio: {{ user.profile.bio }}</P>

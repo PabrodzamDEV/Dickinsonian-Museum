@@ -37,7 +37,8 @@ hr:after {
   border-radius: 0.4em;
 }
 
-input:not(#id_avatar) {
+input:not(#id_avatar),
+textarea {
   border-radius: 8px;
   background-color: #1d2123;
   color: white;
@@ -56,6 +57,7 @@ label {
 }
 
 input:not(#id_avatar),
+textarea,
 #about {
   transition: border-color 0.3s ease-in-out;
   outline: none;
