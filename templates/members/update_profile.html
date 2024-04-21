@@ -24,9 +24,9 @@
             <hr class="accessory">
             <form action="{% url 'update_profile' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <div class="form-group mb-3">
+                <div class="d-flex flex-column form-group mb-3">
                     <label for="id_avatar" class="form-label">Avatar</label><br>
-                    <img id="profile_image" src="{{ user.profile.avatar.url }}" alt="profile picture">
+                    <img id="profile_image" src="{{ user.profile.avatar.url }}" alt="profile picture"><br>
                     {{ form.avatar }}
                 </div>
                 <div class="form-group mb-3">

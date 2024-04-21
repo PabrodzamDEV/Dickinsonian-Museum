@@ -37,16 +37,6 @@ hr:after {
   border-radius: 0.4em;
 }
 
-input:not(#id_avatar),
-textarea {
-  border-radius: 8px;
-  background-color: #1d2123;
-  color: white;
-  border: 2px solid #40484d;
-  font-size: 1.5em;
-  width: 100%;
-}
-
 label {
   font-size: 1.5em;
   color: #8C8045;
@@ -56,7 +46,17 @@ label {
   max-width: 666px;
 }
 
-input:not(#id_avatar),
+input:not(#image_field, #flexSwitchCheckDefault),
+textarea {
+  border-radius: 8px;
+  background-color: #1d2123;
+  color: white;
+  border: 2px solid #40484d;
+  font-size: 1.5em;
+  width: 100%;
+}
+
+input:not(#image_field, #flexSwitchCheckDefault),
 textarea,
 #about {
   transition: border-color 0.3s ease-in-out;
@@ -65,18 +65,24 @@ textarea,
   margin: 5px 1px 3px 0;
 }
 
-input:hover:not(#flexSwitchCheckDefault, #id_avatar) {
+input:hover:not(#image_field, #flexSwitchCheckDefault),
+textarea:hover {
   box-shadow: 0 0 5px #436000;
   padding: 3px 0 3px 3px;
   margin: 5px 1px 3px 0;
   border: 2px solid #436000;
 }
 
-input:focus:not(#flexSwitchCheckDefault, #id_avatar) {
+input:focus:not(#image_field, #flexSwitchCheckDefault),
+textarea:focus {
   box-shadow: 0 0 5px #79AC00;
   padding: 3px 0 3px 3px;
   margin: 5px 1px 3px 0;
   border: 2px solid #79AC00;
+}
+
+#flexSwitchCheckDefault {
+  font-size: 1.5em;
 }
 
 .btn {
@@ -99,7 +105,7 @@ input:focus:not(#flexSwitchCheckDefault, #id_avatar) {
 }
 
 #profile_image {
-  max-width: 25%;
+  max-width: 100%;
   height: auto;
 }
 

@@ -1,15 +1,25 @@
 {% extends 'Museum/parent.html' %}
 {% load static %}
+{%  block head %}
+    <link rel="stylesheet" href="{% static 'members/css/profile_style.css' %}">
+{% endblock %}
 {% block title %}
     Profile
 {% endblock %}
 {% block content %}
-    <h1>Profile</h1>
-    <p>Profile picture: <img id="profile_image" src="{{ user.profile.avatar.url }}" alt="profile picture"></p>
-    <p>Username: {{ user.username }}</p>
-    <p>Email: {{ user.email }}</p>
-    <P>Bio: {{ user.profile.bio }}</P>
-    <P>Location: {{ user.profile.location }}</P>
-    <P>Birth date: {{ user.profile.birth_date }}</P>
-    <p>Update my profile <a href="{% url 'update_profile' %}">here</a></p>
+    <div class="container">
+        <h1>{{ user.username }}</h1>
+        <div class="row">
+            <div class="col">
+                <img id="profile_image" src="{{ user.profile.avatar.url }}" alt="profile picture">
+            </div>
+            <div class="col">
+                <P>{{ user.profile.bio }}</P>
+            </div>
+        </div>
+        <p>Email: {{ user.email }}</p>
+        <P>Location: {{ user.profile.location }}</P>
+        <P>Birth date: {{ user.profile.birth_date }}</P>
+        <p>Update my profile <a href="{% url 'update_profile' %}">here</a></p>
+    </div>
 {% endblock %}
