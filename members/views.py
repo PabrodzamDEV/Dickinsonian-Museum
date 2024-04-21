@@ -48,8 +48,8 @@ def register_member(request):
 
 
 @login_required()
-def user_profile(request):
-    return render(request, "members/user_profile.html")
+def my_profile(request):
+    return render(request, "members/my_profile.html")
 
 
 @login_required()

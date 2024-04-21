@@ -37,5 +37,13 @@ class Profile(models.Model):
                 orig.delete_old_avatar()
         super().save(*args, **kwargs)
 
+    def delete(self, *args, **kwargs):
+        # Clear or reset fields instead of deleting the profile object
+        self.bio = ""
+        self.avatar = '/profile_images/default.png'
+        self.location = ""
+        self.birth_date = None
+        self.save()
+
     def __str__(self):
         return f"{self.user.username}'s Profile"
