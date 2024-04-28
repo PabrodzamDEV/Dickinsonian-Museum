@@ -1,13 +1,32 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView
 
 from Museum.models import Poem
+
+from .forms import PoemForm
 
 
 # Create your views here.
 def home(request):
     return render(request, "Museum/home.html")
+
+
+"""
+    Class-based view which renders a creation form for a poem.
+
+    extends:
+        django.views.generic.CreateView
+
+"""
+
+
+class PoemCreateView(CreateView):
+    model = Poem
+    form_class = PoemForm
+    template_name = 'Museum/poem_form.html'  # Update this to your actual template
+    success_url = reverse_lazy('poems')  # Update 'poems' to the name of your poems list view
 
 
 """

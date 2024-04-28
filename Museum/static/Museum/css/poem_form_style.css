@@ -1,0 +1,6 @@
+.ck.ck-editor__main > .ck-editor__editable {
+  background-color: #333 !important; /* Dark background for the CKEditor5 widget */
+  color: #fff !important; /* White text */
+}
+
+/*# sourceMappingURL=poem_form_style.css.map */

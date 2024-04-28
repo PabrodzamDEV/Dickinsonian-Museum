@@ -14,6 +14,7 @@ class PoemForm(forms.ModelForm):
         self.fields["author"].required = True
         self.fields["category"].required = True
         self.fields["language"].required = True
+        self.fields["uploaded_by"].required = True
         self.fields["date_published"].required = False
 
     class Meta:
