@@ -25,7 +25,7 @@
             <form action="{% url 'update_profile' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="d-flex flex-column form-group mb-3">
-                    <label for="id_avatar" class="form-label">Avatar</label><br>
+                    <label class="form-label">Avatar</label><br>
                     <img id="profile_image" src="{{ user.profile.avatar.url }}" alt="profile picture"><br>
                     {{ form.avatar }}
                 </div>
@@ -41,8 +41,17 @@
                     <label for="id_birth_date" class="form-label">Birth Date</label><br>
                     {{ form.birth_date }}
                 </div>
-                <div class="mt-4 d-flex flex-column align-items-center">
-                    <button type="submit" class="btn">Update profile</button>
+                <div class="container p-0">
+                    <div class="row d-flex flex-row justify-content-between">
+                        <div class="col-6">
+                            <button type="submit" class="btn">Update</button>
+                        </div>
+                        <div class="col-6 d-flex justify-content-end">
+                            <a href="{% url 'my_profile' %}">
+                                <button type="button" class="btn btn-cancel" onclick="location.href='{% url 'home' %}'">Discard</button>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </form>
         {% else %}

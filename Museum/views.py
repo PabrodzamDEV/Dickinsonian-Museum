@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
+
 from Museum.models import Poem
 
 
@@ -8,9 +10,21 @@ def home(request):
     return render(request, "Museum/home.html")
 
 
-def poems(request):
-    poem_list = Poem.objects.all()
-    return render(request, "Museum/poems.html", {"poems": poem_list})
+"""
+    Class-based view which renders the whole collection of poems present in the database, ordered
+    by title.
+
+    extends:
+        django.views.generic.ListView
+
+"""
+
+
+class PoemListView(ListView):
+    model = Poem
+    template_name = 'Museum/poems.html'
+    context_object_name = 'poems'
+    ordering = ['title']
 
 
 def gallery(request):

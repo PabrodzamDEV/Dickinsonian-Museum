@@ -2,12 +2,14 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import never_cache
 from django.contrib import messages
 from .models import Profile
 
 from members.forms import ProfileForm, SignUpForm
 
 
+@never_cache
 # Create your views here.
 def login_member(request):
     if request.method == "POST":
@@ -25,6 +27,7 @@ def login_member(request):
     return render(request, "members/login.html", {"form": form})
 
 
+@never_cache
 @login_required()
 def logout_member(request):
     logout(request)
@@ -32,6 +35,7 @@ def logout_member(request):
     return redirect("login")
 
 
+@never_cache
 def register_member(request):
     if request.method == "POST":
         form = SignUpForm(request.POST)
@@ -47,11 +51,13 @@ def register_member(request):
     return render(request, "members/register.html", {"form": form})
 
 
+@never_cache
 @login_required()
 def my_profile(request):
     return render(request, "members/my_profile.html")
 
 
+@never_cache
 @login_required()
 def update_profile(request):
     try:

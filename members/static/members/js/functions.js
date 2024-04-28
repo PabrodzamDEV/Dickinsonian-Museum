@@ -9,12 +9,15 @@ function showPass() {
         }
     }
 
-}
+}/*
+    Function which listens to the change of the profile image and displays the image
+    that the user has picked on the img element.
+*/
+document.getElementById('image_field').addEventListener('change', function(e) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        document.getElementById('profile_image').src = e.target.result;
+    }
+    reader.readAsDataURL(this.files[0]);
+});
 
-const textarea = document.querySelector("#id_bio");
-textarea.addEventListener('input', autoResize, false);
-
-function autoResize() {
-    this.style.height = 'auto';
-    this.style.height = this.scrollHeight + 'px';
-}

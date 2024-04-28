@@ -7,6 +7,10 @@ $borderColor: lighten($backgroundColor, 15%);
 $green: #79AC00;
 $darkGreen: darken($green, 15%);
 $lightGreen: lighten($green, 5%);
+$red: #FF0000;
+$darkRed: darken($red, 15%);
+$lightRed: lighten($red, 5%);
+
 
 hr:before {
   content: '';
@@ -104,10 +108,23 @@ textarea:focus {
   transition: all 0.15s ease-in-out;
 }
 
+.btn-cancel {
+  background-color: $red;
+  font-size: 1.5em;
+}
+
 .btn:hover,
 .btn:active,
 .btn:focus {
   background-color: $lightGreen;
+  color: black;
+  outline: 0 !important;
+}
+
+.btn-cancel:hover,
+.btn-cancel:active,
+.btn-cancel:focus {
+  background-color: $lightRed;
   color: black;
   outline: 0 !important;
 }

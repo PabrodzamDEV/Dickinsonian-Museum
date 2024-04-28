@@ -92,10 +92,23 @@ textarea:focus {
   transition: all 0.15s ease-in-out;
 }
 
+.btn-cancel {
+  background-color: #FF0000;
+  font-size: 1.5em;
+}
+
 .btn:hover,
 .btn:active,
 .btn:focus {
   background-color: #8bc600;
+  color: black;
+  outline: 0 !important;
+}
+
+.btn-cancel:hover,
+.btn-cancel:active,
+.btn-cancel:focus {
+  background-color: #ff1a1a;
   color: black;
   outline: 0 !important;
 }
