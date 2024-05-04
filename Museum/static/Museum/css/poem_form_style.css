@@ -1,4 +1,4 @@
-.ck.ck-editor__main > .ck-editor__editable {
+.ck.ck-editor__main > .ck-editor__editable, input {
   background-color: #333 !important; /* Dark background for the CKEditor5 widget */
   color: #fff !important; /* White text */
 }

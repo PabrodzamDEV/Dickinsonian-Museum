@@ -3,7 +3,6 @@ from django_ckeditor_5.fields import CKEditor5Field
 from django.contrib.auth.models import User  # Django's built-in User model
 
 
-# Create your models here.
 class Poem(models.Model):
     CATEGORY_CHOICES = [
         ('nature', 'Nature'),

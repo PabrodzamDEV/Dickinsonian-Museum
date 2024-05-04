@@ -25,8 +25,12 @@ def home(request):
 class PoemCreateView(CreateView):
     model = Poem
     form_class = PoemForm
-    template_name = 'Museum/poem_form.html'  # Update this to your actual template
-    success_url = reverse_lazy('poems')  # Update 'poems' to the name of your poems list view
+    template_name = 'Museum/poem_form.html'
+    success_url = reverse_lazy('poems')
+
+    def form_valid(self, form):
+        form.instance.uploaded_by = self.request.user
+        return super().form_valid(form)
 
 
 """
