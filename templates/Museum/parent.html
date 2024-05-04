@@ -46,7 +46,7 @@
             <ul class="navbar-nav mb-2 mb-lg-0 custom-me">
                 {% if user.is_authenticated %}
                     <div class="profile-pic">
-                        <img alt="Profile picture" src="{{ user.profile.avatar.url }}">
+                        <img alt="Profile picture" src="{{ user.profile.avatar_url }}">
                     </div>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -114,7 +114,7 @@
             <!-- Grid row -->
             <div class="row mt-3">
                 <!-- Grid column -->
-                <div class="col-md-6 col-lg-4 col-xl-3 mx-auto mb-4 text-center">
+                <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4 text-center">
                     <!-- Content -->
                     <h6 class="text-uppercase fw-bold mb-4"><i class="fas fa-gem me-3"></i>Pablo Rodríguez Zambrana</h6>
                     <p>I am a software developer based in Seville, Spain.</p>
@@ -122,7 +122,7 @@
                 <!-- Grid column -->
 
                 <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 text-center">
+                <div class="col-md-4 col-lg-2 col-xl-2 mx-auto mb-4 text-center">
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
                     <p>

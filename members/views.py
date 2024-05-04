@@ -10,7 +10,6 @@ from members.forms import ProfileForm, SignUpForm
 
 
 @never_cache
-# Create your views here.
 def login_member(request):
     if request.method == "POST":
         username = request.POST.get("username")

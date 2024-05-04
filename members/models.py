@@ -2,6 +2,8 @@ import os
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
+from django.utils.http import urlencode
 
 
 def profile_image_path(instance, filename):
@@ -20,6 +22,16 @@ class Profile(models.Model):
     avatar = models.ImageField(upload_to=profile_image_path, blank=True, default='/profile_images/default.png')
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
+
+    # Generates an url with a timestamp as a query parameter so that the image never gets cached.
+    # This prevents the undesired behaviour that browsers will store a local copy of the profile
+    # picture, preventing the user from seeing their new picture if they were to update it.
+    def avatar_url(self):
+        if self.avatar and hasattr(self.avatar, 'url'):
+            url = self.avatar.url
+            time = timezone.localtime().isoformat()
+            return url + "?" + urlencode({'t': time})
+        return None
 
     def delete_old_avatar(self):
         # Delete the old avatar file if it exists and is not the default one
