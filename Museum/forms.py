@@ -23,6 +23,7 @@ class PoemForm(forms.ModelForm):
         fields = ["title", "content", "author", "category", "language", "date_published", "uploaded_by"]
         widgets = {
             "content": CKEditor5Widget(attrs={"class": "django_ckeditor_5"}),
+            "date_published": forms.SelectDateWidget(years=range(0, 2025)),
         }
 
     # Checks that the content field is not empty, otherwise raises a ValidationError
