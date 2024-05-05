@@ -30,20 +30,11 @@ hr:after {
   background-color: #1d2123;
   font-family: "Raleway", sans-serif;
   color: white;
-  margin-top: 5em;
+  margin-top: 2em;
   margin-bottom: 5em;
   min-width: 50%;
   max-width: 100%;
   border-radius: 0.4em;
-}
-
-input {
-  border-radius: 8px;
-  background-color: #1d2123;
-  color: white;
-  border: 2px solid #40484d;
-  font-size: 1.5em;
-  width: 100%;
 }
 
 label {
@@ -55,7 +46,18 @@ label {
   max-width: 666px;
 }
 
-input,
+input:not(#image_field, #flexSwitchCheckDefault),
+textarea {
+  border-radius: 8px;
+  background-color: #1d2123;
+  color: white;
+  border: 2px solid #40484d;
+  font-size: 1.5em;
+  width: 100%;
+}
+
+input:not(#image_field, #flexSwitchCheckDefault),
+textarea,
 #about {
   transition: border-color 0.3s ease-in-out;
   outline: none;
@@ -63,18 +65,24 @@ input,
   margin: 5px 1px 3px 0;
 }
 
-input:hover:not(#flexSwitchCheckDefault) {
+input:hover:not(#image_field, #flexSwitchCheckDefault),
+textarea:hover {
   box-shadow: 0 0 5px #436000;
   padding: 3px 0 3px 3px;
   margin: 5px 1px 3px 0;
   border: 2px solid #436000;
 }
 
-input:focus:not(#flexSwitchCheckDefault) {
+input:focus:not(#image_field, #flexSwitchCheckDefault),
+textarea:focus {
   box-shadow: 0 0 5px #79AC00;
   padding: 3px 0 3px 3px;
   margin: 5px 1px 3px 0;
   border: 2px solid #79AC00;
+}
+
+#flexSwitchCheckDefault {
+  font-size: 1.5em;
 }
 
 .btn {
@@ -82,6 +90,11 @@ input:focus:not(#flexSwitchCheckDefault) {
   color: black;
   font-size: 1.5em;
   transition: all 0.15s ease-in-out;
+}
+
+.btn-cancel {
+  background-color: #FF0000;
+  font-size: 1.5em;
 }
 
 .btn:hover,
@@ -92,8 +105,31 @@ input:focus:not(#flexSwitchCheckDefault) {
   outline: 0 !important;
 }
 
+.btn-cancel:hover,
+.btn-cancel:active,
+.btn-cancel:focus {
+  background-color: #ff1a1a;
+  color: black;
+  outline: 0 !important;
+}
+
 ::selection {
   background-color: #79AC00;
+}
+
+#profile_image {
+  max-width: 100%;
+  height: auto;
+}
+
+select {
+  border-radius: 8px;
+  background-color: #1d2123;
+  color: white;
+  border: 2px solid #40484d;
+  font-size: 1.5em;
+  width: 25%;
+  margin-right: 1em;
 }
 
 /*# sourceMappingURL=registration_style.css.map */

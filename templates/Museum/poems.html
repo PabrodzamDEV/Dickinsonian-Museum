@@ -10,6 +10,6 @@
         {{ poem.content|safe }}
         <p>By: <b>{{ poem.author }}</b></p>
         <p> Uploaded by: <b>{{ poem.uploaded_by.username }}</b></p>
-        <img src="{{ poem.uploaded_by.profile.avatar.url }}" alt="jeje"></img>
+        <img src="{{ poem.uploaded_by.profile.avatar_url }}" alt="jeje"></img>
     {% endfor %}
 {% endblock %}

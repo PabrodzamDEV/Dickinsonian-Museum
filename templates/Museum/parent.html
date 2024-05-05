@@ -7,7 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
     <link rel="stylesheet" href="{% static 'Museum/css/parent.css' %}"/>
-    <link type="image/png" sizes="32x32" rel="icon" href="{% static 'Museum/images/favicon_museum.png' %}">
+    {% block head %}
+        <link type="image/png" sizes="32x32" rel="icon" href="{% static 'Museum/images/favicon_museum.png' %}">
+    {% endblock %}
     <title>
         {% block title %}
             Base Template
@@ -44,7 +46,7 @@
             <ul class="navbar-nav mb-2 mb-lg-0 custom-me">
                 {% if user.is_authenticated %}
                     <div class="profile-pic">
-                        <img alt="Profile picture" src="{{ user.profile.avatar.url }}">
+                        <img alt="Profile picture" src="{{ user.profile.avatar_url }}">
                     </div>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -52,7 +54,7 @@
                             <img id="dropdown-svg" src="{% static 'members/images/profile-dropdown.svg' %}" alt="dropdown-svg">
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="{% url 'my_profile' %}">My Profile</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -64,7 +66,7 @@
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        <a class="nav-link" href="{% url 'login' %}">Log in</a>
                     </li>
                 {% endif %}
             </ul>
@@ -112,7 +114,7 @@
             <!-- Grid row -->
             <div class="row mt-3">
                 <!-- Grid column -->
-                <div class="col-md-6 col-lg-4 col-xl-3 mx-auto mb-4 text-center">
+                <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4 text-center">
                     <!-- Content -->
                     <h6 class="text-uppercase fw-bold mb-4"><i class="fas fa-gem me-3"></i>Pablo Rodríguez Zambrana</h6>
                     <p>I am a software developer based in Seville, Spain.</p>
@@ -120,7 +122,7 @@
                 <!-- Grid column -->
 
                 <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 text-center">
+                <div class="col-md-4 col-lg-2 col-xl-2 mx-auto mb-4 text-center">
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
                     <p>
@@ -164,7 +166,7 @@
     <!-- Section: Links -->
 
     <!-- Copyright -->
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    <div class="text-center p-4 copy">
         © 2024 Copyright:
         <a class="text-reset fw-bold" href="https://github.com/PabrodzamDEV">PabrodzamDEV</a>
     </div>
@@ -174,6 +176,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="{% static 'Museum/js/parent.js' %}"></script>
+{%  block js %}
+
+{% endblock %}
 </body>
 </html>

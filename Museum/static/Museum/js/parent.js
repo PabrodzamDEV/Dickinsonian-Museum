@@ -1,9 +1,7 @@
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        document.querySelector('.navbar').classList.add('fixed-top');
+$(window).scroll(function() {
+    if ($(window).scrollTop() > 80) {
+        $('.navbar').addClass('fixed-top');
     } else {
-        document.querySelector('.navbar').classList.remove('fixed-top');
+        $('.navbar').removeClass('fixed-top');
     }
-}
+});

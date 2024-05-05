@@ -1,0 +1,41 @@
+{% extends 'Museum/parent.html' %}
+{% load static %}
+{%  block head %}
+    <link rel="stylesheet" href="{% static 'Museum/css/poem_form_style.css' %}">
+{% endblock %}
+{% block title %}New Poem{% endblock %}
+
+{% block content %}
+
+    <h1>This is the poem creation form</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.media }}
+        {%  if form.errors %}
+            <div class="alert alert-danger" role="alert">
+                <p><strong>Please, correct the errors below:</strong></p>
+                {{ form.errors }}
+            </div>
+        {% endif %}
+        <label for="id_title">Poem's title: </label>
+        {{ form.title }}
+        <label for="id_content">Poem's content: </label>
+        {{ form.content }}
+        <label for="id_author">Poem's author: </label>
+        {{ form.author }}
+        <label for="id_date">Poem's category: </label>
+        {{ form.category }}
+        <label for="id_language">Poem's language: </label>
+        {{ form.language }}
+        <label for="id_date_published">Publication date: </label>
+        {{ form.date_published }}
+        
+        <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'Museum/js/poem_creation.js' %}"></script>
+{%  endblock %}

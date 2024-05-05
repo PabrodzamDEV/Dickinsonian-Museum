@@ -9,36 +9,41 @@
     <link rel="stylesheet" type="text/css" href="{% static 'members/css/registration_style.css' %}">
     <title>Registration</title>
 </head>
-<body class ="container col-lg-6 col-md-8 col-11">
-    <h5 class="text-center mb-3"><img src="{% static 'members/images/baby.svg' %}" alt="baby"><b>A new Dickinsonian is born !</b></h5>
+<body class="container">
+<div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 col-11">
+    <h5 class="text-center mb-3"><img src="{% static 'members/images/baby.svg' %}" alt="baby"><b>A new Dickinsonian is
+        born !</b></h5>
     <hr class="accessory">
     <form action="" method="POST">
         {% csrf_token %}
         <fieldset class="form-group mb-3">
             <label class="mb-2" for="username">Username</label><br>
-            {{form.username}}
+            {{ form.username }}
         </fieldset>
         <fieldset class="form-group mb-3">
             <label class="mb-2" for="email">Email address</label><br>
-            {{form.email}}
+            {{ form.email }}
         </fieldset>
         <fieldset class="form-group mb-3">
             <label class="mb-2" for="password1">Password</label><br>
-            {{form.password1}}
+            {{ form.password1 }}
         </fieldset>
-        <div class="form-check form-switch d-flex justify-content-start">
+        <div class="form-check form-switch d-flex">
             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onclick="showPass()">
             <label id="showpass" class="form-check-label" for="flexSwitchCheckDefault"> | Show Password</label>
         </div>
         <fieldset class="form-group mb-3">
             <label class="mb-2" for="password2">Repeat Password</label><br>
-            {{form.password2}}
+            {{ form.password2 }}
         </fieldset>
-        <div class="text-center mt-3">
+        <div class="d-flex justify-content-center mt-3">
             <button type="submit" class="btn">Sign up</button>
         </div>
     </form>
-    <script src="{% static 'members/js/functions.js' %}"></script>
+</div>
+</div>
+<script src="{% static 'members/js/functions.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>

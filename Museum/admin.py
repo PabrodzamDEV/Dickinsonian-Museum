@@ -8,8 +8,10 @@ from django.utils import timezone
 class PoemAdmin(admin.ModelAdmin):
     form = PoemForm
 
+    list_display = ('title', 'author', 'category', 'language', 'uploaded_by', 'date_published', 'updated_at')
+
     def save_model(self, request, obj, form, change):
-        obj.updated_at = timezone.now()  # Set updated_at to current date and time
+        obj.updated_at = timezone.localtime()  # Set updated_at to current date and time
 
         if not change and not obj.uploaded_by_id:
             obj.uploaded_by = request.user  # Assign the currently logged-in user
