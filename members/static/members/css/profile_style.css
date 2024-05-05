@@ -4,8 +4,13 @@
   height: auto;
 }
 
+.bio {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .location {
-  color: #8C8045;
+  color: #F20505;
 }
 
 a {

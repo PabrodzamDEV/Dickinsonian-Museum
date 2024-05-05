@@ -1,6 +1,6 @@
 $image-width: 100%;
 $image-height: auto;
-$location-color: #8C8045;
+$location-color: #F20505;
 $edit-color: #fff;
 
 
@@ -8,6 +8,11 @@ $edit-color: #fff;
     border-radius: 15%;
     width: $image-width;
     height: $image-height;
+}
+
+.bio {
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .location {
