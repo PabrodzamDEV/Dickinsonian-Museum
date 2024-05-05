@@ -12,7 +12,12 @@
     <form method="post">
         {% csrf_token %}
         {{ form.media }}
-        {{ form.errors }}
+        {%  if form.errors %}
+            <div class="alert alert-danger" role="alert">
+                <p><strong>Please, correct the errors below:</strong></p>
+                {{ form.errors }}
+            </div>
+        {% endif %}
         <label for="id_title">Poem's title: </label>
         {{ form.title }}
         <label for="id_content">Poem's content: </label>

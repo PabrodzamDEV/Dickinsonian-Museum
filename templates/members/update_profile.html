@@ -24,6 +24,12 @@
             <hr class="accessory">
             <form action="{% url 'update_profile' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
+                {%  if form.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        <p><strong>Please, correct the errors below:</strong></p>
+                        {{ form.errors }}
+                    </div>
+                {% endif %}
                 <div class="d-flex flex-column form-group mb-3">
                     <label class="form-label">Avatar</label><br>
                     <img id="profile_image" src="{{ user.profile.avatar_url }}" alt="profile picture"><br>

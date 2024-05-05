@@ -3,6 +3,8 @@ from django.core.exceptions import ValidationError
 
 from django_ckeditor_5.widgets import CKEditor5Widget
 
+from datetime import datetime
+
 from .models import Poem
 
 
@@ -23,7 +25,7 @@ class PoemForm(forms.ModelForm):
         fields = ["title", "content", "author", "category", "language", "date_published", "uploaded_by"]
         widgets = {
             "content": CKEditor5Widget(attrs={"class": "django_ckeditor_5"}),
-            "date_published": forms.SelectDateWidget(years=range(0, 2025)),
+            "date_published": forms.SelectDateWidget(years=range(0, datetime.now().year + 1)),
         }
 
     # Checks that the content field is not empty, otherwise raises a ValidationError
