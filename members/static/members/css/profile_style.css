@@ -1,6 +1,31 @@
 #profile_image {
+  border-radius: 15%;
   width: 100%;
   height: auto;
+}
+
+.location {
+  color: #8C8045;
+}
+
+a {
+  text-decoration: None;
+  color: #fff;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 100, "GRAD" 0, "opsz" 48;
+}
+
+.material-symbols-large {
+  font-size: 50px !important;
+}
+
+.material-symbols-celebration {
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 30px; /* Change this to the size you want */
 }
 
 /*# sourceMappingURL=profile_style.css.map */

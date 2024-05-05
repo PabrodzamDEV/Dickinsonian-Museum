@@ -2,28 +2,34 @@
 {% load static %}
 {%  block head %}
     <link rel="stylesheet" href="{% static 'members/css/profile_style.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 {% endblock %}
 {% block title %}
     Profile
 {% endblock %}
 {% block content %}
     <div class="container">
-        <h1>{{ user.username }}</h1>
         <div class="row">
-            <div class="col">
+            <div class="col-6">
                 <img id="profile_image" src="{{ user.profile.avatar_url }}" alt="profile picture">
             </div>
-            <div class="col">
+            <div class="col-6">
                 <P>{{ user.profile.bio }}</P>
             </div>
         </div>
-        <p>Email: {{ user.email }}</p>
-        <P>Location: {{ user.profile.location }}</P>
-        <P>Birth date: {{ user.profile.birth_date }}</P>
-        <p>Edit profile 
+        <h2 class="mt-2">{{ user.username }}</h2>
+        <P class="mt-3">
+            <span class="material-symbols-large material-symbols-outlined location">
+                person_pin_circle
+            </span> {{ user.profile.location }}
+        </P>
+        <P class="mt-3">
+            <span class="material-symbols-large material-symbols-outlined material-symbols-celebration">
+                celebration
+            </span>{{ user.profile.birth_date }}</P>
+        <p class="d-flex justify-content-end">Edit profile 
             <a href="{% url 'update_profile' %}">
-                <span class="material-symbols-outlined">
+                <span class="material-symbols-large material-symbols-outlined">
                 edit
                 </span>
             </a>
