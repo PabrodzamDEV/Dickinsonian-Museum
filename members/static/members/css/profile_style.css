@@ -30,7 +30,7 @@ a {
   background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
   -webkit-background-clip: text;
   color: transparent;
-  font-size: 30px; /* Change this to the size you want */
+  font-size: 30px;
 }
 
 /*# sourceMappingURL=profile_style.css.map */
