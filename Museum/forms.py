@@ -17,12 +17,12 @@ class PoemForm(forms.ModelForm):
         self.fields["author"].required = True
         self.fields["category"].required = True
         self.fields["language"].required = True
-        self.fields["uploaded_by"].required = False
+        self.fields["user"].required = False
         self.fields["date_published"].required = False
 
     class Meta:
         model = Poem
-        fields = ["title", "content", "author", "category", "language", "date_published", "uploaded_by"]
+        fields = ["title", "content", "author", "category", "language", "date_published", "user"]
         widgets = {
             "content": CKEditor5Widget(attrs={"class": "django_ckeditor_5"}),
             "date_published": forms.SelectDateWidget(years=range(0, datetime.now().year + 1)),
