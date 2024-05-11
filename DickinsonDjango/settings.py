@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_ckeditor_5',
+    'rest_framework',
+    'api.apps.ApiConfig',
     'Museum.apps.MuseumConfig',
     "members.apps.MembersConfig"
 ]

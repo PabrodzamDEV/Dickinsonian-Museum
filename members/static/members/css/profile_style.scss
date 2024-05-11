@@ -1,8 +1,46 @@
 $image-width: 100%;
 $image-height: auto;
+$location-color: #F20505;
+$edit-color: #fff;
 
 
 #profile_image {
+    border-radius: 15%;
     width: $image-width;
     height: $image-height;
 }
+
+.bio {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.location {
+    color: $location-color;
+}
+
+a {
+    text-decoration: None;
+    color: $edit-color;
+}
+
+.material-symbols-outlined {
+     font-variation-settings:
+             'FILL' 0,
+             'wght' 100,
+             'GRAD' 0,
+             'opsz' 48
+}
+
+.material-symbols-large {
+    font-size: 50px !important;
+}
+
+.material-symbols-celebration {
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 30px; /* Change this to the size you want */
+}
+
+
