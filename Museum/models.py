@@ -25,7 +25,7 @@ class Poem(models.Model):
     language = models.CharField(max_length=100, choices=LANGUAGE_CHOICES, default='ENG')
     date_published = models.DateField(default=None, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True)
-    uploaded_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
