@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_ckeditor_5',
+    'drf_spectacular',
     'rest_framework',
     'rest_framework.authtoken',
     'api.apps.ApiConfig',
@@ -80,7 +81,7 @@ TEMPLATES = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dickinsondev',
+        'NAME': 'dickinsonproject',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': '127.0.0.1',
@@ -378,7 +379,8 @@ JAZZMIN_SETTINGS = {
 }
 
 REST_FRAMEWORK = {
-
+    # Use the openAPI AutoSchema
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     # Use Django rest framework's basic token authentication system
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',

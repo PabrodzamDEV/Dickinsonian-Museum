@@ -13,12 +13,14 @@ class Poem(models.Model):
         ('life', 'Life'),
         ('death', 'Death'),
         ('reflection', 'Reflection'),
+        ('other', 'Other'),
     ]
 
     LANGUAGE_CHOICES = [
         ('ENG', 'English'),
         ('FR', 'French'),
         ('SPA', 'Spanish'),
+        ('OTH', 'Other'),
     ]
 
     title = models.CharField(max_length=100)
@@ -36,8 +38,10 @@ class Poem(models.Model):
 
 class GalleryPiece(models.Model):
     title = models.CharField(max_length=100)
+    author = models.CharField(max_length=100)
     image = models.ImageField(upload_to='gallery_images')
     description = models.TextField()
+    date_published = models.DateField(default=None, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -45,6 +49,7 @@ class GalleryPiece(models.Model):
         return self.title
 
 
+# Function that determines the filepath for every essay uploaded
 def essay_file_path(instance, filename, title):
     # Get timestamp for the present moment
     now = timezone.localtime()
@@ -57,9 +62,31 @@ def essay_file_path(instance, filename, title):
 
 
 class Essay(models.Model):
+    CATEGORY_CHOICES = [
+        ('literary', 'Literary'),
+        ('philosophical', 'Philosophical'),
+        ('aesthetic theory', 'Aesthetic Theory'),
+        ('pictorial', 'Pictorial'),
+        ('photographic', 'Photographic'),
+        ('sculptural', 'Sculptural'),
+        ('architectural', 'Architectural'),
+        ('other', 'Other'),
+    ]
+
+    LANGUAGE_CHOICES = [
+        ('ENG', 'English'),
+        ('FR', 'French'),
+        ('SPA', 'Spanish'),
+        ('OTH', 'Other'),
+    ]
+
     title = models.CharField(max_length=100)
-    file = models.FileField(upload_to=essay_file_path, blank=True)
+    author = models.CharField(max_length=100)
+    file = models.FileField(upload_to=essay_file_path)
     is_academic = models.BooleanField(default=False)
+    category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default='Aesthetic Theory')
+    language = models.CharField(max_length=100, choices=LANGUAGE_CHOICES, default='ENG')
+    date_published = models.DateField(default=None, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 

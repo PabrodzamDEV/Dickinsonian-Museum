@@ -10,6 +10,10 @@ from rest_framework import routers
 # These views are used to handle the requests.
 from . import views
 
+# Import views from drf_spectacular.
+# These views are used to generate the API documentation.
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+
 # Create a default router object.
 # The DefaultRouter class is a feature-rich router for a set of views.
 router = routers.DefaultRouter()
@@ -25,4 +29,8 @@ router.register(r'poems', views.PoemViewSet)
 # The path function is used to route the URL pattern to the viewset.
 urlpatterns = [
     path('', include(router.urls)),
+    path('schema/', SpectacularAPIView.as_view(), name='schema'),  # Returns a .yaml file
+    path('schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),  # UI to consume
+    # the API through a browser
+    path('schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),  # Documentation
 ]
