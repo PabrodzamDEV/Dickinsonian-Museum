@@ -1,8 +1,12 @@
 from django.shortcuts import render
-from django.views.decorators.cache import never_cache
+
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+
+from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from Museum.models import Poem
 
@@ -18,12 +22,12 @@ def home(request):
     Class-based view which renders a creation form for a poem.
 
     extends:
-        django.views.generic.CreateView
+        django.views.generic.edit.CreateView
 
 """
 
 
-class PoemCreateView(CreateView):
+class PoemCreateView(LoginRequiredMixin, CreateView):
     model = Poem
     form_class = PoemForm
     template_name = 'Museum/poem_form.html'
@@ -39,7 +43,7 @@ class PoemCreateView(CreateView):
     by title.
 
     extends:
-        django.views.generic.ListView
+        django.views.generic.list.ListView
 
 """
 
@@ -49,6 +53,37 @@ class PoemListView(ListView):
     template_name = 'Museum/poems.html'
     context_object_name = 'poems'
     ordering = ['title']
+
+
+"""
+    Class-based view which renders a form to update a specific poem.
+
+    extends:
+        django.views.generic.edit.UpdateView
+
+"""
+
+
+class PoemUpdateView(LoginRequiredMixin, UpdateView):
+    model = Poem
+    fields = ['title', 'content', 'author', 'category', 'language', 'date_published']
+    template_name_suffix = '_update_form'
+    success_url = reverse_lazy('poems')
+
+
+"""
+    Class-based view which allows the deletion of a specific poem.
+
+    extends:
+        django.views.generic.edit.DeleteView
+
+"""
+
+
+class PoemDeleteView(LoginRequiredMixin, DeleteView):
+    model = Poem
+    template_name = 'Museum/poem_confirm_delete.html'
+    success_url = reverse_lazy('poems')
 
 
 def gallery(request):

@@ -10,6 +10,11 @@
         {{ poem.content|safe }}
         <p>By: <b>{{ poem.author }}</b></p>
         <p> Uploaded by: <b>{{ poem.uploaded_by.username }}</b></p>
-        <img src="{{ poem.uploaded_by.profile.avatar_url }}" alt="jeje"></img>
+        <img src="{{ poem.user.profile.avatar_url }}" alt="avatar picture"/>
+        <!-- Make sure only the user who uploaded the poem can edit it -->
+        {%  if user == poem.user %}
+            <a href="{% url 'museum-poem-update' poem.id %}">Edit Poem</a>
+            <a href="{% url 'museum-poem-delete' poem.id %}">Delete Poem</a>
+        {% endif %}
     {% endfor %}
 {% endblock %}
