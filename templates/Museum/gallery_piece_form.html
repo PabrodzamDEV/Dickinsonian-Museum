@@ -24,12 +24,10 @@
         {{ form.piece }}
         <label for="id_author">Piece's author: </label>
         {{ form.author }}
-        <label for="id_description">Piece's author: </label>
+        <label for="id_description">Piece's description: </label>
         {{ form.description }}
-        <label for="id_date">Piece's category: </label>
+        <label for="id_category">Piece's category: </label>
         {{ form.category }}
-        <label for="id_language">Piece's language: </label>
-        {{ form.language }}
         <label for="id_date_published">Publication date: </label>
         {{ form.date_published }}
 
@@ -39,7 +37,4 @@
 {% endblock %}
 
 {% block js %}
-    {% comment %}
-    <script src="{% static 'Museum/js/xxxxx.js' %}"></script>
-    {% endcomment %}
 {%  endblock %}
