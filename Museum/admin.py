@@ -1,6 +1,6 @@
 from django.contrib import admin
-from Museum.forms import PoemForm, GalleryPieceForm
-from Museum.models import Poem, GalleryPiece
+from Museum.forms import PoemForm, GalleryPieceForm, EssayForm
+from Museum.models import Poem, GalleryPiece, Essay
 
 
 @admin.register(Poem)
@@ -17,3 +17,10 @@ class GalleryPieceAdmin(admin.ModelAdmin):
     list_display = ('title', 'piece', 'author', 'description', 'category', 'date_published', 'updated_at', 'user')
 
 
+@admin.register(Essay)
+class GalleryPieceAdmin(admin.ModelAdmin):
+    form = EssayForm
+
+    list_display = (
+        'title', 'author', 'file', 'is_academic', 'abstract', 'category', 'language', 'date_published', 'updated_at',
+        'user')
