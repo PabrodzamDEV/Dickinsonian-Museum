@@ -1,0 +1,30 @@
+# This is the code one must run in the python shell to get a token for a given user:
+
+# manage.py drf_create_token <username>
+
+# For example, this is the last token that I generated for my 'admin' user
+
+# 6e09877ec943363a62e25f975d2f8dea9f7cdbea
+
+
+# Here are some examples of requests that can be made to the API
+
+# DELETE http://localhost:8000/api/poems/12
+# Authorization: Token 6e09877ec943363a62e25f975d2f8dea9f7cdbea
+
+POST http://localhost:8000/api/poems/
+Content-Type: application/json
+Authorization: Token 6e09877ec943363a62e25f975d2f8dea9f7cdbea
+
+{
+  "title": "My New Poem",
+  "content": "The content of my new poem",
+  "author": "My Name",
+  "category": "nature",
+  "language": "ENG",
+  "user": 1
+}
+
+
+
+
