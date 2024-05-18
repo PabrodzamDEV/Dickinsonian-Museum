@@ -36,14 +36,43 @@ class Poem(models.Model):
         return self.title
 
 
+def gallery_file_path(instance, filename):
+    # Get timestamp for the present moment
+    now = timezone.localtime()
+    # Get the file extension
+    _, ext = os.path.splitext(filename)
+    # Generate a unique filename based on the user's ID
+    filename = f"user_{instance.user.id}_piece_{instance.title}_{now}{ext}"
+    # File will be uploaded to MEDIA_ROOT/essays/user_<id>/user_<id>_essay_{title}_{now}.<ext>
+    return os.path.join("gallery_pieces", f"user_{instance.user.id}", filename)
+
+
 class GalleryPiece(models.Model):
+    CATEGORY_CHOICES = [
+        ('photograph', 'Photograph'),
+        ('painting', 'Painting'),
+        ('drawing', 'Drawing'),
+        ('video', 'Video'),
+        ('other', 'Other'),
+    ]
+
     title = models.CharField(max_length=100)
+    piece = models.FileField(upload_to=gallery_file_path)
     author = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='gallery_images')
     description = models.TextField()
+    category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default='other')
     date_published = models.DateField(default=None, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def file_type(self):
+        _, ext = os.path.splitext(self.piece.name)
+        if ext.lower() in ['.jpg', '.png', '.gif']:
+            return 'image'
+        elif ext.lower() in ['.webm', '.mp4']:
+            return 'video'
+        else:
+            return 'unknown'
 
     def __str__(self):
         return self.title

@@ -33,9 +33,11 @@
                 <li class="nav-item {% if 'poems' in request.path %}active{% endif %}">
                     <a class="nav-link" href="{% url 'poems' %}">Poems</a>
                 </li>
+            {%  comment %}
                 <li class="nav-item {% if 'essays' in request.path %}active{% endif %}">
                     <a class="nav-link" href="{% url 'essays' %}">Essays</a>
                 </li>
+            {% endcomment %}
                 <li class="nav-item {% if 'gallery' in request.path %}active{% endif %}">
                     <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
                 </li>
@@ -131,12 +133,14 @@
                     <p>
                         <a href="{% url 'poems' %}" class="text-reset">Poems</a>
                     </p>
+                    {% comment %}
                     <p>
                         <a href="{% url 'gallery' %}" class="text-reset">Gallery</a>
                     </p>
                     <p>
                         <a href="{% url 'essays' %}" class="text-reset">Essays</a>
                     </p>
+                    {% endcomment %}
                     <p>
                         <a href="{% url 'contact' %}" class="text-reset">Contact</a>
                     </p>

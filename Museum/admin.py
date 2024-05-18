@@ -1,22 +1,19 @@
 from django.contrib import admin
-from Museum.forms import PoemForm
-from Museum.models import Poem
-from django.utils import timezone
+from Museum.forms import PoemForm, GalleryPieceForm
+from Museum.models import Poem, GalleryPiece
 
 
-# Register your models here.
+@admin.register(Poem)
 class PoemAdmin(admin.ModelAdmin):
     form = PoemForm
 
     list_display = ('title', 'author', 'category', 'language', 'user', 'date_published', 'updated_at')
 
-    def save_model(self, request, obj, form, change):
-        obj.updated_at = timezone.localtime()  # Set updated_at to current date and time
 
-        if not change and not obj.user_id:
-            obj.user = request.user  # Assign the currently logged-in user
+@admin.register(GalleryPiece)
+class GalleryPieceAdmin(admin.ModelAdmin):
+    form = GalleryPieceForm
 
-        super().save_model(request, obj, form, change)
+    list_display = ('title', 'piece', 'author', 'description', 'category', 'date_published', 'updated_at', 'user')
 
 
-admin.site.register(Poem, PoemAdmin)
