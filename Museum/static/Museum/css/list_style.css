@@ -5,4 +5,10 @@
   object-fit: cover;
 }
 
+.pdf-cover {
+  width: 20em;
+  height: auto;
+  object-fit: contain;
+}
+
 /*# sourceMappingURL=list_style.css.map */

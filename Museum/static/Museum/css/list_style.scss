@@ -1,8 +1,16 @@
 $user-avatar-size: 3em;
+$pdf-cover-size: 20em;
+
 
 .user-avatar {
     width: $user-avatar-size;
     height: $user-avatar-size;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.pdf-cover {
+    width: $pdf-cover-size;
+    height:auto;
+    object-fit: contain;
 }

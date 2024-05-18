@@ -1,8 +1,28 @@
 {% extends 'Museum/parent.html' %}
+{% load static %}
+{%  block head %}
+    <link rel="stylesheet" href="{% static 'Museum/css/list_style.css' %}">
+{% endblock %}
 
 {% block title %}Essays{% endblock %}
 
 {% block content %}
 
 <h1>This is the html essays section</h1>
+    {% for essay in essays %}
+        <div class="d-flex d-column">
+            <img class="user-avatar" src="{{ essay.user.profile.avatar_url }}" alt="avatar picture"/>
+            <p> Uploaded by: <b>{{ essay.user.username }}</b></p>
+        </div>
+        <h3><b>{{ essay.title }}</b></h3>
+        <p>By: <b>{{ essay.author }}</b></p>
+        <img class="pdf-cover" src="data:image/png;base64,{{ essay.get_pdf_cover }}" alt="{{ essay.title }}">
+        {{ essay.abstract|safe }}
+        <!-- Make sure only the user who uploaded the essay can edit it -->
+        {%  if user == essay.user %}
+            <a href="{% url 'museum-essay-update' essay.id %}">Edit essay</a>
+            <a href="{% url 'museum-essay-delete' essay.id %}">Delete essay</a>
+        {% endif %}
+    {% endfor %}
+    
 {% endblock %}

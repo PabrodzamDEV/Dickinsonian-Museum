@@ -91,7 +91,9 @@ class EssayForm(forms.ModelForm):
         self.fields["title"].required = True
         self.fields["author"].required = True
         self.fields["file"].required = True
-        self.fields["is_academic"].required = True
+        self.fields["abstract"].required = False  # Necessary for the CKEditor5 widget to work when validating the
+        # form
+        self.fields["is_academic"].required = False
         self.fields["category"].required = True
         self.fields["language"].required = True
         self.fields["date_published"].required = False
@@ -99,8 +101,9 @@ class EssayForm(forms.ModelForm):
 
     class Meta:
         model = Essay
-        fields = ["title", "author", "file", "is_academic", "category", "language", "date_published", "user"]
+        fields = ["title", "author", "file", "is_academic", "abstract", "category", "language", "date_published", "user"]
         widgets = {
+            "abstract": CKEditor5Widget(attrs={"class": "django_ckeditor_5"}),
             "date_published": forms.SelectDateWidget(years=range(0, datetime.now().year + 1)),
         }
 
