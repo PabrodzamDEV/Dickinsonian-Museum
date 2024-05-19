@@ -3,6 +3,7 @@ import os
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.utils.html import format_html
 from django.utils.http import urlencode
 
 
@@ -23,6 +24,8 @@ class Profile(models.Model):
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
 
+    avatar.short_description = "Avatar's url"
+
     # Generates an url with a timestamp as a query parameter so that the image never gets cached.
     # This prevents the undesired behaviour that browsers will store a local copy of the profile
     # picture, preventing the user from seeing their new picture if they were to update it.
@@ -40,6 +43,14 @@ class Profile(models.Model):
                 os.remove(self.avatar.path)
             except FileNotFoundError:
                 pass
+
+    # Method to display the avatar image in the admin interface
+    def image_tag(self):
+        if self.avatar:
+            return format_html('<img src="{}" width="100" height="100" />', self.avatar.url)
+        else:
+            return 'No Image Found'
+    image_tag.short_description = ''
 
     def save(self, *args, **kwargs):
         # Delete old avatar before saving new one if avatar field has changed
