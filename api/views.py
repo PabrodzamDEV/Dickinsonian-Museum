@@ -4,11 +4,11 @@ from rest_framework import viewsets
 
 # Import the UserSerializer and ProfileSerializer from the current directory.
 # These serializers convert complex data types, such as querysets and model instances, to native Python datatypes.
-from .serializer import UserSerializer, ProfileSerializer, PoemSerializer
+from .serializer import UserSerializer, ProfileSerializer, PoemSerializer, GalleryPieceSerializer, EssaySerializer
 
 # Import the models from the different apps.
 from members.models import User, Profile
-from Museum.models import Poem
+from Museum.models import Poem, GalleryPiece, Essay
 
 
 # Define a viewset for the  models.
@@ -31,3 +31,13 @@ class ProfileViewSet(viewsets.ModelViewSet):
 class PoemViewSet(viewsets.ModelViewSet):
     queryset = Poem.objects.all()
     serializer_class = PoemSerializer
+
+
+class GalleryPieceViewSet(viewsets.ModelViewSet):
+    queryset = GalleryPiece.objects.all()
+    serializer_class = GalleryPieceSerializer
+
+
+class EssayViewSet(viewsets.ModelViewSet):
+    queryset = Essay.objects.all()
+    serializer_class = EssaySerializer

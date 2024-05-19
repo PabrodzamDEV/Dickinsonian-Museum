@@ -23,8 +23,9 @@ router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'profiles', views.ProfileViewSet)
 router.register(r'poems', views.PoemViewSet)
+router.register(r'gallerypieces', views.GalleryPieceViewSet)
+router.register(r'essays', views.EssayViewSet)
 
-# Define the URL patterns.
 # The include function is used to include the router's URLs.
 # The path function is used to route the URL pattern to the viewset.
 urlpatterns = [

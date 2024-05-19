@@ -19,28 +19,28 @@ def home(request):
 
 
 """
-    Class-based view which renders the whole collection of poems present in the database, ordered
-    by title.
+Class-based view which renders the whole collection of poems present in the
+database, ordered by title.
 
     extends:
-        django.contrib.auth.mixins.LoginRequiredMixin
-        django.views.generic.list.ListView
+django.contrib.auth.mixins.LoginRequiredMixin
+django.views.generic.list.ListView
 
 """
 
 
 class PoemListView(ListView):
     model = Poem
-    template_name = 'Museum/poems.html'
-    context_object_name = 'poems'
-    ordering = ['title']
+    template_name = "Museum/poems.html"
+    context_object_name = "poems"
+    ordering = ["title"]
 
 
 """
-    Class-based view which renders a creation form for a poem.
+Class-based view which renders a creation form for a poem.
 
     extends:
-        django.views.generic.edit.CreateView
+django.views.generic.edit.CreateView
 
 """
 
@@ -48,8 +48,8 @@ class PoemListView(ListView):
 class PoemCreateView(LoginRequiredMixin, CreateView):
     model = Poem
     form_class = PoemForm
-    template_name = 'Museum/poem_form.html'
-    success_url = reverse_lazy('poems')
+    template_name = "Museum/poem_form.html"
+    success_url = reverse_lazy("poems")
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -57,61 +57,61 @@ class PoemCreateView(LoginRequiredMixin, CreateView):
 
 
 """
-    Class-based view which renders a form to update a specific poem.
+Class-based view which renders a form to update a specific poem.
 
     extends:
-        django.views.generic.edit.UpdateView
+django.views.generic.edit.UpdateView
 
 """
 
 
 class PoemUpdateView(LoginRequiredMixin, UpdateView):
     model = Poem
-    fields = ['title', 'content', 'author', 'category', 'language', 'date_published']
-    template_name_suffix = '_update_form'
-    success_url = reverse_lazy('poems')
+    fields = ["title", "content", "author", "category", "language", "date_published"]
+    template_name_suffix = "_update_form"
+    success_url = reverse_lazy("poems")
 
 
 """
-    Class-based view which allows the deletion of a specific poem.
+Class-based view which allows the deletion of a specific poem.
 
     extends:
-        django.contrib.auth.mixins.LoginRequiredMixin
-        django.views.generic.edit.DeleteView
+django.contrib.auth.mixins.LoginRequiredMixin
+django.views.generic.edit.DeleteView
 
 """
 
 
 class PoemDeleteView(LoginRequiredMixin, DeleteView):
     model = Poem
-    template_name = 'Museum/poem_confirm_delete.html'
-    success_url = reverse_lazy('poems')
+    template_name = "Museum/poem_confirm_delete.html"
+    success_url = reverse_lazy("poems")
 
 
 """
-    Class-based view which renders the whole collection of gallery pieces present in the database, ordered
-    by title.
+Class-based view which renders the whole collection of gallery pieces present in the database, ordered
+by title.
 
     extends:
-        django.contrib.auth.mixins.LoginRequiredMixin
-        django.views.generic.list.ListView
+django.contrib.auth.mixins.LoginRequiredMixin
+django.views.generic.list.ListView
 
 """
 
 
 class GalleryPieceListView(ListView):
     model = GalleryPiece
-    template_name = 'Museum/gallery.html'
-    context_object_name = 'gallery_pieces'
-    ordering = ['title']
+    template_name = "Museum/gallery.html"
+    context_object_name = "gallery_pieces"
+    ordering = ["title"]
 
 
 """
-    Class-based view which renders a creation form for a gallery piece.
+Class-based view which renders a creation form for a gallery piece.
 
     extends:
-        django.contrib.auth.mixins.LoginRequiredMixin
-        django.views.generic.edit.CreateView
+django.contrib.auth.mixins.LoginRequiredMixin
+django.views.generic.edit.CreateView
 
 """
 
@@ -119,8 +119,8 @@ class GalleryPieceListView(ListView):
 class GalleryPieceCreateView(LoginRequiredMixin, CreateView):
     model = GalleryPiece
     form_class = GalleryPieceForm
-    template_name = 'Museum/gallery_piece_form.html'
-    success_url = reverse_lazy('gallery')
+    template_name = "Museum/gallery_piece_form.html"
+    success_url = reverse_lazy("gallery")
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -128,61 +128,61 @@ class GalleryPieceCreateView(LoginRequiredMixin, CreateView):
 
 
 """
-    Class-based view which renders a form to update a specific gallery piece.
+Class-based view which renders a form to update a specific gallery piece.
 
     extends:
-        django.contrib.auth.mixins.LoginRequiredMixin
-        django.views.generic.edit.UpdateView
+django.contrib.auth.mixins.LoginRequiredMixin
+django.views.generic.edit.UpdateView
 
 """
 
 
 class GalleryPieceUpdateView(LoginRequiredMixin, UpdateView):
     model = GalleryPiece
-    fields = ['title', 'piece', 'author', 'description', 'category', 'date_published']
-    template_name_suffix = '_update_form'
-    success_url = reverse_lazy('gallery')
+    fields = ["title", "piece", "author", "description", "category", "date_published"]
+    template_name_suffix = "_update_form"
+    success_url = reverse_lazy("gallery")
 
 
 """
-    Class-based view which allows the deletion of a specific gallery piece.
+Class-based view which allows the deletion of a specific gallery piece.
 
     extends:
-        django.contrib.auth.mixins.LoginRequiredMixin
-        django.views.generic.edit.DeleteView
+django.contrib.auth.mixins.LoginRequiredMixin
+django.views.generic.edit.DeleteView
 
 """
 
 
 class GalleryPieceDeleteView(LoginRequiredMixin, DeleteView):
     model = GalleryPiece
-    template_name = 'Museum/gallery_piece_confirm_delete.html'
-    success_url = reverse_lazy('gallery')
+    template_name = "Museum/gallery_piece_confirm_delete.html"
+    success_url = reverse_lazy("gallery")
 
 
 """
-    Class-based view which renders the whole collection of essays present in the database, ordered
-    by title.
+Class-based view which renders the whole collection of essays present in the database, ordered
+by title.
 
     extends:
-        django.contrib.auth.mixins.LoginRequiredMixin
-        django.views.generic.list.ListView
+django.contrib.auth.mixins.LoginRequiredMixin
+django.views.generic.list.ListView
 
 """
 
 
 class EssayListView(ListView):
     model = Essay
-    template_name = 'Museum/essays.html'
-    context_object_name = 'essays'
-    ordering = ['title']
+    template_name = "Museum/essays.html"
+    context_object_name = "essays"
+    ordering = ["title"]
 
 
 """
-    Class-based view which renders a creation form for an essay.
+Class-based view which renders a creation form for an essay.
 
     extends:
-        django.views.generic.edit.CreateView
+django.views.generic.edit.CreateView
 
 """
 
@@ -190,8 +190,8 @@ class EssayListView(ListView):
 class EssayCreateView(LoginRequiredMixin, CreateView):
     model = Essay
     form_class = EssayForm
-    template_name = 'Museum/essay_form.html'
-    success_url = reverse_lazy('essays')
+    template_name = "Museum/essay_form.html"
+    success_url = reverse_lazy("essays")
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -199,35 +199,44 @@ class EssayCreateView(LoginRequiredMixin, CreateView):
 
 
 """
-    Class-based view which renders a form to update a specific essay.
+Class-based view which renders a form to update a specific essay.
 
     extends:
-        django.views.generic.edit.UpdateView
+django.views.generic.edit.UpdateView
 
 """
 
 
 class EssayUpdateView(LoginRequiredMixin, UpdateView):
     model = Essay
-    fields = ['title', 'author', 'file', 'is_academic', 'abstract', 'category', 'language', 'date_published']
-    template_name_suffix = '_update_form'
-    success_url = reverse_lazy('essays')
+    fields = [
+        "title",
+        "author",
+        "file",
+        "is_academic",
+        "abstract",
+        "category",
+        "language",
+        "date_published",
+    ]
+    template_name_suffix = "_update_form"
+    success_url = reverse_lazy("essays")
 
 
 """
-    Class-based view which allows the deletion of a specific essay.
+Class-based view which allows the deletion of a specific essay.
 
     extends:
-        django.contrib.auth.mixins.LoginRequiredMixin
-        django.views.generic.edit.DeleteView
+django.contrib.auth.mixins.LoginRequiredMixin
+django.views.generic.edit.DeleteView
 
 """
 
 
 class EssayDeleteView(LoginRequiredMixin, DeleteView):
     model = Essay
-    template_name = 'Museum/essay_confirm_delete.html'
-    success_url = reverse_lazy('essays')
+    template_name = "Museum/essay_confirm_delete.html"
+    success_url = reverse_lazy("essays")
 
 
 @login_required()

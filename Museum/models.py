@@ -4,6 +4,7 @@ import os
 
 from django.db import models
 from django.utils import timezone
+from django.utils.html import format_html
 from django_ckeditor_5.fields import CKEditor5Field
 from django.contrib.auth.models import User
 
@@ -78,6 +79,19 @@ class GalleryPiece(models.Model):
         else:
             return 'unknown'
 
+    def piece_tag(self):
+        if self.piece:
+            if self.file_type() == 'image':
+                return format_html('<img src="{}" width="250" height="250" />', self.piece.url)
+            elif self.file_type() == 'video':
+                return format_html('<video src="{}" width="250" height="250" controls />', self.piece.url)
+            else:
+                return format_html('<p>Unknown file type</p>')
+        else:
+            return "File can't be loaded or no doesn't exist"
+
+    piece_tag.short_description = ''
+
     def __str__(self):
         return self.title
 
@@ -124,17 +138,6 @@ class Essay(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def file_type(self):
-        _, ext = os.path.splitext(self.file.name)
-        if ext.lower() in ['.pdf']:
-            return 'pdf'
-        elif ext.lower() in ['.jpg', '.png', '.gif']:
-            return 'image'
-        elif ext.lower() in ['.webm', '.mp4']:
-            return 'video'
-        else:
-            return 'unknown'
-
     # Returns the pdf cover as a base64 string in order to display it on a template
     def get_pdf_cover(self):
         if self.file:
@@ -151,6 +154,11 @@ class Essay(models.Model):
             image_base64 = base64.b64encode(image_bytes.getvalue()).decode('utf-8')
 
             return image_base64
+
+    def pdf_cover(self, obj):
+        return format_html('<img src="data:image/png;base64,{}" width="50" height="50" />', obj.get_pdf_cover())
+
+    pdf_cover.short_description = 'PDF Cover'
 
     def __str__(self):
         return self.title

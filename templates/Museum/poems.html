@@ -1,27 +1,32 @@
 {% extends 'Museum/parent.html' %}
 {% load static %}
-{%  block head %}
-    <link rel="stylesheet" href="{% static 'Museum/css/list_style.css' %}">
+{% block head %}
+  <link rel="stylesheet" href="{% static 'Museum/css/list_style.css' %}" />
 {% endblock %}
-
-{% block title %}Poems{% endblock %}
-
+{% block title %}
+  Poems
+{% endblock %}
 {% block content %}
-
-    <h1>This is the html poems section</h1>
-    {% for poem in poems %}
-        <div class="d-flex d-column">
-            <img class="user-avatar" src="{{ poem.user.profile.avatar_url }}" alt="avatar picture"/>
-            <p> Uploaded by: <b>{{ poem.user.username }}</b></p>
-        </div>
-        <h3><b>{{ poem.title }}</b></h3>
-        {{ poem.content|safe }}
-        <p>By: <b>{{ poem.author }}</b></p>
-        <p> Uploaded by: <b>{{ poem.user.username }}</b></p>
-        <!-- Make sure only the user who uploaded the poem can edit it -->
-        {%  if user == poem.user %}
-            <a href="{% url 'museum-poem-update' poem.id %}">Edit Poem</a>
-            <a href="{% url 'museum-poem-delete' poem.id %}">Delete Poem</a>
-        {% endif %}
-    {% endfor %}
+  <h1>This is the html poems section</h1>
+  {% for poem in poems %}
+    <div class="d-flex d-column">
+      <img class="user-avatar" src="{{ poem.user.profile.avatar_url }}" alt="avatar picture" />
+      <p>
+        Uploaded by: <b>{{ poem.user.username }}</b>
+      </p>
+    </div>
+    <h3><b>{{ poem.title }}</b></h3>
+    {{ poem.content|safe }}
+    <p>
+      By: <b>{{ poem.author }}</b>
+    </p>
+    <p>
+      Uploaded by: <b>{{ poem.user.username }}</b>
+    </p>
+    <!-- Make sure only the user who uploaded the poem can edit it -->
+    {% if user == poem.user %}
+      <a href="{% url 'museum-poem-update' poem.id %}">Edit Poem</a>
+      <a href="{% url 'museum-poem-delete' poem.id %}">Delete Poem</a>
+    {% endif %}
+  {% endfor %}
 {% endblock %}

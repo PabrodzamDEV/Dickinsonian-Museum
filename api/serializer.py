@@ -2,7 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 from members.models import Profile
-from Museum.models import Poem
+from Museum.models import Poem, GalleryPiece, Essay
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -26,4 +26,16 @@ class ProfileSerializer(serializers.ModelSerializer):
 class PoemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Poem
+        fields = '__all__'
+
+
+class GalleryPieceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GalleryPiece
+        fields = '__all__'
+
+
+class EssaySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Essay
         fields = '__all__'
