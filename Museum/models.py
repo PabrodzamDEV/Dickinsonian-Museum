@@ -92,6 +92,10 @@ class GalleryPiece(models.Model):
 
     piece_tag.short_description = ''
 
+    def delete(self, *args, **kwargs):
+        self.piece.delete()  # delete the file from the server
+        super().delete(*args, **kwargs)
+
     def __str__(self):
         return self.title
 
@@ -159,6 +163,10 @@ class Essay(models.Model):
         return format_html('<img src="data:image/png;base64,{}" width="50" height="50" />', obj.get_pdf_cover())
 
     pdf_cover.short_description = 'PDF Cover'
+
+    def delete(self, *args, **kwargs):
+        self.file.delete()  # delete the file from the server
+        super().delete(*args, **kwargs)
 
     def __str__(self):
         return self.title
