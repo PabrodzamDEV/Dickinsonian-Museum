@@ -1,0 +1,11 @@
+$essays-background-url: '../images/essays_background.png';
+
+
+html {
+  height: 100%;
+}
+
+body {
+  background-image: url($essays-background-url);
+  background-size: cover;
+}

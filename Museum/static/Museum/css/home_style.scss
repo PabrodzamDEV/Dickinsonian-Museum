@@ -1,0 +1,10 @@
+$home-background-url: '../images/home_background.png';
+
+html {
+  height: 100%;
+}
+
+body {
+  background-image: url($home-background-url);
+  background-size: auto;
+}

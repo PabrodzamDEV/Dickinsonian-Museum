@@ -1,38 +1,40 @@
 {% extends 'Museum/parent.html' %}
 {% load static %}
 {% block head %}
-  <link rel="stylesheet" href="{% static 'Museum/css/list_style.css' %}" />
+    <link rel="stylesheet" href="{% static 'Museum/css/list_style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'Museum/css/gallery_style.css' %}"/>
 {% endblock %}
 {% block title %}
-  Gallery
+    Gallery
 {% endblock %}
 {% block content %}
-  <h1>This is the html gallery section</h1>
-  {% for piece in gallery_pieces %}
-    <div class="d-flex d-column">
-      <img class="user-avatar" src="{{ piece.user.profile.avatar_url }}" alt="avatar picture" />
-      <p>
-        Uploaded by: <b>{{ piece.user.username }}</b>
-      </p>
-    </div>
-    <h3><b>{{ piece.title }}</b></h3>
-    {% if piece.file_type == 'image' %}
-      <img src="{{ piece.piece.url }}" alt="{{ piece.title }}" />
-    {% elif piece.file_type == 'video' %}
-      <video width="320" height="240" controls>
-        <source src="{{ piece.piece.url }}" type="video/webm" />Your browser does not support the video tag.
-      </video>
-    {% else %}
-      <p>Unsupported file type: {{ piece.piece }}</p>
-    {% endif %}
-    {{ piece.description|safe }}
-    <p>
-      By: <b>{{ piece.author }}</b>
-    </p>
-    <!-- Make sure only the user who uploaded the piece can edit it -->
-    {% if user == piece.user %}
-      <a href="{% url 'museum-gallerypiece-update' piece.id %}">Edit piece</a>
-      <a href="{% url 'museum-gallerypiece-delete' piece.id %}">Delete piece</a>
-    {% endif %}
-  {% endfor %}
+    <h1>This is the html gallery section</h1>
+    {% for piece in gallery_pieces %}
+        <div class="d-flex d-column">
+            <img class="user-avatar" src="{{ piece.user.profile.avatar_url }}" alt="avatar picture"/>
+            <p>
+                Uploaded by: <b>{{ piece.user.username }}</b>
+            </p>
+        </div>
+        <h3><b>{{ piece.title }}</b></h3>
+        {% if piece.file_type == 'image' %}
+            <img src="{{ piece.piece.url }}" alt="{{ piece.title }}"/>
+        {% elif piece.file_type == 'video' %}
+            <video width="320" height="240" controls>
+                <source src="{{ piece.piece.url }}" type="video/webm"/>
+                Your browser does not support the video tag.
+            </video>
+        {% else %}
+            <p>Unsupported file type: {{ piece.piece }}</p>
+        {% endif %}
+        {{ piece.description|safe }}
+        <p>
+            By: <b>{{ piece.author }}</b>
+        </p>
+        <!-- Make sure only the user who uploaded the piece can edit it -->
+        {% if user == piece.user %}
+            <a href="{% url 'museum-gallerypiece-update' piece.id %}">Edit piece</a>
+            <a href="{% url 'museum-gallerypiece-delete' piece.id %}">Delete piece</a>
+        {% endif %}
+    {% endfor %}
 {% endblock %}

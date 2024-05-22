@@ -1,0 +1,11 @@
+$poems-background-url: '../images/poems_background.png';
+
+html {
+  height: 100%;
+}
+
+
+body {
+  background-image: url($poems-background-url);
+  background-size: auto;
+}
