@@ -4,9 +4,20 @@ from django.contrib.auth.models import User
 
 from datetime import date
 
+from django.db.models import Min
+from django.http import FileResponse
+from django.utils import timezone
+
+from DickinsonDjango import settings
 from Museum.forms import PoemForm, GalleryPieceForm, EssayForm
 from Museum.models import Poem, GalleryPiece, Essay
 from members.models import Profile
+
+import os
+from pyreportjasper import PyReportJasper
+
+JRXML_DIR = "Museum/report_resources"
+REPORTS_DIR = settings.MEDIA_ROOT + "/reports"
 
 
 # Filters
@@ -44,6 +55,67 @@ class CenturyFilter(admin.SimpleListFilter):
                                    date_published__year__lt=century * 100)
 
 
+# Custom admin actions
+
+"""
+    Generates a monthly report of the selected poems.
+
+        Args:
+            modeladmin (ModelAdmin): The admin class for the model.
+            request (HttpRequest): The current HTTP request.
+            queryset (QuerySet): The queryset of the selected poems.
+
+        Returns:
+            FileResponse: A response containing the generated PDF report if successful.
+            Http404: If the report file is not found.
+
+        This function generates a monthly report of the selected poems by aggregating the earliest and latest dates 
+        of the poems. It then configures the PyReportJasper object with the necessary input file, output file, 
+        output format, parameters, and database connection. The report is processed and saved as a PDF file. If the 
+        report file is successfully generated, it is returned as a FileResponse with the content type set to 
+        'application/pdf'. If the report file is not found, a Http404 exception is raised.
+"""
+
+
+@admin.action(description="Generate monthly poems report")
+def generate_monthly_poems_report(modeladmin, request, queryset):
+    # Get the earliest date
+    date_range = queryset.aggregate(
+        earliest_date=Min('updated_at')
+    )
+
+    earliest_date_year = int(date_range['earliest_date'].strftime("%Y"))
+    earliest_date_month = int(date_range['earliest_date'].strftime("%m"))
+
+    input_file = os.path.join(JRXML_DIR, 'month_poems.jasper')
+    output_file = os.path.join(REPORTS_DIR,
+                               f'monthly_poems {earliest_date_year}-{earliest_date_month}_{timezone.now().strftime("%H%M%S")}')
+    pyreportjasper = PyReportJasper()
+    conn = {
+        'driver': 'mysql',
+        'username': 'root',
+        'password': 'root',
+        'host': 'localhost',
+        'database': 'dickinsonproject',
+        'port': '3306',
+        'jdbc_driver': 'com.mysql.cj.jdbc.Driver',
+        'jdbc_url': 'jdbc:mysql://localhost:3306/dickinsonproject'
+    }
+    pyreportjasper.config(
+        input_file,
+        output_file,
+        output_formats=["pdf"],
+        parameters={'YEAR': earliest_date_year, 'MONTH': earliest_date_month, 'CONTEXT': JRXML_DIR},
+        db_connection=conn
+    )
+    pyreportjasper.process_report()
+    output_file = output_file + '.pdf'
+    if os.path.isfile(output_file):
+        print('Report generated successfully!')
+        file_path = os.path.join(settings.MEDIA_ROOT, os.path.relpath(output_file, settings.MEDIA_ROOT))
+        return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
+
+
 @admin.register(Poem)
 class PoemAdmin(admin.ModelAdmin):
     form = PoemForm
@@ -52,6 +124,7 @@ class PoemAdmin(admin.ModelAdmin):
     search_fields = ['title', 'author', 'category', 'language', 'user__username', 'date_published', 'updated_at']
     list_filter = [CenturyFilter, 'language', 'category', 'author', 'user', 'date_published', 'updated_at']
     ordering = ['-updated_at']
+    actions = [generate_monthly_poems_report]
 
 
 @admin.register(GalleryPiece)

@@ -20,7 +20,7 @@ def profile_image_path(instance, filename):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
-    avatar = models.ImageField(upload_to=profile_image_path, blank=True, default='/profile_images/default.png')
+    avatar = models.ImageField(upload_to=profile_image_path, blank=True, default='/profile_images/seal_default.png')
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
 
@@ -63,7 +63,7 @@ class Profile(models.Model):
     def delete(self, *args, **kwargs):
         # Clear or reset fields instead of deleting the profile object
         self.bio = ""
-        self.avatar = '/profile_images/default.png'
+        self.avatar = '/profile_images/seal_default.png'
         self.location = ""
         self.birth_date = None
         self.save()
