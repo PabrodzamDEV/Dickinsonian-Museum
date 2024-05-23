@@ -53,7 +53,7 @@ html {
 }
 
 .navbar {
-  background-color: #1c1d22;
+  background-color: #ffffff00;
 }
 
 .custom-me {
@@ -100,6 +100,14 @@ html {
 
 .copy {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+.nav-link {
+  color: black;
+}
+
+.nav-link:hover {
+  color: black;
 }
 
 @keyframes line {

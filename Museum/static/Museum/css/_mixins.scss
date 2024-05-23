@@ -1,0 +1,15 @@
+@import "variables";
+
+@mixin responsive-font-size($class-name, $class2-name) {
+  .#{$class-name}, .#{$class2-name} {
+    font-size: map-get($font-sizes, 768px);
+
+    @each $breakpoint, $size in $font-sizes {
+      @if $breakpoint != "small" {
+        @media (min-width: $breakpoint) {
+          font-size: $size;
+        }
+      }
+    }
+  }
+}

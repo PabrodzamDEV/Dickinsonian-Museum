@@ -87,7 +87,7 @@ def generate_monthly_poems_report(modeladmin, request, queryset):
     earliest_date_year = int(date_range['earliest_date'].strftime("%Y"))
     earliest_date_month = int(date_range['earliest_date'].strftime("%m"))
 
-    input_file = os.path.join(JRXML_DIR, 'poems.jasper')
+    input_file = os.path.join(JRXML_DIR, 'month_poems.jasper')
     output_file = os.path.join(REPORTS_DIR,
                                f'monthly_poems {earliest_date_year}-{earliest_date_month}_{timezone.now().strftime("%H%M%S")}')
     pyreportjasper = PyReportJasper()

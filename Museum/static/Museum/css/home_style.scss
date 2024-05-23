@@ -1,10 +1,64 @@
 $home-background-url: '../images/home_background.png';
+$FELIXTI-font: '../fonts/FELIXTI.TTF';
+$tumbtest-regular: '../fonts/tumbtest-regular.otf';
+$home-plant: '../images/home_plant.png';
+$line-height: 1;
 
-html {
-  height: 100%;
+@font-face {
+  font-family: 'felixti';
+  src: url($FELIXTI-font);
+}
+
+@font-face {
+  font-family: 'Tumb Test Regular';
+  src: url($tumbtest-regular) format('opentype');
 }
 
 body {
+  height: 100vh;
   background-image: url($home-background-url);
-  background-size: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#emily {
+  width: 50%;
+  height: auto;
+}
+
+.dickinsonian {
+  color: white;
+  font-family: 'Tumb Test Regular', sans-serif;
+  margin-bottom: 0;
+}
+
+.title-text {
+  color: white;
+  margin-bottom: 0;
+  margin-top: 0;
+  font-family: 'felixti', serif;
+}
+
+.emily-and-title {
+  background-image: url($home-plant);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: 80%;
+  background-position-y: center;
+}
+
+.title-box p:first-child {
+  text-indent: 2em;
+}
+
+.title-box p:last-child {
+  text-indent: 3.5em;
+}
+
+@import "variables";
+@import "mixins";
+@include responsive-font-size(dickinsonian, title-text);
+
+p {
+  line-height: $line-height;
 }

@@ -1,11 +1,8 @@
 $poems-background-url: '../images/poems_background.png';
 
-html {
-  height: 100%;
-}
-
-
 body {
+  height: 100vh;
   background-image: url($poems-background-url);
-  background-size: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

@@ -1,12 +1,8 @@
 $gallery-background-url: '../images/gallery_background.png';
 
-
-html {
-  height: 100%;
-}
-
-
 body {
+  height: 100vh;
   background-image: url($gallery-background-url);
+  background-repeat: no-repeat;
   background-size: cover;
 }
