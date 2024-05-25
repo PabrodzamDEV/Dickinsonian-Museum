@@ -12,6 +12,10 @@ from Museum.models import Poem, GalleryPiece, Essay
 
 from .forms import PoemForm, GalleryPieceForm, EssayForm
 
+from django.core.mail import send_mail
+from django.http import HttpResponse
+from django.views import View
+
 
 # Create your views here.
 def home(request):
@@ -239,6 +243,5 @@ class EssayDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("essays")
 
 
-@login_required()
 def contact(request):
     return render(request, "Museum/contact.html")

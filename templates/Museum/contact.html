@@ -1,7 +1,83 @@
 {% extends 'Museum/parent.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'Museum/css/contact_style.css' %}"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+{% endblock %}
 {% block title %}
-  Contact
+    Contact
 {% endblock %}
 {% block content %}
-  <h1>This is the html contact section</h1>
+    <div class="container mt-3">
+        <h1>About us</h1>
+        <p>Welcome to a digital sanctuary where the essence of art converges with the timeless words of Emily Dickinson.
+            Our platform is a tribute to the revolutionary spirit of Dickinson, whose life was a tapestry woven with the
+            threads of art
+            and science, nature and introspection.</p>
+        <figure>
+            <img id="emily" src="{% static 'Museum/images/about_emily.jpg' %}" alt="Emily Dickinson"/>
+            <figcaption class="blockquote-footer mt-3 text-end">
+                <cite>Photo by Wendy Maeda/The Boston Globe via Getty Images</cite>
+            </figcaption>
+        </figure>
+        <h2 class="mt-3">Emily Dickinson: A Lyrical Legacy</h2>
+        <p>Emily Dickinson (December 10, 1830 – May 15, 1886), a luminary in the world of poetry, led a life that was as
+            enigmatic as her verses.
+            Her existence was a delicate balance between the seen and the unseen, the spoken and the unspoken. She found
+            solace in the simplicity of
+            nature and the complexity of the human experience. Her poetry, a reflection of her profound thoughts, often
+            explored themes of love, death,
+            and immortality, using nature as a metaphor to express her deepest ideas.</p>
+        <p>A recluse by choice, Dickinson’s life in Amherst was a quiet rebellion against the expected norms of her
+            time. She pursued botany with a passion
+            that paralleled her love for words, seeing in each flower a muse as potent as any poem. Her views on art and
+            science were intertwined; she saw
+            the study of nature as a part of a larger quest to understand the universe and our place within it.</p>
+        <h2>Our Vision: Art for Art’s Sake</h2>
+        <p>In the spirit of Dickinson’s secluded yet vibrant inner world, our website is a haven for those who seek to
+            immerse themselves in the beauty of
+            artistic expression. Here, art is not just observed but felt, not just seen but experienced. We believe in
+            art for art’s sake – a pure,
+            unadulterated celebration of creativity.</p>
+        <p>We invite you to explore and enjoy an array of poems that echo Dickinson’s lyrical prowess, essays that delve
+            into the intricacies of art, and
+            gallery pieces that capture the visual symphony of life. Our platform is more than a collection; it is a
+            community where artists and art
+            enthusiasts can publish their work, share their insights, and revel in the shared passion for art’s
+            transformative power.</p>
+        <p>Join us in this journey of discovery and expression, where every piece is a conversation, every line a new
+            horizon, and every color a deeper
+            understanding. Together, let’s keep the flame of art burning bright, illuminating the path for future
+            generations to find their own voice,
+            just as Emily Dickinson found hers in the quietude of her beloved homestead.</p>
+        <div class="container">
+            <h2 class="mt-3 text-center">Get in contact with us:</h2>
+            <div class="container">
+                <div class="d-flex justify-content-center">
+                    <button onclick="sendEmail()">
+                        <span id="email" class="material-symbols-outlined">
+                        mail
+                        </span><br>
+                        Email
+                    </button>
+                    <button onclick="gotoGithub()">
+                        <span class="material-symbols-outlined">
+                        code
+                        </span><br>
+                        Github
+                    </button>
+                    <button onclick="gotoLinkedIn()">
+                        <span id="linkedin" class="material-symbols-outlined">
+                        handshake
+                        </span><br>
+                        LinkedIn
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'Museum/js/contact.js' %}"></script>
 {% endblock %}
