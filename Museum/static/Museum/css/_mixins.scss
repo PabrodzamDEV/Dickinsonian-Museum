@@ -1,5 +1,19 @@
 @import "variables";
 
+@mixin responsive-emily($emily) {
+  .#{$emily} {
+    width: map-get($emily-sizes, 768px);
+    height: auto;
+
+    @each $breakpoint, $size in $emily-sizes {
+      @media (min-width: $breakpoint) {
+        width: $size;
+        height: auto;
+      }
+    }
+  }
+}
+
 @mixin responsive-font-size($class-name, $class2-name, $class3-name, $class4-name) {
   .#{$class-name} {
     font-size: map-get($font-sizes-the, 768px);

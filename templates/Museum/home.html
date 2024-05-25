@@ -37,10 +37,10 @@
     <div class="row mt-5 emily-and-title">
         <div class="col-lg-4 col-md-6 col-12">
             <div class="d-none d-md-flex flex-column align-items-end">
-                <img id="emily" src="{% static "Museum/images/emily_home.png" %}" alt="Emily Dickinson"/>
+                <img class="emily" src="{% static "Museum/images/emily_home.png" %}" alt="Emily Dickinson"/>
             </div>
             <div class="d-md-none">
-                <img id="emily" src="{% static "Museum/images/emily_home.png" %}" alt="Emily Dickinson"/>
+                <img class="emily" src="{% static "Museum/images/emily_home.png" %}" alt="Emily Dickinson"/>
             </div>
         </div>
         <div class="title-box col-lg-7 col-md-6 col d-flex flex-column align-items-center justify-content-center">
@@ -51,26 +51,26 @@
             </div>
         </div>
     </div>
-    <div class="row mt-5">
+    <div class="row mt-5 mb-3">
         <div class="d-flex align-items-center text-center">
             <div class="col-3 section-link">
                 <a href="{% url 'poems' %}">
-                    <strong>Poems</strong>
+                    <strong id="poems">Poems</strong>
                 </a>
             </div>
             <div class="col-3 section-link">
                 <a href="{% url 'gallery' %}">
-                    <strong>Gallery</strong>
+                    <strong id="gallery">Gallery</strong>
                 </a>
             </div>
             <div class="col-3 section-link">
                 <a href="{% url 'essays' %}">
-                    <strong>Essays</strong>
+                    <strong id="essays">Essays</strong>
                 </a>
             </div>
             <div class="col-3 section-link">
                 <a href="{% url 'contact' %}">
-                    <strong>About us/contact</strong>
+                    <strong id="contact">About us/contact</strong>
                 </a>
             </div>
         </div>

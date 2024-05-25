@@ -31,10 +31,7 @@ $line-height: 1;
   cursor: pointer;
 }
 
-#emily {
-  width: 55%;
-  height: auto;
-}
+@include responsive-emily(emily);
 
 .title-text-dickinsonian {
   color: white;
@@ -72,7 +69,7 @@ $line-height: 1;
   line-height: $line-height;
 }
 
-.section-link {
+.section-link strong {
   color: white;
   font-family: "Cascadia Code", sans-serif;
   text-decoration: underline;
@@ -83,6 +80,26 @@ $line-height: 1;
 a {
   color: inherit;
   text-decoration: none;
+}
+
+#poems:hover {
+  color: #9CA653;
+  text-decoration-color: #9CA653;
+}
+
+#gallery:hover {
+  color: #8C8045;
+  text-decoration-color: #8C8045;
+}
+
+#essays:hover {
+  color: #F2C3A7;
+  text-decoration-color: #F2C3A7;
+}
+
+#contact:hover {
+  color: #8C442A;
+  text-decoration-color: #8C442A;
 }
 
 @include responsive-font-size(title-text-the, title-text-dickinsonian, title-text-museum, section-link);
