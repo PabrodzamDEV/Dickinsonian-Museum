@@ -1,6 +1,7 @@
 $home-background-url: '../images/home_background.png';
 $FELIXTI-font: '../fonts/FELIXTI.TTF';
 $tumbtest-regular: '../fonts/tumbtest-regular.otf';
+$cascadia: '../fonts/cascadia.ttf';
 $home-plant: '../images/home_plant.png';
 $line-height: 1;
 
@@ -16,6 +17,11 @@ $line-height: 1;
 @font-face {
   font-family: 'Tumb Test Regular';
   src: url($tumbtest-regular) format('opentype');
+}
+
+@font-face {
+  font-family: 'Cascadia Code';
+  src: url($cascadia);
 }
 
 #login-button {
@@ -68,6 +74,7 @@ $line-height: 1;
 
 .section-link {
   color: white;
+  font-family: "Cascadia Code", sans-serif;
   text-decoration: underline;
   text-decoration-thickness: 3px;
   text-underline-offset: 0.28em;
