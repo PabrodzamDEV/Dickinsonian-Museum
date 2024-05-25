@@ -1,8 +1,5 @@
 $poems-background-url: '../images/poems_background.png';
 
-body {
-  height: 100vh;
-  background-image: url($poems-background-url);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+@import "mixins";
+
+@include fully-covered-background($poems-background-url);

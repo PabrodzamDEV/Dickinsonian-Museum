@@ -1,15 +1,55 @@
 @import "variables";
 
-@mixin responsive-font-size($class-name, $class2-name) {
-  .#{$class-name}, .#{$class2-name} {
-    font-size: map-get($font-sizes, 768px);
+@mixin responsive-font-size($class-name, $class2-name, $class3-name, $class4-name) {
+  .#{$class-name} {
+    font-size: map-get($font-sizes-the, 768px);
 
-    @each $breakpoint, $size in $font-sizes {
-      @if $breakpoint != "small" {
-        @media (min-width: $breakpoint) {
-          font-size: $size;
-        }
+    @each $breakpoint, $size in $font-sizes-the {
+      @media (min-width: $breakpoint) {
+        font-size: $size;
       }
     }
+  }
+
+  .#{$class2-name} {
+    font-size: map-get($font-sizes-dickinsonian, 768px);
+
+    @each $breakpoint, $size in $font-sizes-dickinsonian {
+      @media (min-width: $breakpoint) {
+        font-size: $size;
+      }
+    }
+  }
+
+  .#{$class3-name} {
+    font-size: map-get($font-sizes-museum, 768px);
+
+    @each $breakpoint, $size in $font-sizes-museum {
+      @media (min-width: $breakpoint) {
+        font-size: $size;
+      }
+    }
+  }
+
+  .#{$class4-name} {
+    font-size: map-get($font-sizes-links, 768px);
+
+    @each $breakpoint, $size in $font-sizes-links {
+      @media (min-width: $breakpoint) {
+        font-size: $size;
+      }
+    }
+  }
+}
+
+
+@mixin fully-covered-background($background) {
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-image: url($background);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }

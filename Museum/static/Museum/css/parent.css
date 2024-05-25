@@ -110,6 +110,14 @@ html {
   color: black;
 }
 
+#navbarDropdown {
+  color: white;
+}
+
+#navbarDropdown:hover {
+  color: red;
+}
+
 @keyframes line {
   0% {
     background-position-x: 390px;

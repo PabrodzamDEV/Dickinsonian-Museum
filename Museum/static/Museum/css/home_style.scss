@@ -4,6 +4,10 @@ $tumbtest-regular: '../fonts/tumbtest-regular.otf';
 $home-plant: '../images/home_plant.png';
 $line-height: 1;
 
+@import "mixins";
+
+@include fully-covered-background($home-background-url);
+
 @font-face {
   font-family: 'felixti';
   src: url($FELIXTI-font);
@@ -14,25 +18,25 @@ $line-height: 1;
   src: url($tumbtest-regular) format('opentype');
 }
 
-body {
-  height: 100vh;
-  background-image: url($home-background-url);
-  background-repeat: no-repeat;
-  background-size: cover;
+#login-button {
+  background-color: transparent;
+  border: white solid;
+  padding: 0;
+  cursor: pointer;
 }
 
 #emily {
-  width: 50%;
+  width: 55%;
   height: auto;
 }
 
-.dickinsonian {
+.title-text-dickinsonian {
   color: white;
   font-family: 'Tumb Test Regular', sans-serif;
   margin-bottom: 0;
 }
 
-.title-text {
+.title-text-the, .title-text-museum {
   color: white;
   margin-bottom: 0;
   margin-top: 0;
@@ -48,17 +52,58 @@ body {
 }
 
 .title-box p:first-child {
-  text-indent: 2em;
+  text-indent: 1.65em;
 }
 
 .title-box p:last-child {
-  text-indent: 3.5em;
+  text-indent: 1em;
 }
 
 @import "variables";
 @import "mixins";
-@include responsive-font-size(dickinsonian, title-text);
 
-p {
+.title-box p:nth-child(2), p:nth-child(3) {
   line-height: $line-height;
+}
+
+.section-link {
+  color: white;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.28em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@include responsive-font-size(title-text-the, title-text-dickinsonian, title-text-museum, section-link);
+
+.profile-pic {
+  position: relative;
+  width: 104px;
+  height: 128px;
+  margin-right: 10px;
+}
+
+.profile-pic img {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.profile-pic img:first-child {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 1;
+}
+
+.profile-pic img:last-child {
+  padding: 5%;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 0;
 }

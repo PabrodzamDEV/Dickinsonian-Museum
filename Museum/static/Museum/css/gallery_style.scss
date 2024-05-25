@@ -1,8 +1,5 @@
 $gallery-background-url: '../images/gallery_background.png';
 
-body {
-  height: 100vh;
-  background-image: url($gallery-background-url);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+@import "mixins";
+
+@include fully-covered-background($gallery-background-url);
