@@ -1,8 +1,13 @@
 $home-background-url: '../images/home_background.png';
 $FELIXTI-font: '../fonts/FELIXTI.TTF';
 $tumbtest-regular: '../fonts/tumbtest-regular.otf';
+$cascadia: '../fonts/cascadia.ttf';
 $home-plant: '../images/home_plant.png';
 $line-height: 1;
+
+@import "mixins";
+
+@include fully-covered-background($home-background-url);
 
 @font-face {
   font-family: 'felixti';
@@ -14,25 +19,27 @@ $line-height: 1;
   src: url($tumbtest-regular) format('opentype');
 }
 
-body {
-  height: 100vh;
-  background-image: url($home-background-url);
-  background-repeat: no-repeat;
-  background-size: cover;
+@font-face {
+  font-family: 'Cascadia Code';
+  src: url($cascadia);
 }
 
-#emily {
-  width: 50%;
-  height: auto;
+#login-button {
+  background-color: transparent;
+  border: white solid;
+  padding: 0;
+  cursor: pointer;
 }
 
-.dickinsonian {
+@include responsive-emily(emily);
+
+.title-text-dickinsonian {
   color: white;
   font-family: 'Tumb Test Regular', sans-serif;
   margin-bottom: 0;
 }
 
-.title-text {
+.title-text-the, .title-text-museum {
   color: white;
   margin-bottom: 0;
   margin-top: 0;
@@ -48,17 +55,79 @@ body {
 }
 
 .title-box p:first-child {
-  text-indent: 2em;
+  text-indent: 1.65em;
 }
 
 .title-box p:last-child {
-  text-indent: 3.5em;
+  text-indent: 1em;
 }
 
 @import "variables";
 @import "mixins";
-@include responsive-font-size(dickinsonian, title-text);
 
-p {
+.title-box p:nth-child(2), p:nth-child(3) {
   line-height: $line-height;
+}
+
+.section-link strong {
+  color: white;
+  font-family: "Cascadia Code", sans-serif;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.28em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#poems:hover {
+  color: #9CA653;
+  text-decoration-color: #9CA653;
+}
+
+#gallery:hover {
+  color: #8C8045;
+  text-decoration-color: #8C8045;
+}
+
+#essays:hover {
+  color: #F2C3A7;
+  text-decoration-color: #F2C3A7;
+}
+
+#contact:hover {
+  color: #8C442A;
+  text-decoration-color: #8C442A;
+}
+
+@include responsive-font-size(title-text-the, title-text-dickinsonian, title-text-museum, section-link);
+
+.profile-pic {
+  position: relative;
+  width: 104px;
+  height: 128px;
+  margin-right: 10px;
+}
+
+.profile-pic img {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.profile-pic img:first-child {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 1;
+}
+
+.profile-pic img:last-child {
+  padding: 5%;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 0;
 }

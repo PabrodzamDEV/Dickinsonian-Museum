@@ -1,10 +1,12 @@
 from django.urls import path, include
 from . import views
+from .views import PoemCategoryListView, GalleryPieceCategoryListView, EssayCategoryListView
 
 urlpatterns = [
     path("", views.home, name="home"),
     # Class-based views for Poems
     path("poems/", views.PoemListView.as_view(), name="poems"),
+    path('poems/<str:category>/', PoemCategoryListView.as_view(), name='poems_by_category'),
     path("poems/new/", views.PoemCreateView.as_view(), name="museum-poem-create"),
     path(
         "poems/<int:pk>/update/",
@@ -18,6 +20,7 @@ urlpatterns = [
         ),
     # Class-based views for the gallery
     path("gallery/", views.GalleryPieceListView.as_view(), name="gallery"),
+    path('gallery/<str:category>/', GalleryPieceCategoryListView.as_view(), name='gallerypieces_by_category'),
     path(
         "gallery/new/",
         views.GalleryPieceCreateView.as_view(),
@@ -35,6 +38,7 @@ urlpatterns = [
         ),
     # Class-based views for essays
     path("essays/", views.EssayListView.as_view(), name="essays"),
+    path('essays/<str:category>/', EssayCategoryListView.as_view(), name='essays_by_category'),
     path("essays/new/", views.EssayCreateView.as_view(), name="museum-essay-create"),
     path(
         "essays/<int:pk>/update/",

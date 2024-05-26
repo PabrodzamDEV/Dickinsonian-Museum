@@ -26,12 +26,14 @@ router.register(r'poems', views.PoemViewSet)
 router.register(r'gallerypieces', views.GalleryPieceViewSet)
 router.register(r'essays', views.EssayViewSet)
 
+app_name = 'api'  # namespace for the app
+
 # The include function is used to include the router's URLs.
 # The path function is used to route the URL pattern to the viewset.
 urlpatterns = [
     path('', include(router.urls)),
     path('schema/', SpectacularAPIView.as_view(), name='schema'),  # Returns a .yaml file
-    path('schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),  # UI to consume
-    # the API through a browser
-    path('schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),  # Documentation
+    # UI to consume the API through a browser
+    path('schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='api:schema'), name='swagger-ui'),
+    path('schema/redoc/', SpectacularRedocView.as_view(url_name='api:schema'), name='redoc'),  # Documentation
 ]

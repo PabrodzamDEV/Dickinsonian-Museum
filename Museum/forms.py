@@ -38,6 +38,11 @@ class PoemForm(forms.ModelForm):
         return content
 
 
+class PoemFilterForm(forms.Form):
+    # Let the user pick a category from the list of categories in the poem model
+    category = forms.ModelChoiceField(queryset=Poem.objects.values_list('category', flat=True).distinct())
+
+
 class GalleryPieceForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
@@ -72,7 +77,7 @@ class GalleryPieceForm(forms.ModelForm):
 
         if piece:
             # Check the file size
-            if piece.size > 100*1024*1024:  # maximum size allowed for the file
+            if piece.size > 100 * 1024 * 1024:  # maximum size allowed for the file
                 raise forms.ValidationError("The maximum file size that can be uploaded is 100MB")
 
             # Check the file extension for allowed file types, otherwise raise a ValidationError
@@ -101,7 +106,8 @@ class EssayForm(forms.ModelForm):
 
     class Meta:
         model = Essay
-        fields = ["title", "author", "file", "is_academic", "abstract", "category", "language", "date_published", "user"]
+        fields = ["title", "author", "file", "is_academic", "abstract", "category", "language", "date_published",
+                  "user"]
         widgets = {
             "abstract": CKEditor5Widget(attrs={"class": "django_ckeditor_5"}),
             "date_published": forms.SelectDateWidget(years=range(0, datetime.now().year + 1)),

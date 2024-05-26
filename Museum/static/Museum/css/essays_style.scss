@@ -1,8 +1,4 @@
 $essays-background-url: '../images/essays_background.png';
+@import "mixins";
 
-body {
-  height: 100vh;
-  background-image: url($essays-background-url);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+@include fully-covered-background($essays-background-url);

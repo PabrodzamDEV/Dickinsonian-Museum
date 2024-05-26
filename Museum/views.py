@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.urls import reverse_lazy
@@ -11,6 +10,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from Museum.models import Poem, GalleryPiece, Essay
 
 from .forms import PoemForm, GalleryPieceForm, EssayForm
+
+from django.db.models import Count
 
 
 # Create your views here.
@@ -34,6 +35,29 @@ class PoemListView(ListView):
     template_name = "Museum/poems.html"
     context_object_name = "poems"
     ordering = ["title"]
+    paginate_by = 20
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Adds a new variable to the context consisting of a dictionary of dictionaries with
+        # the categories and the number of models which fall under that category
+        context['categories'] = Poem.objects.values('category').annotate(count=Count('category'))
+        return context
+
+
+"""
+Class-based view which renders a collection of poems present in the
+database which fall under a given category.
+
+    extends:
+PoemListView
+
+"""
+
+
+class PoemCategoryListView(PoemListView):
+    def get_queryset(self):
+        return Poem.objects.filter(category=self.kwargs['category'])
 
 
 """
@@ -104,6 +128,28 @@ class GalleryPieceListView(ListView):
     template_name = "Museum/gallery.html"
     context_object_name = "gallery_pieces"
     ordering = ["title"]
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Adds a new variable to the context consisting of a dictionary of dictionaries with
+        # the categories and the number of models which fall under that category
+        context['categories'] = GalleryPiece.objects.values('category').annotate(count=Count('category'))
+        return context
+
+
+"""
+Class-based view which renders a collection of gallery pieces present in the
+database which fall under a given category.
+
+    extends:
+GalleryPieceListView
+
+"""
+
+
+class GalleryPieceCategoryListView(GalleryPieceListView):
+    def get_queryset(self):
+        return GalleryPiece.objects.filter(category=self.kwargs['category'])
 
 
 """
@@ -177,6 +223,28 @@ class EssayListView(ListView):
     context_object_name = "essays"
     ordering = ["title"]
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Adds a new variable to the context consisting of a dictionary of dictionaries with
+        # the categories and the number of models which fall under that category
+        context['categories'] = Essay.objects.values('category').annotate(count=Count('category'))
+        return context
+
+
+"""
+Class-based view which renders a collection of essays present in the
+database which fall under a given category.
+
+    extends:
+EssayListView
+
+"""
+
+
+class EssayCategoryListView(EssayListView):
+    def get_queryset(self):
+        return Essay.objects.filter(category=self.kwargs['category'])
+
 
 """
 Class-based view which renders a creation form for an essay.
@@ -239,6 +307,5 @@ class EssayDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("essays")
 
 
-@login_required()
 def contact(request):
     return render(request, "Museum/contact.html")

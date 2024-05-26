@@ -9,6 +9,9 @@
 {% endblock %}
 {% block content %}
     <h1>This is the html gallery section</h1>
+    {% for category in categories %}
+        <a href="{% url 'gallerypieces_by_category' category.category %}">{{ category.category }} ({{ category.count }})</a>
+    {% endfor %}
     {% for piece in gallery_pieces %}
         <div class="d-flex d-column">
             <img class="user-avatar" src="{{ piece.user.profile.avatar_url }}" alt="avatar picture"/>
