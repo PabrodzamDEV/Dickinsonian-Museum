@@ -21,7 +21,7 @@ def home(request):
 
 """
 Class-based view which renders the whole collection of poems present in the
-database, ordered by title.
+database, ordered by update datetime.
 
     extends:
 django.contrib.auth.mixins.LoginRequiredMixin
@@ -34,7 +34,7 @@ class PoemListView(ListView):
     model = Poem
     template_name = "Museum/poems.html"
     context_object_name = "poems"
-    ordering = ["title"]
+    ordering = ["-updated_at"]
     paginate_by = 20
 
     def get_context_data(self, **kwargs):
@@ -114,7 +114,7 @@ class PoemDeleteView(LoginRequiredMixin, DeleteView):
 
 """
 Class-based view which renders the whole collection of gallery pieces present in the database, ordered
-by title.
+by update datetime.
 
     extends:
 django.contrib.auth.mixins.LoginRequiredMixin
@@ -127,7 +127,7 @@ class GalleryPieceListView(ListView):
     model = GalleryPiece
     template_name = "Museum/gallery.html"
     context_object_name = "gallery_pieces"
-    ordering = ["title"]
+    ordering = ["-updated_at"]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -208,7 +208,7 @@ class GalleryPieceDeleteView(LoginRequiredMixin, DeleteView):
 
 """
 Class-based view which renders the whole collection of essays present in the database, ordered
-by title.
+by update datetime.
 
     extends:
 django.contrib.auth.mixins.LoginRequiredMixin
@@ -221,7 +221,7 @@ class EssayListView(ListView):
     model = Essay
     template_name = "Museum/essays.html"
     context_object_name = "essays"
-    ordering = ["title"]
+    ordering = ["-updated_at"]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
