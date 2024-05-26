@@ -21,7 +21,7 @@
                         </button>
                     </a>
                 {% else %}
-                    <a href="{% url 'logout' %}">
+                    <a href="{% url 'members:my_profile' %}">
                         <div class="profile-pic">
                             {% if 'default' not in user.profile.avatar.name %}
                                 <img src="{% static 'Museum/images/seal_frame.png' %}" alt="Seal frame"/>

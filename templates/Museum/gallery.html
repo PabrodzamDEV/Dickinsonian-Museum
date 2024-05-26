@@ -9,9 +9,22 @@
 {% endblock %}
 {% block content %}
     <h1>This is the html gallery section</h1>
-    {% for category in categories %}
-        <a href="{% url 'gallerypieces_by_category' category.category %}">{{ category.category }} ({{ category.count }})</a>
-    {% endfor %}
+    <div class="row">
+        <div class="d-flex flex-column align-items-end">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    Categories
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                    {% for category in categories %}
+                        <a href="{% url 'gallerypieces_by_category' category.category %}">{{ category.category }}
+                            ({{ category.count }})</a>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
     {% for piece in gallery_pieces %}
         <div class="d-flex d-column">
             <img class="user-avatar" src="{{ piece.user.profile.avatar_url }}" alt="avatar picture"/>

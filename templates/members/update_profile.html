@@ -23,7 +23,7 @@
         {% if user.is_authenticated %}
           <h4 class="text-center mb-3"><img class="me-4" src="{% static 'members/images/meet.svg' %}" alt="baby" /><b>Pleased to meet you !</b></h4>
           <hr class="accessory" />
-          <form action="{% url 'update_profile' %}" method="post" enctype="multipart/form-data">
+          <form action="{% url 'members:update_profile' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% if form.errors %}
               <div class="alert alert-danger" role="alert">
@@ -56,7 +56,7 @@
                   <button type="submit" class="btn">Update</button>
                 </div>
                 <div class="col-6 d-flex justify-content-end">
-                  <a href="{% url 'my_profile' %}"><button type="button" class="btn btn-cancel">Discard</button></a>
+                  <a href="{% url 'members:my_profile' %}"><button type="button" class="btn btn-cancel">Discard</button></a>
                 </div>
               </div>
             </div>
