@@ -1,6 +1,19 @@
-.ck.ck-editor__main > .ck-editor__editable, input {
-  background-color: #333 !important; /* Dark background for the CKEditor5 widget */
-  color: #fff !important; /* White text */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-image: url("../images/poems_background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: row;
+}
+
+fieldset select {
+  margin-left: 5px;
 }
 
 /*# sourceMappingURL=creation_form_style.css.map */

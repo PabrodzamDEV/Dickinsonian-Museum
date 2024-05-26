@@ -1,7 +1,10 @@
 import os
 
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit, Layout
 from django import forms
 from django.core.exceptions import ValidationError
+from django.forms import SelectDateWidget
 
 from django_ckeditor_5.widgets import CKEditor5Widget
 
@@ -10,24 +13,36 @@ from datetime import datetime
 from .models import Poem, GalleryPiece, Essay
 
 
+class HorizontalSelectDateWidget(SelectDateWidget):
+    def build_attrs(self, base_attrs, extra_attrs=None):
+        attrs = super().build_attrs(base_attrs, extra_attrs)
+        attrs['class'] = 'd-flex flex-row'
+        return attrs
+
+
 class PoemForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["title"].required = True
+        self.fields["title"].label = "Title"
         self.fields["content"].required = False  # Necessary for the CKEditor5 widget to work when validating the form
+        self.fields["content"].label = "Poem's content"
         self.fields["author"].required = True
+        self.fields["author"].label = "Author"
         self.fields["category"].required = True
+        self.fields["category"].label = "Category"
         self.fields["language"].required = True
-        self.fields["user"].required = False
+        self.fields["language"].label = "Language"
         self.fields["date_published"].required = False
+        self.fields["date_published"].label = "Publication Date"
 
     class Meta:
         model = Poem
         fields = ["title", "content", "author", "category", "language", "date_published", "user"]
         widgets = {
             "content": CKEditor5Widget(attrs={"class": "django_ckeditor_5"}),
-            "date_published": forms.SelectDateWidget(years=range(0, datetime.now().year + 1)),
+            "date_published": forms.SelectDateWidget(years=range(datetime.now().year + 1, 0, -1)),
         }
 
     # Checks that the content field is not empty, otherwise raises a ValidationError
@@ -38,9 +53,24 @@ class PoemForm(forms.ModelForm):
         return content
 
 
-class PoemFilterForm(forms.Form):
-    # Let the user pick a category from the list of categories in the poem model
-    category = forms.ModelChoiceField(queryset=Poem.objects.values_list('category', flat=True).distinct())
+class PoemCreateForm(PoemForm):
+    helper = FormHelper()
+    helper.add_input(Submit('submit', 'Create poem', css_class='btn-primary'))
+    helper.form_method = 'POST'
+
+    class Meta(PoemForm.Meta):
+        exclude = ["user"]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper.layout = Layout(
+            'title',
+            'content',
+            'author',
+            'category',
+            'language',
+            'date_published'
+        )
 
 
 class GalleryPieceForm(forms.ModelForm):
@@ -61,7 +91,8 @@ class GalleryPieceForm(forms.ModelForm):
         fields = ["title", "piece", "author", "description", "category", "date_published", "user"]
         widgets = {
             "description": CKEditor5Widget(attrs={"class": "django_ckeditor_5"}),
-            "date_published": forms.SelectDateWidget(years=range(0, datetime.now().year + 1)),
+            "date_published": forms.SelectDateWidget(
+                years=range(datetime.now().year + 1, 0, -1)),
         }
 
     # Checks that the description field is not empty, otherwise raises a ValidationError

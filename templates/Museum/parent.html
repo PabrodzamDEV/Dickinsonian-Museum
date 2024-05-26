@@ -62,7 +62,7 @@
                                                                                     alt="dropdown-svg"/></a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li>
-                                    <a class="dropdown-item" href="{% url 'members:my_profile' %}">My Profile</a>
+                                    <a class="dropdown-item" href="{% url 'my_members:my_profile' %}">My Profile</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="{% url 'museum-poem-create' %}">New Poem</a>
@@ -77,7 +77,7 @@
                                     <hr class="dropdown-divider"/>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{% url 'members:logout' %}">
+                                    <a class="dropdown-item" href="{% url 'my_members:logout' %}">
                                         <img id="logout-svg" src="{% static 'members/images/logout.svg' %}"
                                              alt="logout-svg"/>
                                         Log Out
@@ -87,7 +87,7 @@
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'members:login' %}">Log in</a>
+                            <a class="nav-link" href="{% url 'my_members:login' %}">Log in</a>
                         </li>
                     {% endif %}
                 </ul>
