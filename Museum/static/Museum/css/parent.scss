@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
-body,
-html {
-  display: grid;
-  grid-template-rows: 1fr auto;
+html,
+body
+{
   min-height: 100vh;
-  margin: 0;
   font-family: 'Varela Round', sans-serif;
+}
+
+body {
+  display: grid;
+  overflow: auto;
+  min-height: 100vh;
+  grid-template-rows: 1fr auto;
+  margin: 0;
 }
 
 .page-container {
