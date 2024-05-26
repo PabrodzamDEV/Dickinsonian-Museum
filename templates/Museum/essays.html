@@ -9,6 +9,9 @@
 {% endblock %}
 {% block content %}
     <h1>This is the html essays section</h1>
+    {% for category in categories %}
+        <a href="{% url 'essays_by_category' category.category %}">{{ category.category }} ({{ category.count }})</a>
+    {% endfor %}
     {% for essay in essays %}
         <div class="d-flex d-column">
             <img class="user-avatar" src="{{ essay.user.profile.avatar_url }}" alt="avatar picture"/>
