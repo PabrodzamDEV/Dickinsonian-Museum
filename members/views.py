@@ -17,13 +17,17 @@ def login_member(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("home")
+            next_url = request.GET.get('next')
+            if next_url:
+                return redirect(next_url)
+            else:
+                return redirect('home')
         else:
             messages.error(request, "There was an error logging in. Please try again")
             return redirect("login")
     else:
         form = AuthenticationForm()
-    return render(request, "members/login.html", {"form": form})
+    return render(request, "registration/login.html", {"form": form})
 
 
 @never_cache
