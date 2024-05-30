@@ -67,3 +67,15 @@
     background-size: cover;
   }
 }
+
+@mixin responsive-poem-header($id) {
+  ##{$id} {
+    font-size: map-get($font-sizes-page-header, 768px);
+
+    @each $breakpoint, $size in $font-sizes-page-header {
+      @media (min-width: $breakpoint) {
+        font-size: $size;
+      }
+    }
+  }
+}

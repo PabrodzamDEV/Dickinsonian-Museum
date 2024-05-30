@@ -1,0 +1,43 @@
+
+@import "mixins";
+
+#poem-line {
+    border: 5px solid red;
+}
+
+@include responsive-poem-header(poem-header);
+
+.poem-container {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.uploader-profile-pic {
+    position: relative;
+    width: 152px;
+    height: 176px;
+    margin-right: 10px;
+}
+
+.uploader-profile-pic img {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.uploader-profile-pic img:first-child {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: 1;
+}
+
+.uploader-profile-pic img:last-child {
+    padding: 5%;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: 0;
+}

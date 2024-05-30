@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from Museum.models import Poem, GalleryPiece, Essay
@@ -58,6 +59,28 @@ PoemListView
 class PoemCategoryListView(PoemListView):
     def get_queryset(self):
         return Poem.objects.filter(category=self.kwargs['category'])
+
+
+"""
+Class-based view which renders a specific poem present in the
+database.
+
+    extends:
+django.views.generic.detail.DetailView
+
+"""
+
+
+class PoemDetailView(DetailView):
+    model = Poem
+    template_name = 'Museum/poem_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Adds a new variable to the context consisting of a dictionary of dictionaries with
+        # three random poems
+        context['random_poems'] = Poem.objects.order_by('?')[:3]
+        return context
 
 
 """
