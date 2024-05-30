@@ -8,8 +8,9 @@
     Poems
 {% endblock %}
 {% block content %}
-    <h1>This is the html poems section</h1>
-    <div class="row">
+    
+    {% if categories %}
+    <div class="row mt-3">
         <div class="d-flex flex-column align-items-end">
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdown"
@@ -26,6 +27,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
     {% for poem in poems %}
         <div class="d-flex d-column">
             <img class="user-avatar" src="{{ poem.user.profile.avatar_url }}" alt="avatar picture"/>
