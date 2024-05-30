@@ -131,3 +131,9 @@ a {
   object-fit: fill;
   z-index: 0;
 }
+
+@media screen and (min-width: 1400px) {
+  body {
+    overflow: hidden;
+  }
+}
