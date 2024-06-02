@@ -30,7 +30,7 @@
                 <div class="container-fluid poem-container">
                     <div class="row">
                         <div class="col-lg-3 col-12">
-                            <a href="{% url 'my_members:my_profile' %}">
+                            <a href="{% url 'my_members:members-profile-detail' object.user.profile.id %}">
                                 <div class="uploader-profile-pic">
                                     {% if 'default' not in object.user.profile.avatar.name %}
                                         <img src="{% static 'Museum/images/seal_frame.png' %}" alt="Seal frame"/>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-lg-9 col-12 pt-3 mb-3">
                             <h5 class="mb-4">
-                                By: <b>{{ object.author }}</b>
+                                From: <b>{{ object.author }}</b>
                             </h5>
                             {{ object.content|safe }}
                         </div>

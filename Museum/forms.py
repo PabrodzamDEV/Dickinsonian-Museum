@@ -73,6 +73,11 @@ class PoemCreateForm(PoemForm):
         )
 
 
+class PoemUpdateForm(PoemCreateForm):
+    helper = FormHelper()
+    helper.add_input(Submit('submit', 'Update poem', css_class='btn-primary'))
+
+
 class GalleryPieceForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):

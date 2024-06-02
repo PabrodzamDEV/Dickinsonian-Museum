@@ -1,0 +1,28 @@
+{% extends 'Museum/parent.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'members/css/profile_style.css' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+{% endblock %}
+{% block title %}
+    Profile
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12 mb-4">
+                <img id="profile_image" src="{{ object.avatar_url }}" alt="profile picture" />
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <h2 class="mb-3">{{ object.username }}</h2>
+                <div class="bio">{{ object.bio }}</div>
+            </div>
+        </div>
+        <P class="mt-3">
+            <span class="material-symbols-large material-symbols-outlined location">person_pin_circle</span> {{ object.location }}
+        </P>
+        <P class="mt-3">
+            <span class="material-symbols-large material-symbols-outlined material-symbols-celebration">celebration</span>{{ object.birth_date }}
+        </P>
+    </div>
+{% endblock %}

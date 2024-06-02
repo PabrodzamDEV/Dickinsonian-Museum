@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
+$tumbtest-regular: '../fonts/tumbtest-regular.otf';
 
+@font-face {
+  font-family: 'Tumb Test Regular';
+  src: url($tumbtest-regular) format('opentype');
+}
 
 html,
 body
@@ -16,9 +21,32 @@ body {
   margin: 0;
 }
 
+#emily-brand {
+  width: 48px;
+  height: auto;
+  padding: 3px;
+}
+
+.hr-brand {
+  height: 5px;
+  margin: 0 0 8px 0;
+  background-color: black;
+}
+
+.title-brand {
+  font-size: 16px;
+  line-height: 0;
+  color: black;
+  margin: 14px 0 14px 0;
+}
+
+#dickinsonian-brand {
+  font-family: 'Tumb Test Regular', sans-serif;
+}
+
 .page-container {
   grid-row: 1 / 2;
-  padding-bottom: 180px;
+  padding-bottom: 200px;
 }
 
 .menu li {

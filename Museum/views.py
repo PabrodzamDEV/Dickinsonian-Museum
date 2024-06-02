@@ -10,7 +10,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from Museum.models import Poem, GalleryPiece, Essay
 
-from .forms import PoemForm, GalleryPieceForm, EssayForm, PoemCreateForm
+from .forms import PoemForm, GalleryPieceForm, EssayForm, PoemCreateForm, PoemUpdateForm
 
 from django.db.models import Count
 
@@ -114,7 +114,7 @@ django.views.generic.edit.UpdateView
 
 class PoemUpdateView(LoginRequiredMixin, UpdateView):
     model = Poem
-    fields = ["title", "content", "author", "category", "language", "date_published"]
+    form_class = PoemUpdateForm
     template_name_suffix = "_update_form"
     success_url = reverse_lazy("poems")
 

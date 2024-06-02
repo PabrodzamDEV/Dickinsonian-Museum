@@ -20,7 +20,22 @@
 <div class="container-fluid page-container">
     <nav class="shadow-lg navbar navbar-expand-lg navbar-dark justify-content-center">
         <div class="container-fluid">
-            <a class="navbar-brand"></a>
+            <a class="navbar-brand">
+                <div class="d-flex">
+                    <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                        <img id="emily-brand" src="{% static 'Museum/images/emily_dickinson.jpg' %}" alt="emily dickinson brand" />
+                    </div>
+                    <div class="col ms-2">
+                        <hr class="hr-brand">
+                        <div class="text-center align-items-start justify-content-start">
+                            <p class="title-brand">THE</p>
+                            <p id="dickinsonian-brand" class="title-brand">Dickinsonian</p>
+                            <p class="title-brand">MUSEUM</p>
+                        </div>
+                        <hr class="hr-brand">
+                    </div>
+                </div>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
