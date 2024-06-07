@@ -21,6 +21,19 @@ body {
   margin: 0;
 }
 
+.navbar:not(:hover) {
+  background-color: #FFFFFF00;
+  opacity: 0.3;
+  transition: background-color 3s ease, opacity 3.5s ease;
+
+}
+
+.navbar:hover {
+  background-color: #FFFFFFFF;
+  opacity: 1;
+  transition: background-color 1.3s ease;
+}
+
 #emily-brand {
   width: 48px;
   height: auto;
@@ -73,31 +86,23 @@ body {
 
 
 .menu li:nth-child(1) a {
-  color: #9CA653;
+  color: #6F8873;
 }
 
 .menu li:nth-child(2) a {
-  color: #F0F2DC;
+  color: #b99c8a;
 }
 
 .menu li:nth-child(3) a {
-  color: #8C8045;
+  color: rgba(140, 128, 69);
 }
 
 .menu li:nth-child(4) a {
-  color: #F2C3A7;
+  color: #a28037;
 }
 
 .menu li:nth-child(5) a {
-  color: #8C442A;
-}
-
-.menu li.active a {
-  text-decoration: underline overline;
-}
-
-.navbar {
-  background-color: #ffffff00;
+  color: rgba(140, 68, 42);
 }
 
 .custom-me {

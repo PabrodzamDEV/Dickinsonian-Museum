@@ -146,7 +146,7 @@ class Essay(models.Model):
     def get_pdf_cover(self):
         if self.file:
             images = convert_from_path(self.file.path, first_page=1, last_page=1,
-                                       poppler_path=r"C:\Users\pablo\Downloads\poppler-24.02.0\Library\bin")
+                                       poppler_path=r"C:\Users\pablo\Downloads\Poppler Release-24.02.0-0\poppler-24.02.0\Library\bin")
             # Convert the first page to an image
             image = images[0]
 

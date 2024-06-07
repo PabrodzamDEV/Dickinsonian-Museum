@@ -1,16 +1,26 @@
 
 @import "mixins";
 
+$FELIXTI-font: '../fonts/FELIXTI.TTF';
+
+@font-face {
+    font-family: 'felixti';
+    src: url($FELIXTI-font);
+}
+
+
 #poem-line {
-    border: 4px solid #B37D89;
+    border: 4px solid #E17B75;
+    color : #E17B75;
 }
 
 @include responsive-poem-header(poem-header);
 
 #poem-header {
-    color: #B37D89;
+    color: #E17B75;
     margin-bottom: 5px;
     line-height: 1;
+    font-family: 'felixti', serif;
 }
 
 .poem-container {

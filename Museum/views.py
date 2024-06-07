@@ -10,7 +10,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from Museum.models import Poem, GalleryPiece, Essay
 
-from .forms import PoemForm, GalleryPieceForm, EssayForm, PoemCreateForm, PoemUpdateForm
+from .forms import PoemForm, GalleryPieceForm, EssayForm, PoemCreateForm, PoemUpdateForm, GalleryPieceCreateForm, \
+    GalleryPieceUpdateForm
 
 from django.db.models import Count
 
@@ -150,7 +151,8 @@ class GalleryPieceListView(ListView):
     model = GalleryPiece
     template_name = "Museum/gallery.html"
     context_object_name = "gallery_pieces"
-    ordering = ["-updated_at"]
+    ordering = ["?"]
+    paginate_by = 20
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -187,7 +189,7 @@ django.views.generic.edit.CreateView
 
 class GalleryPieceCreateView(LoginRequiredMixin, CreateView):
     model = GalleryPiece
-    form_class = GalleryPieceForm
+    form_class = GalleryPieceCreateForm
     template_name = "Museum/gallery_piece_form.html"
     success_url = reverse_lazy("gallery")
 
@@ -208,7 +210,7 @@ django.views.generic.edit.UpdateView
 
 class GalleryPieceUpdateView(LoginRequiredMixin, UpdateView):
     model = GalleryPiece
-    fields = ["title", "piece", "author", "description", "category", "date_published"]
+    form_class = GalleryPieceUpdateForm
     template_name_suffix = "_update_form"
     success_url = reverse_lazy("gallery")
 

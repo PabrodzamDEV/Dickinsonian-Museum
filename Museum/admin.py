@@ -7,6 +7,7 @@ from datetime import date
 from django.db.models import Min
 from django.http import FileResponse
 from django.utils import timezone
+from environ import environ
 
 from DickinsonDjango import settings
 from Museum.forms import PoemForm, GalleryPieceForm, EssayForm
@@ -18,6 +19,10 @@ from pyreportjasper import PyReportJasper
 
 JRXML_DIR = "Museum/report_resources"
 REPORTS_DIR = settings.MEDIA_ROOT + "/reports"
+
+# Read sensitive information from the environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 
 # Filters
@@ -92,14 +97,14 @@ def generate_monthly_poems_report(modeladmin, request, queryset):
                                f'monthly_poems {earliest_date_year}-{earliest_date_month}_{timezone.now().strftime("%H%M%S")}')
     pyreportjasper = PyReportJasper()
     conn = {
-        'driver': 'mysql',
-        'username': 'root',
-        'password': 'root',
-        'host': 'localhost',
-        'database': 'dickinsonproject',
-        'port': '3306',
-        'jdbc_driver': 'com.mysql.cj.jdbc.Driver',
-        'jdbc_url': 'jdbc:mysql://localhost:3306/dickinsonproject'
+        'driver': env('DATABASE_DRIVER'),
+        'username': env('DATABASE_USER'),
+        'password': env('DATABASE_PASSWORD'),
+        'host': env('DATABASE_HOST'),
+        'database': env('DATABASE_NAME'),
+        'port': env('DATABASE_PORT'),
+        'jdbc_driver': env('JDBC_DRIVER'),
+        'jdbc_url': env('JDBC_URL')
     }
     pyreportjasper.config(
         input_file,

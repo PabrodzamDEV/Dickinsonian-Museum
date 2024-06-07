@@ -1,5 +1,6 @@
 {% extends 'Museum/parent.html' %}
 {% load static %}
+{% load static chunk_filter %}
 {% block head %}
     <link rel="stylesheet" href="{% static 'Museum/css/list_style.css' %}"/>
     <link rel="stylesheet" href="{% static 'Museum/css/gallery_style.css' %}"/>
@@ -9,49 +10,60 @@
 {% endblock %}
 {% block content %}
     {% if categories %}
-    <div class="row mt-3 mb-5">
-        <div class="d-flex flex-column align-items-end">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdown"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                    Categories
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
-                    {% for category in categories %}
-                        <a href="{% url 'gallerypieces_by_category' category.category %}">{{ category.category }}
-                            ({{ category.count }})</a>
-                    {% endfor %}
-                </ul>
+        <div class="row mt-3 mb-5">
+            <div class="d-flex flex-column align-items-end">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                        {% for category in categories %}
+                            <li><a class="dropdown-item"
+                                   href="{% url 'gallerypieces_by_category' category.category %}">{{ category.category }}
+                                ({{ category.count }})</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
     {% endif %}
-    {% for piece in gallery_pieces %}
-        <div class="d-flex d-column">
-            <img class="user-avatar" src="{{ piece.user.profile.avatar_url }}" alt="avatar picture"/>
-            <p>
-                Uploaded by: <b>{{ piece.user.username }}</b>
-            </p>
-        </div>
-        <h3><b>{{ piece.title }}</b></h3>
-        {% if piece.file_type == 'image' %}
-            <img src="{{ piece.piece.url }}" alt="{{ piece.title }}"/>
-        {% elif piece.file_type == 'video' %}
-            <video width="320" height="240" controls>
-                <source src="{{ piece.piece.url }}" type="video/webm"/>
-                Your browser does not support the video tag.
-            </video>
-        {% else %}
-            <p>Unsupported file type: {{ piece.piece }}</p>
-        {% endif %}
-        {{ piece.description|safe }}
-        <p>
-            By: <b>{{ piece.author }}</b>
-        </p>
-        <!-- Make sure only the user who uploaded the piece can edit it -->
-        {% if user == piece.user %}
-            <a href="{% url 'museum-gallerypiece-update' piece.id %}">Edit piece</a>
-            <a href="{% url 'museum-gallerypiece-delete' piece.id %}">Delete piece</a>
-        {% endif %}
-    {% endfor %}
+    <div class="row">
+        {% for i in page_obj|chunk:5 %}
+            <div class="col-lg-3">
+                {% for piece in i %}
+                    <div class="piece-block">
+                        {% if piece.file_type == 'image' %}
+                            <img class="img-fluid mb-3" src="{{ piece.piece.url }}" alt="{{ piece.title }}"/>
+                        {% elif piece.file_type == 'video' %}
+                            <video class="mb-3" width="100%" height="auto" controls autoplay muted>
+                                <source src="{{ piece.piece.url }}" type="video/webm"/>
+                                Your browser does not support the video tag.
+                            </video>
+                        {% else %}
+                            <p>Unsupported file type: {{ piece.piece }}</p>
+                        {% endif %}
+                        <div class="overlay">{{ piece.title }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+    </div>
 {% endblock %}

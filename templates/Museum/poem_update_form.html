@@ -8,12 +8,16 @@
   Update Poem
 {% endblock %}
 {% block content %}
-    <div class="container pt-4">
-        <form method="post">
-            {% csrf_token %}
-            {% crispy form %}
-        </form>
-    </div>
+    {%  if user == object.user %}
+        <div class="container pt-4">
+            <form method="post">
+                {% csrf_token %}
+                {% crispy form %}
+            </form>
+        </div>
+    {% else %}
+        <h1 class="text-center mt-5">You did not upload this!</h1>
+    {% endif %}
 {% endblock %}
 {% block js %}
 

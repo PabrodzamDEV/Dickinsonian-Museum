@@ -61,17 +61,6 @@ class PoemCreateForm(PoemForm):
     class Meta(PoemForm.Meta):
         exclude = ["user"]
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper.layout = Layout(
-            'title',
-            'content',
-            'author',
-            'category',
-            'language',
-            'date_published'
-        )
-
 
 class PoemUpdateForm(PoemCreateForm):
     helper = FormHelper()
@@ -89,7 +78,6 @@ class GalleryPieceForm(forms.ModelForm):
         # form
         self.fields["category"].required = True
         self.fields["date_published"].required = False
-        self.fields["user"].required = False
 
     class Meta:
         model = GalleryPiece
@@ -123,6 +111,20 @@ class GalleryPieceForm(forms.ModelForm):
                 raise forms.ValidationError('Unsupported file extension.')
 
         return piece
+
+
+class GalleryPieceCreateForm(GalleryPieceForm):
+    helper = FormHelper()
+    helper.add_input(Submit('submit', 'Create piece', css_class='btn-primary'))
+    helper.form_method = 'POST'
+
+    class Meta(GalleryPieceForm.Meta):
+        exclude = ["user"]
+
+
+class GalleryPieceUpdateForm(GalleryPieceCreateForm):
+    helper = FormHelper()
+    helper.add_input(Submit('submit', 'Update piece', css_class='btn-primary'))
 
 
 class EssayForm(forms.ModelForm):
