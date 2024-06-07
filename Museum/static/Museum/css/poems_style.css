@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-image: url("../images/poems_background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@font-face {
+  font-family: "felixti";
+  src: url("../fonts/FELIXTI.TTF");
+}
+a {
+  color: black;
+}
+
+h3 {
+  font-family: "felixti", serif;
+}
+
+/*# sourceMappingURL=poems_style.css.map */

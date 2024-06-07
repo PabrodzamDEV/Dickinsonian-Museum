@@ -1,0 +1,280 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-image: url("../images/home_background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@font-face {
+  font-family: "felixti";
+  src: url("../fonts/FELIXTI.TTF");
+}
+@font-face {
+  font-family: "Tumb Test Regular";
+  src: url("../fonts/tumbtest-regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "Cascadia Code";
+  src: url("../fonts/cascadia.ttf");
+}
+#login-button {
+  background-color: transparent;
+  border: white solid;
+  padding: 0;
+  cursor: pointer;
+}
+
+.emily {
+  width: 55%;
+  height: auto;
+}
+@media (min-width: 576px) {
+  .emily {
+    width: 45%;
+    height: auto;
+  }
+}
+@media (min-width: 768px) {
+  .emily {
+    width: 55%;
+    height: auto;
+  }
+}
+@media (min-width: 992px) {
+  .emily {
+    width: 65%;
+    height: auto;
+  }
+}
+@media (min-width: 1200px) {
+  .emily {
+    width: 75%;
+    height: auto;
+  }
+}
+@media (min-width: 1400px) {
+  .emily {
+    width: 80%;
+    height: auto;
+  }
+}
+
+.title-text-dickinsonian {
+  color: white;
+  font-family: "Tumb Test Regular", sans-serif;
+  margin-bottom: 0;
+}
+
+.title-text-the, .title-text-museum {
+  color: white;
+  margin-bottom: 0;
+  margin-top: 0;
+  font-family: "felixti", serif;
+}
+
+.emily-and-title {
+  background-image: url("../images/home_plant.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: 80%;
+  background-position-y: center;
+}
+
+.title-box p:first-child {
+  text-indent: 1.65em;
+}
+
+.title-box p:last-child {
+  text-indent: 1em;
+}
+
+.title-box p:nth-child(2), p:nth-child(3) {
+  line-height: 1;
+}
+
+.section-link strong {
+  color: white;
+  font-family: "Cascadia Code", sans-serif;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.28em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#poems:hover {
+  color: #9CA653;
+  text-decoration-color: #9CA653;
+}
+
+#gallery:hover {
+  color: #8C8045;
+  text-decoration-color: #8C8045;
+}
+
+#essays:hover {
+  color: #F2C3A7;
+  text-decoration-color: #F2C3A7;
+}
+
+#contact:hover {
+  color: #8C442A;
+  text-decoration-color: #8C442A;
+}
+
+.title-text-the {
+  font-size: 48px;
+}
+@media (min-width: 576px) {
+  .title-text-the {
+    font-size: 40px;
+  }
+}
+@media (min-width: 768px) {
+  .title-text-the {
+    font-size: 48px;
+  }
+}
+@media (min-width: 992px) {
+  .title-text-the {
+    font-size: 56px;
+  }
+}
+@media (min-width: 1200px) {
+  .title-text-the {
+    font-size: 64px;
+  }
+}
+@media (min-width: 1400px) {
+  .title-text-the {
+    font-size: 96px;
+  }
+}
+
+.title-text-dickinsonian {
+  font-size: 40px;
+}
+@media (min-width: 576px) {
+  .title-text-dickinsonian {
+    font-size: 32px;
+  }
+}
+@media (min-width: 768px) {
+  .title-text-dickinsonian {
+    font-size: 40px;
+  }
+}
+@media (min-width: 992px) {
+  .title-text-dickinsonian {
+    font-size: 48px;
+  }
+}
+@media (min-width: 1200px) {
+  .title-text-dickinsonian {
+    font-size: 56px;
+  }
+}
+@media (min-width: 1400px) {
+  .title-text-dickinsonian {
+    font-size: 80px;
+  }
+}
+
+.title-text-museum {
+  font-size: 56px;
+}
+@media (min-width: 576px) {
+  .title-text-museum {
+    font-size: 48px;
+  }
+}
+@media (min-width: 768px) {
+  .title-text-museum {
+    font-size: 56px;
+  }
+}
+@media (min-width: 992px) {
+  .title-text-museum {
+    font-size: 64px;
+  }
+}
+@media (min-width: 1200px) {
+  .title-text-museum {
+    font-size: 72px;
+  }
+}
+@media (min-width: 1400px) {
+  .title-text-museum {
+    font-size: 120px;
+  }
+}
+
+.section-link {
+  font-size: 16px;
+}
+@media (min-width: 576px) {
+  .section-link {
+    font-size: 16px;
+  }
+}
+@media (min-width: 768px) {
+  .section-link {
+    font-size: 16px;
+  }
+}
+@media (min-width: 992px) {
+  .section-link {
+    font-size: 24px;
+  }
+}
+@media (min-width: 1200px) {
+  .section-link {
+    font-size: 32px;
+  }
+}
+@media (min-width: 1400px) {
+  .section-link {
+    font-size: 40px;
+  }
+}
+
+.profile-pic {
+  position: relative;
+  width: 104px;
+  height: 128px;
+  margin-right: 10px;
+}
+
+.profile-pic img {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.profile-pic img:first-child {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 1;
+}
+
+.profile-pic img:last-child {
+  padding: 5%;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 0;
+}
+
+@media screen and (min-width: 1400px) {
+  body {
+    overflow: hidden;
+  }
+}
+
+/*# sourceMappingURL=home_style.css.map */
