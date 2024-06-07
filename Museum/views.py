@@ -5,11 +5,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from Museum.models import Poem, GalleryPiece, Essay
 
-from .forms import PoemForm, GalleryPieceForm, EssayForm, PoemCreateForm
+from .forms import PoemForm, GalleryPieceForm, EssayForm, PoemCreateForm, PoemUpdateForm, GalleryPieceCreateForm, \
+    GalleryPieceUpdateForm
 
 from django.db.models import Count
 
@@ -61,6 +63,28 @@ class PoemCategoryListView(PoemListView):
 
 
 """
+Class-based view which renders a specific poem present in the
+database.
+
+    extends:
+django.views.generic.detail.DetailView
+
+"""
+
+
+class PoemDetailView(DetailView):
+    model = Poem
+    template_name = 'Museum/poem_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Adds a new variable to the context consisting of a dictionary of dictionaries with
+        # three random poems
+        context['random_poems'] = Poem.objects.order_by('?')[:3]
+        return context
+
+
+"""
 Class-based view which renders a creation form for a poem.
 
     extends:
@@ -91,7 +115,7 @@ django.views.generic.edit.UpdateView
 
 class PoemUpdateView(LoginRequiredMixin, UpdateView):
     model = Poem
-    fields = ["title", "content", "author", "category", "language", "date_published"]
+    form_class = PoemUpdateForm
     template_name_suffix = "_update_form"
     success_url = reverse_lazy("poems")
 
@@ -127,7 +151,8 @@ class GalleryPieceListView(ListView):
     model = GalleryPiece
     template_name = "Museum/gallery.html"
     context_object_name = "gallery_pieces"
-    ordering = ["-updated_at"]
+    ordering = ["?"]
+    paginate_by = 20
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -164,7 +189,7 @@ django.views.generic.edit.CreateView
 
 class GalleryPieceCreateView(LoginRequiredMixin, CreateView):
     model = GalleryPiece
-    form_class = GalleryPieceForm
+    form_class = GalleryPieceCreateForm
     template_name = "Museum/gallery_piece_form.html"
     success_url = reverse_lazy("gallery")
 
@@ -185,7 +210,7 @@ django.views.generic.edit.UpdateView
 
 class GalleryPieceUpdateView(LoginRequiredMixin, UpdateView):
     model = GalleryPiece
-    fields = ["title", "piece", "author", "description", "category", "date_published"]
+    form_class = GalleryPieceUpdateForm
     template_name_suffix = "_update_form"
     success_url = reverse_lazy("gallery")
 

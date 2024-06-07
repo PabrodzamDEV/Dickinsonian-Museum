@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
+$tumbtest-regular: '../fonts/tumbtest-regular.otf';
 
+@font-face {
+  font-family: 'Tumb Test Regular';
+  src: url($tumbtest-regular) format('opentype');
+}
 
 html,
 body
@@ -16,9 +21,45 @@ body {
   margin: 0;
 }
 
+.navbar:not(:hover) {
+  background-color: #FFFFFF00;
+  opacity: 0.3;
+  transition: background-color 3s ease, opacity 3.5s ease;
+
+}
+
+.navbar:hover {
+  background-color: #FFFFFFFF;
+  opacity: 1;
+  transition: background-color 1.3s ease;
+}
+
+#emily-brand {
+  width: 48px;
+  height: auto;
+  padding: 3px;
+}
+
+.hr-brand {
+  height: 5px;
+  margin: 0 0 8px 0;
+  background-color: black;
+}
+
+.title-brand {
+  font-size: 16px;
+  line-height: 0;
+  color: black;
+  margin: 14px 0 14px 0;
+}
+
+#dickinsonian-brand {
+  font-family: 'Tumb Test Regular', sans-serif;
+}
+
 .page-container {
   grid-row: 1 / 2;
-  padding-bottom: 100px;
+  padding-bottom: 200px;
 }
 
 .menu li {
@@ -45,31 +86,23 @@ body {
 
 
 .menu li:nth-child(1) a {
-  color: #9CA653;
+  color: #6F8873;
 }
 
 .menu li:nth-child(2) a {
-  color: #F0F2DC;
+  color: #b99c8a;
 }
 
 .menu li:nth-child(3) a {
-  color: #8C8045;
+  color: rgba(140, 128, 69);
 }
 
 .menu li:nth-child(4) a {
-  color: #F2C3A7;
+  color: #a28037;
 }
 
 .menu li:nth-child(5) a {
-  color: #8C442A;
-}
-
-.menu li.active a {
-  text-decoration: underline overline;
-}
-
-.navbar {
-  background-color: #ffffff00;
+  color: rgba(140, 68, 42);
 }
 
 .custom-me {

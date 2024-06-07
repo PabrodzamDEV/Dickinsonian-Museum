@@ -1,5 +1,6 @@
 {% extends 'Museum/parent.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block head %}
   <link rel="stylesheet" href="{% static 'Museum/css/creation_form_style.css' %}" />
 {% endblock %}
@@ -7,41 +8,16 @@
   Update Piece
 {% endblock %}
 {% block content %}
-  <h1>This is the gallery piece update form</h1>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.media }}
-    {% if form.errors %}
-      <div class="alert alert-danger" role="alert">
-        <p>
-          <strong>Please, correct the errors below:</strong>
-        </p>
-        {{ form.errors }}
-      </div>
-    {% endif %}
-    <label for="id_title">piece's title:</label>
-    {{ form.title }}
-    {% if form.instance.file_type == 'image' %}
-      <img src="{{ form.instance.piece.url }}" alt="{{ form.title }}" />
-    {% elif form.instance.file_type == 'video' %}
-      <video width="320" height="240" controls>
-        <source src="{{ form.instance.piece.url }}" type="video/webm" />Your browser does not support the video tag.
-      </video>
+    {%  if user == object.user %}
+        <div class="container pt-4">
+            <form method="post">
+                {% csrf_token %}
+                {% crispy form %}
+            </form>
+        </div>
     {% else %}
-      <p>Unsupported file type</p>
+        <h1 class="text-center mt-5">You did not upload this!</h1>
     {% endif %}
-    <label for="id_piece">Piece:</label>
-    {{ form.piece }}
-    <label for="id_author">piece's author:</label>
-    {{ form.author }}
-    <label for="id_description">piece's description:</label>
-    {{ form.description }}
-    <label for="id_category">piece's category:</label>
-    {{ form.category }}
-    <label for="id_date_published">Publication date:</label>
-    {{ form.date_published }}
-    <input type="submit" value="Submit" />
-  </form>
 {% endblock %}
 {% block js %}
 

@@ -3,3 +3,18 @@ $poems-background-url: '../images/poems_background.png';
 @import "mixins";
 
 @include fully-covered-background($poems-background-url);
+
+$FELIXTI-font: '../fonts/FELIXTI.TTF';
+
+@font-face {
+  font-family: 'felixti';
+  src: url($FELIXTI-font);
+}
+
+a {
+  color: black;
+}
+
+h3 {
+  font-family: 'felixti', serif;
+}

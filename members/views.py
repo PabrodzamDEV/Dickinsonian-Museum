@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
 from django.contrib import messages
+from django.views.generic import DetailView
+
 from .models import Profile
 
 from members.forms import ProfileForm, SignUpForm
@@ -58,6 +60,11 @@ def register_member(request):
 @login_required()
 def my_profile(request):
     return render(request, "members/my_profile.html")
+
+
+class ProfileDetailView(DetailView):
+    model = Profile
+    template_name = 'members/profile_detail.html'
 
 
 @never_cache
