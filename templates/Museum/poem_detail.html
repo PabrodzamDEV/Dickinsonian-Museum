@@ -29,9 +29,9 @@
                         </div>
                     </div>
                 </div>
-            <div class="envelope-container">
-                <img src="{% static 'Museum/images/envelope-open.svg' %}" alt="envelope">
-            </div>
+                <div class="envelope-container">
+                    <img id="envelope" src="{% static 'Museum/images/envelope-closed.svg' %}" alt="envelope">
+                </div>
             </div>
             <div class="col-lg-8 col-12 order-lg-2 order-1">
                 <div class="container-fluid poem-container mb-5">
@@ -70,5 +70,7 @@
             </div>
         </div>
     </div>
-    </div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'Museum/js/poem_detail.js' %}"></script>
 {% endblock %}

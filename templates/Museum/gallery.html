@@ -29,21 +29,25 @@
         </div>
     {% endif %}
     <div class="row">
-        {% for i in page_obj|chunk:2 %}
+        {% for i in page_obj|chunk:5 %}
             <div class="col-lg-3">
                 {% for piece in i %}
                     <div class="piece-block">
-                        {% if piece.file_type == 'image' %}
-                            <img class="img-fluid mb-3" src="{{ piece.piece.url }}" alt="{{ piece.title }}"/>
-                        {% elif piece.file_type == 'video' %}
-                            <video class="mb-3" width="100%" height="auto" controls autoplay muted>
-                                <source src="{{ piece.piece.url }}" type="video/webm"/>
-                                Your browser does not support the video tag.
-                            </video>
-                        {% else %}
-                            <p>Unsupported file type: {{ piece.piece }}</p>
-                        {% endif %}
-                        <div class="overlay">{{ piece.title }}</div>
+                        <button class="modal-btn" type="button" data-bs-toggle="modal"
+                                data-bs-target="#galleryModal" data-piece-url="{{ piece.piece.url }}" data-piece-title="{{ piece.title }}"
+                                data-piece-author="{{ piece.author }}" data-piece-filetype="{{ piece.file_type }}">
+                            {% if piece.file_type == 'image' %}
+                                <img class="img-fluid mb-3" src="{{ piece.piece.url }}" alt="{{ piece.title }}"/>
+                            {% elif piece.file_type == 'video' %}
+                                <video class="mb-3" width="100%" height="auto" autoplay muted>
+                                    <source src="{{ piece.piece.url }}" type="video/webm"/>
+                                    Your browser does not support the video tag.
+                                </video>
+                            {% else %}
+                                <p>Unsupported file type: {{ piece.piece }}</p>
+                            {% endif %}
+                            <div class="overlay">{{ piece.title }}</div>
+                        </button>
                     </div>
                 {% endfor %}
             </div>
@@ -66,4 +70,24 @@
                 {% endif %}
             </span>
     </div>
+    <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="galleryModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">See details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'Museum/js/gallery.js' %}"></script>
 {% endblock %}
