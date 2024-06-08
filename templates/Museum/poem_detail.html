@@ -29,15 +29,16 @@
             <div class="col-lg-9 col-12 order-lg-2 order-1">
                 <div class="container-fluid poem-container">
                     <div class="row">
-                        <div class="col-lg-3 col-12"></div>
-                                <div class="uploader-profile-pic">
-                                    <a href="{% url 'my_members:members-profile-detail' object.user.profile.id %}">
+                        <div class="col-lg-3 col-12">
+                            <div class="uploader-profile-pic">
+                                <a href="{% url 'my_members:members-profile-detail' object.user.profile.id %}">
                                     {% if 'default' not in object.user.profile.avatar.name %}
                                         <img src="{% static 'Museum/images/seal_frame.png' %}" alt="Seal frame"/>
                                     {% endif %}
                                     <img src="{{ object.user.profile.avatar_url }}" alt="Profile picture"/>
-                                    </a>
-                                </div>
+                                </a>
+                            </div>
+                        </div>
                             <div class="container-fluid d-flex flex-column pt-3">
                                 <!-- Make sure only the user who uploaded the poem can edit it -->
                                 {% if user == object.user %}
