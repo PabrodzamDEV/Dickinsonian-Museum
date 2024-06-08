@@ -20,7 +20,9 @@ $FELIXTI-font: '../fonts/FELIXTI.TTF';
 
 .poem-list {
     display:none;
-    background-color: #FFFFFF;
+    background-color: #FFFFFF00;
+    background-image: url("../images/manyleaves.gif");
+    background-repeat: no-repeat;
 }
 
 .envelope-container {
@@ -36,13 +38,9 @@ $FELIXTI-font: '../fonts/FELIXTI.TTF';
     transition: transform 0.3s ease-in-out;
 }
 
-.more-poems:hover div {
-    display: inline-block;
-}
-
 .more-poems:hover {
-    transform: translateY(-10px);
-    animation: bounce 0.5s ease-in-out;
+   transform: translateY(-10px);
+   animation: bounce 0.5s ease-in-out;
 }
 
 @keyframes bounce {

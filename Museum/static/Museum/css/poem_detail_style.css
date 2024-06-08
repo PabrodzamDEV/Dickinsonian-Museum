@@ -13,7 +13,9 @@
 
 .poem-list {
   display: none;
-  background-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0);
+  background-image: url("../images/manyleaves.gif");
+  background-repeat: no-repeat;
 }
 
 .envelope-container {
@@ -27,10 +29,6 @@
   width: 100%;
   height: auto;
   transition: transform 0.3s ease-in-out;
-}
-
-.more-poems:hover div {
-  display: inline-block;
 }
 
 .more-poems:hover {
