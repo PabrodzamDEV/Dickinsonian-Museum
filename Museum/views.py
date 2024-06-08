@@ -151,7 +151,7 @@ class GalleryPieceListView(ListView):
     model = GalleryPiece
     template_name = "Museum/gallery.html"
     context_object_name = "gallery_pieces"
-    ordering = ["?"]
+    ordering = ["-updated_at"]
     paginate_by = 8
 
     def get_context_data(self, **kwargs):
