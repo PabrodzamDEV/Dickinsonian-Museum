@@ -145,8 +145,7 @@ class Essay(models.Model):
     # Returns the pdf cover as a base64 string in order to display it on a template
     def get_pdf_cover(self):
         if self.file:
-            images = convert_from_path(self.file.path, first_page=1, last_page=1,
-                                       poppler_path=r"C:\Users\pablo\Downloads\Poppler Release-24.02.0-0\poppler-24.02.0\Library\bin")
+            images = convert_from_path(self.file.path, first_page=1, last_page=1)
             # Convert the first page to an image
             image = images[0]
 
