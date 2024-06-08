@@ -14,6 +14,49 @@ $FELIXTI-font: '../fonts/FELIXTI.TTF';
     color : #E17B75;
 }
 
+.more-poems {
+    position: relative;
+}
+
+.poem-list {
+    display:none;
+    background-color: #FFFFFF;
+}
+
+.envelope-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: auto;
+}
+
+.envelope-container img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.more-poems:hover div {
+    display: inline-block;
+}
+
+.more-poems:hover {
+    transform: translateY(-10px);
+    animation: bounce 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
 @include responsive-poem-header(poem-header);
 
 #poem-header {

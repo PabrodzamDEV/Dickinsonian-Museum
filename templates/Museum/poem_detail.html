@@ -16,18 +16,25 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-12 order-lg-1 order-2 pt-5">
-                <h2 class="text-center">MORE POEMS</h2>
-                <div class="container text-center">
-                    {% for poem in random_poems %}
-                        <a href="{% url 'museum-poem-detail' poem.id %}">
-                            <p>{{ poem.title }}</p>
-                        </a>
-                    {% endfor %}
+            <div class="col-lg-4 col-12 order-lg-1 order-2 pt-3 more-poems">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="poem-list p-5 w-75">
+                        <h2 class="text-center">MORE POEMS</h2>
+                        <div class="container text-center">
+                            {% for poem in random_poems %}
+                                <a href="{% url 'museum-poem-detail' poem.id %}">
+                                    <p>{{ poem.title }}</p>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
+            <div class="envelope-container">
+                <img src="{% static 'Museum/images/envelope-open.svg' %}" alt="envelope">
             </div>
-            <div class="col-lg-9 col-12 order-lg-2 order-1">
-                <div class="container-fluid poem-container">
+            </div>
+            <div class="col-lg-8 col-12 order-lg-2 order-1">
+                <div class="container-fluid poem-container mb-5">
                     <div class="row">
                         <div class="col-lg-3 col-12">
                             <div class="uploader-profile-pic">
@@ -39,29 +46,29 @@
                                 </a>
                             </div>
                         </div>
-                            <div class="container-fluid d-flex flex-column pt-3">
-                                <!-- Make sure only the user who uploaded the poem can edit it -->
-                                {% if user == object.user %}
-                                    <a class="mb-2" href="{% url 'museum-poem-update' object.id %}">
-                                        <i class="fa-solid fa-pen-nib"></i>
-                                        Edit
-                                    </a>
-                                    <a href="{% url 'museum-poem-delete' object.id %}">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                        Delete
-                                    </a>
-                                {% endif %}
-                            </div>
+                        <div class="container-fluid d-flex flex-column pt-3">
+                            <!-- Make sure only the user who uploaded the poem can edit it -->
+                            {% if user == object.user %}
+                                <a class="mb-2" href="{% url 'museum-poem-update' object.id %}">
+                                    <i class="fa-solid fa-pen-nib"></i>
+                                    Edit
+                                </a>
+                                <a href="{% url 'museum-poem-delete' object.id %}">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                    Delete
+                                </a>
+                            {% endif %}
                         </div>
-                        <div class="col-lg-9 col-12 pt-3 mb-3">
-                            <h5 class="mb-4">
-                                From: <b>{{ object.author }}</b>
-                            </h5>
-                            {{ object.content|safe }}
-                        </div>
+                    </div>
+                    <div class="col-lg-9 col-12 pt-3 mb-3">
+                        <h5 class="mb-4">
+                            From: <b>{{ object.author }}</b>
+                        </h5>
+                        {{ object.content|safe }}
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 {% endblock %}
