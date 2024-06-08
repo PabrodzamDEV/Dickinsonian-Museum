@@ -29,7 +29,7 @@
         </div>
     {% endif %}
     <div class="row">
-        {% for i in page_obj|chunk:5 %}
+        {% for i in page_obj|chunk:2 %}
             <div class="col-lg-3">
                 {% for piece in i %}
                     <div class="piece-block">
