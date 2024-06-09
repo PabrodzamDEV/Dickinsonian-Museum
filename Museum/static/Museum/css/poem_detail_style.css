@@ -2,6 +2,10 @@
   font-family: "felixti";
   src: url("../fonts/FELIXTI.TTF");
 }
+@font-face {
+  font-family: "literata";
+  src: url("../fonts/Literata.ttf");
+}
 #poem-line {
   border: 4px solid #E17B75;
   color: #E17B75;
@@ -9,6 +13,7 @@
 
 .more-poems {
   position: relative;
+  font-family: "literata", sans-serif;
 }
 
 .poem-list {
@@ -16,6 +21,10 @@
   background-color: rgba(255, 255, 255, 0);
   background-image: url("../images/manyleaves.gif");
   background-repeat: no-repeat;
+}
+
+h4:hover {
+  color: blue;
 }
 
 .envelope-container {
@@ -92,9 +101,8 @@
 
 .uploader-profile-pic {
   position: relative;
-  width: 152px;
-  height: 176px;
-  margin-right: 10px;
+  width: 156px;
+  height: 172px;
 }
 
 .uploader-profile-pic img {

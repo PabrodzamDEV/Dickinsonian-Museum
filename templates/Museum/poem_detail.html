@@ -10,20 +10,20 @@
 {% block content %}
     <div class="container-fluid pt-5">
         <div class="row">
-            <div class="container">
-                <p id="poem-header" class="text-end me-5">{{ poem.title }}</p>
+            <div class="col-12">
+                <p id="poem-header" class="text-end me-5 text-break">{{ poem.title }}</p>
                 <p id="poem-line"></p>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-12 order-lg-1 order-2 pt-3 more-poems">
+            <div class="col-lg-4 col-md-6 col-12 order-lg-1 order-md-1 order-2 pt-3 more-poems">
                 <div class="d-flex flex-column align-items-center justify-content-center">
-                    <div class="poem-list p-5 w-75">
-                        <h2 class="text-center">MORE POEMS</h2>
+                    <div class="poem-list">
+                        <h2 class="text-center mb-3">READ A RANDOM POEM</h2>
                         <div class="container text-center">
                             {% for poem in random_poems %}
                                 <a href="{% url 'museum-poem-detail' poem.id %}">
-                                    <p>{{ poem.title }}</p>
+                                    <h4>{{ poem.title }}</h4>
                                 </a>
                             {% endfor %}
                         </div>
@@ -33,16 +33,16 @@
                     <img id="envelope" src="{% static 'Museum/images/envelope-closed.svg' %}" alt="envelope">
                 </div>
             </div>
-            <div class="col-lg-8 col-12 order-lg-2 order-1">
+            <div class="col-lg-8 col-md-6 col-12 order-lg-2 order-md-2 order-1">
                 <div class="container-fluid poem-container mb-5">
                     <div class="row">
-                        <div class="col-lg-3 col-12">
+                        <div>
                             <div class="uploader-profile-pic">
                                 <a href="{% url 'my_members:members-profile-detail' object.user.profile.id %}">
                                     {% if 'default' not in object.user.profile.avatar.name %}
                                         <img src="{% static 'Museum/images/seal_frame.png' %}" alt="Seal frame"/>
                                     {% endif %}
-                                    <img src="{{ object.user.profile.avatar_url }}" alt="Profile picture"/>
+                                    <img class="img-fluid" src="{{ object.user.profile.avatar_url }}" alt="Profile picture"/>
                                 </a>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                             {% endif %}
                         </div>
                     </div>
-                    <div class="col-lg-9 col-12 pt-3 mb-3">
+                    <div class="pt-3 mb-3">
                         <h5 class="mb-4">
                             From: <b>{{ object.author }}</b>
                         </h5>
