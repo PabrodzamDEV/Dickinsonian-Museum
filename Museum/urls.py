@@ -20,6 +20,7 @@ urlpatterns = [
     ),
     # Class-based views for the gallery
     path("gallery/", views.GalleryPieceListView.as_view(), name="gallery"),
+    path("gallery/<int:pk>/", views.GalleryPieceDetailView.as_view(), name="museum-gallerypiece-detail"),
     path(
         "gallery/new/",
         views.GalleryPieceCreateView.as_view(),

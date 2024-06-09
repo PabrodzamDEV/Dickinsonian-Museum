@@ -178,6 +178,28 @@ class GalleryPieceCategoryListView(GalleryPieceListView):
 
 
 """
+Class-based view which renders a specific gallery piece present in the
+database.
+
+    extends:
+django.views.generic.detail.DetailView
+
+"""
+
+
+class GalleryPieceDetailView(DetailView):
+    model = GalleryPiece
+    template_name = 'Museum/gallerypiece_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Adds a new variable to the context consisting of a dictionary of dictionaries with
+        # three random poems
+        context['random_pieces'] = GalleryPiece.objects.order_by('?')[:5]
+        return context
+
+
+"""
 Class-based view which renders a creation form for a gallery piece.
 
     extends:
