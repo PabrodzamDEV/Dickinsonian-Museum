@@ -6,7 +6,7 @@
 }
 
 .pdf-cover {
-  width: 20em;
+  width: 50%;
   height: auto;
   object-fit: contain;
 }

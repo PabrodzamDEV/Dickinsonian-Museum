@@ -10,7 +10,7 @@
 {% block content %}
     <div class="container-fluid pt-5">
         <div class="row">
-            <div class="col">
+            <div class="col d-flex flex-column align-items-center justify-content-center">
                 <figure>
                     {% if object.file_type == 'image' %}
                         <img class="img-fluid mb-3" src="{{ object.piece.url }}" alt="{{ object.title }}"/>
@@ -34,6 +34,21 @@
                 <p class="text-end me-5 text-break">{{ object.description|safe }}</p>
             </div>
         </div>
+    <div class="row">
+        <div class="col">
+            <!-- Make sure only the user who uploaded the poem can edit it -->
+            {% if user == object.user %}
+                <a class="mb-2" href="{% url 'museum-gallerypiece-update' object.id %}">
+                    <i class="fa-solid fa-pen-nib"></i>
+                    Edit
+                </a>
+                <a href="{% url 'museum-gallerypiece-delete' object.id %}">
+                    <i class="fa-solid fa-trash-can"></i>
+                    Delete
+                </a>
+            {% endif %}
+        </div>
+    </div>
     </div>
 {% endblock %}
 {% block js %}
