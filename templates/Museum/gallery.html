@@ -35,7 +35,8 @@
                     <div class="piece-block">
                         <button class="modal-btn" type="button" data-bs-toggle="modal"
                                 data-bs-target="#galleryModal" data-piece-url="{{ piece.piece.url }}" data-piece-title="{{ piece.title }}"
-                                data-piece-author="{{ piece.author }}" data-piece-filetype="{{ piece.file_type }}">
+                                data-piece-author="{{ piece.author }}" data-piece-filetype="{{ piece.file_type }}" 
+                                data-piece-detailurl="{% url 'museum-gallerypiece-detail' piece.id %}">
                             {% if piece.file_type == 'image' %}
                                 <img class="img-fluid mb-3" src="{{ piece.piece.url }}" alt="{{ piece.title }}"/>
                             {% elif piece.file_type == 'video' %}
@@ -82,7 +83,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">See details</button>
+                    <button type="button" class="btn btn-primary btn-detail">See details</button>
                 </div>
             </div>
         </div>

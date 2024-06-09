@@ -1,0 +1,20 @@
+{% extends 'Museum/parent.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'Museum/css/poems_style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'Museum/css/gallerypiece_detail_style.css' %}"/>
+{% endblock %}
+{% block title %}
+    Piece Detail
+{% endblock %}
+{% block content %}
+    <div class="container-fluid pt-5">
+        <div class="row">
+            <div class="col-12">
+                <p class="text-end me-5 text-break">{{ object.title }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+{% endblock %}

@@ -8,19 +8,29 @@ $(document).ready(function () {
         var pieceTitle = button.data('piece-title');
         var pieceAuthor = button.data('piece-author');
         var pieceFileType = button.data('piece-filetype');
-        console.log(pieceFileType)
+        var pieceDetailUrl = button.data('piece-detailurl')
 
-        // Update the modal's content.
-        var modalBody = $(this).find('.modal-body');
-
-        if (pieceFileType === 'image') {
-            modalBody.html('<img src="' + pieceUrl + '" alt="' + pieceTitle + '" class="img-fluid">');
-        } else if (pieceFileType === 'video') {
-            modalBody.html('<video width="100%" height="auto" src="' + pieceUrl + '" type="video/webm" controls autoplay muted>Your browser does not support the video tag.</video>');
-        }
+        // Update the modal's content
+        updateModalContent(pieceUrl, pieceTitle, pieceFileType);
 
         // Update the modal's title
         var modalTitle = $(this).find('.modal-title');
         modalTitle.html("<b>" + pieceAuthor + "</b>" + "<br>" + "<i>" + pieceTitle + "</i>");
+
+        // Add click event handler for the detail button that takes the user to the detail view
+        var butonDetail = $(this).find('.btn-detail');
+        butonDetail.click(function(){
+            window.location.href = pieceDetailUrl
+        });
     });
 });
+
+function updateModalContent(pieceUrl, pieceTitle, pieceFileType) {
+    var modalBody = $('#galleryModal').find('.modal-body');
+
+    if (pieceFileType === 'image') {
+        modalBody.html('<img src="' + pieceUrl + '" alt="' + pieceTitle + '" class="img-fluid">');
+    } else if (pieceFileType === 'video') {
+        modalBody.html('<video width="100%" height="auto" src="' + pieceUrl + '" type="video/webm" controls autoplay muted>Your browser does not support the video tag.</video>');
+    }
+}
