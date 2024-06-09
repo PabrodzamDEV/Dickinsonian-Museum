@@ -80,7 +80,7 @@ class PoemDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         # Adds a new variable to the context consisting of a dictionary of dictionaries with
         # three random poems
-        context['random_poems'] = Poem.objects.order_by('?')[:3]
+        context['random_poems'] = Poem.objects.order_by('?')[:5]
         return context
 
 
