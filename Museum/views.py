@@ -326,16 +326,6 @@ django.views.generic.edit.UpdateView
 class EssayUpdateView(LoginRequiredMixin, UpdateView):
     model = Essay
     form_class = EssayUpdateForm
-    fields = [
-        "title",
-        "author",
-        "file",
-        "is_academic",
-        "abstract",
-        "category",
-        "language",
-        "date_published",
-    ]
     template_name_suffix = "_update_form"
     success_url = reverse_lazy("essays")
 

@@ -2,3 +2,8 @@ $essays-background-url: '../images/essays_background.png';
 @import "mixins";
 
 @include fully-covered-background($essays-background-url);
+
+.accordion-button:not(.collapsed) {
+  background-image: linear-gradient(to bottom right, #CF5C43, #b1bbbc) !important;
+  border-color: black !important;
+}
