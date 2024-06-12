@@ -137,7 +137,7 @@ class GalleryPieceAdmin(admin.ModelAdmin):
     form = GalleryPieceForm
 
     list_display = (
-        'title', 'piece_tag', 'piece', 'author', 'description', 'category', 'user', 'date_published', 'updated_at')
+        'title', 'piece_tag', 'piece', 'author', 'category', 'user', 'date_published', 'updated_at')
     search_fields = ['title', 'author', 'description', 'category', 'user__username', 'date_published', 'updated_at']
     list_filter = [CenturyFilter, 'author', 'category', 'user', 'date_published', 'updated_at']
     ordering = ['-updated_at']
