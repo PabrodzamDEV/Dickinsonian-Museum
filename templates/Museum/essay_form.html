@@ -9,7 +9,7 @@
 {% endblock %}
 {% block content %}
     <div class="container pt-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% crispy form %}
         </form>

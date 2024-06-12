@@ -147,7 +147,8 @@ class EssayForm(forms.ModelForm):
                   "user"]
         widgets = {
             "abstract": CKEditor5Widget(attrs={"class": "django_ckeditor_5"}),
-            "date_published": forms.SelectDateWidget(years=range(0, datetime.now().year + 1)),
+            "date_published": forms.SelectDateWidget(
+                years=range(datetime.now().year + 1, 1500, -1)),
         }
 
     # Only allow .pdf files as essays
