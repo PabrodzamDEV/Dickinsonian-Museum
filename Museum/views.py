@@ -11,7 +11,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from Museum.models import Poem, GalleryPiece, Essay
 
 from .forms import PoemForm, GalleryPieceForm, EssayForm, PoemCreateForm, PoemUpdateForm, GalleryPieceCreateForm, \
-    GalleryPieceUpdateForm
+    GalleryPieceUpdateForm, EssayCreateForm, EssayUpdateForm
 
 from django.db.models import Count
 
@@ -80,7 +80,7 @@ class PoemDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         # Adds a new variable to the context consisting of a dictionary of dictionaries with
         # three random poems
-        context['random_poems'] = Poem.objects.order_by('?')[:3]
+        context['random_poems'] = Poem.objects.order_by('?')[:5]
         return context
 
 
@@ -151,7 +151,7 @@ class GalleryPieceListView(ListView):
     model = GalleryPiece
     template_name = "Museum/gallery.html"
     context_object_name = "gallery_pieces"
-    ordering = ["?"]
+    ordering = ["-updated_at"]
     paginate_by = 20
 
     def get_context_data(self, **kwargs):
@@ -175,6 +175,28 @@ GalleryPieceListView
 class GalleryPieceCategoryListView(GalleryPieceListView):
     def get_queryset(self):
         return GalleryPiece.objects.filter(category=self.kwargs['category'])
+
+
+"""
+Class-based view which renders a specific gallery piece present in the
+database.
+
+    extends:
+django.views.generic.detail.DetailView
+
+"""
+
+
+class GalleryPieceDetailView(DetailView):
+    model = GalleryPiece
+    template_name = 'Museum/gallerypiece_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Adds a new variable to the context consisting of a dictionary of dictionaries with
+        # three random poems
+        context['random_pieces'] = GalleryPiece.objects.order_by('?')[:5]
+        return context
 
 
 """
@@ -247,6 +269,7 @@ class EssayListView(ListView):
     template_name = "Museum/essays.html"
     context_object_name = "essays"
     ordering = ["-updated_at"]
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -282,7 +305,7 @@ django.views.generic.edit.CreateView
 
 class EssayCreateView(LoginRequiredMixin, CreateView):
     model = Essay
-    form_class = EssayForm
+    form_class = EssayCreateForm
     template_name = "Museum/essay_form.html"
     success_url = reverse_lazy("essays")
 
@@ -302,16 +325,7 @@ django.views.generic.edit.UpdateView
 
 class EssayUpdateView(LoginRequiredMixin, UpdateView):
     model = Essay
-    fields = [
-        "title",
-        "author",
-        "file",
-        "is_academic",
-        "abstract",
-        "category",
-        "language",
-        "date_published",
-    ]
+    form_class = EssayUpdateForm
     template_name_suffix = "_update_form"
     success_url = reverse_lazy("essays")
 

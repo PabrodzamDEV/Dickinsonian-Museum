@@ -18,3 +18,40 @@ a {
 h3 {
   font-family: 'felixti', serif;
 }
+
+.card {
+  border-radius: 0;
+  height: 100%;
+}
+
+/* nature poems */
+.nature {
+  background-image: linear-gradient(to bottom right, #BABF30, #b1bbbc);
+}
+
+/* love poems */
+.love {
+  background-image: linear-gradient(to bottom right, #8C0303, #b1bbbc);
+}
+
+/* life poems */
+.life {
+  background-image: linear-gradient(to bottom right, #A65221, #b1bbbc);
+}
+
+/* death poems */
+.death {
+  background-image: linear-gradient(to bottom right, #7787a1, #b1bbbc);
+}
+
+/* reflection poems */
+.reflection {
+  background-image: linear-gradient(to bottom right, #F2DEA2, #b1bbbc);
+}
+
+/* other poems */
+.other {
+  background-image: linear-gradient(to bottom right, #AAB7BF, #ffffff);
+}
+
+

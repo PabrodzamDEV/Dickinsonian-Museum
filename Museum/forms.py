@@ -140,7 +140,6 @@ class EssayForm(forms.ModelForm):
         self.fields["category"].required = True
         self.fields["language"].required = True
         self.fields["date_published"].required = False
-        self.fields["user"].required = False
 
     class Meta:
         model = Essay
@@ -148,7 +147,8 @@ class EssayForm(forms.ModelForm):
                   "user"]
         widgets = {
             "abstract": CKEditor5Widget(attrs={"class": "django_ckeditor_5"}),
-            "date_published": forms.SelectDateWidget(years=range(0, datetime.now().year + 1)),
+            "date_published": forms.SelectDateWidget(
+                years=range(datetime.now().year + 1, 1500, -1)),
         }
 
     # Only allow .pdf files as essays
@@ -159,3 +159,17 @@ class EssayForm(forms.ModelForm):
             if not file.name.endswith('.pdf'):
                 raise forms.ValidationError("Only PDF files are allowed.")
             return file
+
+
+class EssayCreateForm(EssayForm):
+    helper = FormHelper()
+    helper.add_input(Submit('submit', 'Create essay', css_class='btn-primary'))
+    helper.form_method = 'POST'
+
+    class Meta(EssayForm.Meta):
+        exclude = ["user"]
+
+
+class EssayUpdateForm(EssayCreateForm):
+    helper = FormHelper()
+    helper.add_input(Submit('submit', 'Update essay', css_class='btn-primary'))

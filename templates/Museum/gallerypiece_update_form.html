@@ -2,7 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block head %}
-  <link rel="stylesheet" href="{% static 'Museum/css/creation_form_style.css' %}" />
+    <link rel="stylesheet" href="{% static 'Museum/css/gallery_style.css' %}" />
 {% endblock %}
 {% block title %}
   Update Piece
@@ -10,7 +10,7 @@
 {% block content %}
     {%  if user == object.user %}
         <div class="container pt-4">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% crispy form %}
             </form>
