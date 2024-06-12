@@ -27,13 +27,13 @@
             </div>
         </div>
     {% endif %}
-    <div class="container-fluid mb-5">
+    <div class="container-fluid mb-5 p-5">
         <div class="accordion col-12" id="accordionPanelsStayOpenExample">
             {% for essay in essays %}
-                <div class="accordion-item">
+                <div class="accordion-item mb-3">
                     <h2 class="accordion-header" id="panelsStayOpen-heading{{ essay.id }}">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{ essay.id }}" aria-expanded="true" aria-controls="panelsStayOpen-collapse{{ essay.id }}">
-                            <img class="user-avatar" src="{{ essay.user.profile.avatar_url }}" alt="avatar picture"/>
+                            <img class="user-avatar me-3" src="{{ essay.user.profile.avatar_url }}" alt="avatar picture"/>
                             {{ essay.title }}
                         </button>
                     </h2>
@@ -44,7 +44,7 @@
                                 By: <b>{{ essay.author }}</b>
                             </p>
                             <div class="d-flex flex-row">
-                                <img class="pdf-cover" src="data:image/png;base64,{{ essay.get_pdf_cover }}" alt="{{ essay.title }}"/>
+                                <img class="pdf-cover me-3" src="data:image/png;base64,{{ essay.get_pdf_cover }}" alt="{{ essay.title }}"/>
                                 {{ essay.abstract|safe }}
                             </div>
                             <!-- Make sure only the user who uploaded the essay can edit it -->
