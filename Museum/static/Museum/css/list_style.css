@@ -1,14 +1,14 @@
 .user-avatar {
-    width: 3em;
-    height: 3em;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .pdf-cover {
-    width: 25%;
-    height: auto;
-    object-fit: contain;
+  width: 25%;
+  height: auto;
+  object-fit: contain;
 }
 
 /*# sourceMappingURL=list_style.css.map */

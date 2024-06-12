@@ -3,6 +3,11 @@ $image-height: auto;
 $location-color: #F20505;
 $edit-color: #fff;
 
+$profile-background-url: '../images/profile_background.png';
+
+@import "mixins";
+
+@include fully-covered-background($profile-background-url);
 
 #profile_image {
     border-radius: 15%;
