@@ -1,15 +1,15 @@
 body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background-image: url("../images/essays_background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-image: url("../images/essays_background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .accordion-button:not(.collapsed) {
-  background-image: linear-gradient(to bottom right, #CF5C43, #b1bbbc) !important;
-  border-color: black !important;
+    background-image: linear-gradient(to bottom right, #CF5C43, #b1bbbc) !important;
+    border-color: black !important;
 }
 
 /*# sourceMappingURL=essays_style.css.map */
