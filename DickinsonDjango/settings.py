@@ -137,10 +137,8 @@ STATICFILES_DIRS = [
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT = env('STATIC_ROOT')
-
 MEDIA_URL = '/media/'
-MEDIA_ROOT = env('MEDIA_ROOT')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 customColorPalette = [
     {
