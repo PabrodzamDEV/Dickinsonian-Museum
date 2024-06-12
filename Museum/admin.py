@@ -85,12 +85,12 @@ class CenturyFilter(admin.SimpleListFilter):
 @admin.action(description="Generate monthly poems report")
 def generate_monthly_poems_report(modeladmin, request, queryset):
     # Get the earliest date
-    date_range = queryset.aggregate(
+    earliest_date = queryset.aggregate(
         earliest_date=Min('updated_at')
     )
 
-    earliest_date_year = int(date_range['earliest_date'].strftime("%Y"))
-    earliest_date_month = int(date_range['earliest_date'].strftime("%m"))
+    earliest_date_year = int(earliest_date['earliest_date'].strftime("%Y"))
+    earliest_date_month = int(earliest_date['earliest_date'].strftime("%m"))
 
     input_file = os.path.join(JRXML_DIR, 'month_poems.jasper')
     output_file = os.path.join(REPORTS_DIR,
