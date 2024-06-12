@@ -137,10 +137,10 @@ STATICFILES_DIRS = [
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT = '/var/www/dickinsondjango/static/'
+STATIC_ROOT = env('STATIC_ROOT')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/var/www/dickinsondjango/media/'
+MEDIA_ROOT = env('MEDIA_ROOT')
 
 customColorPalette = [
     {
