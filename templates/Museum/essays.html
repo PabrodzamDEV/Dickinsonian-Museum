@@ -47,6 +47,11 @@
                                 <img class="pdf-cover me-3" src="data:image/png;base64,{{ essay.get_pdf_cover }}" alt="{{ essay.title }}"/>
                                 {{ essay.abstract|safe }}
                             </div>
+                            <div class="d-flex flex-row justify-content-end">
+                                <a href="{% url 'museum-essay-detail' essay.id %}">
+                                    <button class="btn btn-primary">See Details</button>
+                                </a>
+                            </div>
                             <!-- Make sure only the user who uploaded the essay can edit it -->
                             {% if user == essay.user %}
                                 <a href="{% url 'museum-essay-update' essay.id %}">Edit essay</a>

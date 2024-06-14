@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.http import FileResponse
+from django.shortcuts import render, get_object_or_404
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -292,6 +293,41 @@ EssayListView
 class EssayCategoryListView(EssayListView):
     def get_queryset(self):
         return Essay.objects.filter(category=self.kwargs['category'])
+
+
+"""
+Class-based view which renders a detail view for an essay.
+
+    extends:
+django.views.generic.edit.DetailView
+
+"""
+
+
+class EssayDetailView(DetailView):
+    model = Essay
+    template_name = 'Museum/essay_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Adds a new variable to the context consisting of a dictionary of dictionaries with
+        # three random poems
+        context['random_essays'] = Essay.objects.order_by('?')[:5]
+        return context
+
+
+"""
+View which downloads an essay's pdf file.
+
+"""
+
+
+def download_essay(request, pk):
+    essay = get_object_or_404(Essay, pk=pk)
+    response = FileResponse(essay.file)
+    filename = essay.title + ".pdf"
+    response['Content-Disposition'] = 'attachment; filename="%s"' % filename
+    return response
 
 
 """

@@ -1,0 +1,7 @@
+$pdf-cover-size: 100%;
+
+.pdf-cover {
+  width: $pdf-cover-size;
+  height:auto;
+  object-fit: contain;
+}
