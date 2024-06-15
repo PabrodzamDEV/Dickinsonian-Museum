@@ -39,6 +39,8 @@ urlpatterns = [
     ),
     # Class-based views for essays
     path("essays/", views.EssayListView.as_view(), name="essays"),
+    path("essays/<int:pk>", views.EssayDetailView.as_view(), name="museum-essay-detail"),
+    path("essays/<int:pk>/download", views.download_essay, name="museum-essay-download"),
     path("essays/new/", views.EssayCreateView.as_view(), name="museum-essay-create"),
     path('essays/<str:category>/', views.EssayCategoryListView.as_view(), name='essays_by_category'),
     path(

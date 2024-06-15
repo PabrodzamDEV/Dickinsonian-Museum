@@ -1,0 +1,45 @@
+{% extends 'Museum/parent.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'Museum/css/essays_style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'Museum/css/essay_detail_style.css' %}"/>
+{% endblock %}
+{% block title %}
+    Essay Detail
+{% endblock %}
+{% block content %}
+    <div class="container-fluid pt-5">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="d-flex flex-row align-items-start">
+                    <img class="pdf-cover me-3" src="data:image/png;base64,{{ essay.get_pdf_cover }}" alt="{{ object.title }}"/>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <a href="{% url 'museum-essay-download' object.id %}" download="{{ object.title }}">
+                    <button type="button" class="btn btn-danger mb-5">Download PDF</button>
+                </a>
+                <h1>{{ object.title }}</h1>
+                <p><strong>Author:</strong> {{ object.author }}</p>
+                {{ object.abstract|safe }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <!-- Make sure only the user who uploaded the poem can edit it -->
+                {% if user == object.user %}
+                    <a class="mb-2" href="{% url 'museum-gallerypiece-update' object.id %}">
+                        <i class="fa-solid fa-pen-nib"></i>
+                        Edit
+                    </a>
+                    <a href="{% url 'museum-gallerypiece-delete' object.id %}">
+                        <i class="fa-solid fa-trash-can"></i>
+                        Delete
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+{% endblock %}
