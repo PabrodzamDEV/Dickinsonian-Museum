@@ -10,6 +10,8 @@ from django.contrib.auth.models import User
 
 from pdf2image import convert_from_path
 
+from DickinsonDjango.settings import env
+
 
 class Poem(models.Model):
     CATEGORY_CHOICES = [
