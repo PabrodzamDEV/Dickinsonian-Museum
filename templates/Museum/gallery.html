@@ -54,22 +54,40 @@
             </div>
         {% endfor %}
     </div>
-    <div class="pagination">
-            <span class="step-links">
+    <div class="container pagination-section mt-5">
+        <div class="row">
+            <div class="col-3 d-flex justify-content-center">
                 {% if page_obj.has_previous %}
-                    <a href="?page=1">&laquo; first</a>
-                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    <a class="pagination-link" href="?page=1">
+                        <button class="pagination-btn">
+                            <i class="fa-solid fa-backward"></i>
+                        </button>
+                    </a>
+                    <a class="pagination-link" href="?page={{ page_obj.previous_page_number }}">
+                        <button class="pagination-btn ms-3">
+                            <i class="fa-solid fa-caret-left"></i>
+                        </button>
+                    </a>
                 {% endif %}
-
-                <span class="current">
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                </span>
-
+            </div>
+            <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+                <p class="m-0">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</p>
+            </div>
+            <div class="col-3 d-flex justify-content-center">
                 {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}">next</a>
-                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    <a class="pagination-link" href="?page={{ page_obj.next_page_number }}">
+                        <button class="pagination-btn me-3">
+                            <i class="fa-solid fa-caret-right"></i>
+                        </button>
+                    </a>
+                    <a class="pagination-link" href="?page={{ page_obj.paginator.num_pages }}">
+                        <button class="pagination-btn">
+                            <i class="fa-solid fa-forward"></i>
+                        </button>
+                    </a>
                 {% endif %}
-            </span>
+            </div>
+        </div>
     </div>
     <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
         <div class="modal-dialog">

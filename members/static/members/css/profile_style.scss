@@ -1,18 +1,37 @@
-$image-width: 100%;
-$image-height: auto;
+$image-size: 20em;
 $location-color: #F20505;
-$edit-color: #fff;
+$edit-color: #A65353;
 
+$playwrightNL: '../fonts/PlaywriteNL-VariableFont_wght.ttf';
+
+@font-face {
+  font-family: 'playwrightNL';
+  src: url($playwrightNL);
+}
+
+$profile-background-url: '../images/profile_background.png';
+
+@import "mixins";
+
+@include fully-covered-background($profile-background-url);
 
 #profile_image {
-    border-radius: 15%;
-    width: $image-width;
-    height: $image-height;
+  width: $image-size;
+  height: $image-size;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+h2 {
+  font-family: 'playwrightNL', sans-serif;
+  color: #042940;
 }
 
 .bio {
   text-align: justify;
   text-justify: inter-word;
+  font-size: 20px;
 }
 
 .location {
@@ -40,7 +59,7 @@ a {
   background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
   -webkit-background-clip: text;
   color: transparent;
-  font-size: 30px; /* Change this to the size you want */
+  font-size: 30px;
 }
 
 

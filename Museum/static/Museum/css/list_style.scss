@@ -1,6 +1,11 @@
 $user-avatar-size: 3em;
 $pdf-cover-size: 25%;
+$playwrightNL: '../fonts/PlaywriteNL-VariableFont_wght.ttf';
 
+@font-face {
+    font-family: 'playwrightNL';
+    src: url($playwrightNL);
+}
 
 .user-avatar {
     width: $user-avatar-size;
@@ -13,4 +18,18 @@ $pdf-cover-size: 25%;
     width: $pdf-cover-size;
     height:auto;
     object-fit: contain;
+}
+
+.pagination-section {
+    height: 3.5rem;
+    font-family: 'playwrightNL', sans-serif;
+}
+
+.pagination-link {
+    text-decoration: none;
+}
+
+.pagination-btn {
+    background: none;
+    border: none;
 }
