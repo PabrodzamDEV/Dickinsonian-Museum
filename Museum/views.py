@@ -11,7 +11,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from Museum.models import Poem, GalleryPiece, Essay
 
-from .forms import PoemForm, GalleryPieceForm, EssayForm, PoemCreateForm, PoemUpdateForm, GalleryPieceCreateForm, \
+from .forms import PoemCreateForm, PoemUpdateForm, GalleryPieceCreateForm, \
     GalleryPieceUpdateForm, EssayCreateForm, EssayUpdateForm
 
 from django.db.models import Count
