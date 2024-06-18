@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "playwrightNL";
+  src: url("../fonts/PlaywriteNL-VariableFont_wght.ttf");
+}
 body {
   margin: 0;
   padding: 0;
@@ -8,14 +12,22 @@ body {
 }
 
 #profile_image {
-  border-radius: 15%;
-  width: 100%;
-  height: auto;
+  width: 20em;
+  height: 20em;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+h2 {
+  font-family: "playwrightNL", sans-serif;
+  color: #042940;
 }
 
 .bio {
   text-align: justify;
   text-justify: inter-word;
+  font-size: 20px;
 }
 
 .location {
@@ -24,7 +36,7 @@ body {
 
 a {
   text-decoration: None;
-  color: #fff;
+  color: #A65353;
 }
 
 .material-symbols-outlined {
@@ -39,7 +51,7 @@ a {
   background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
   -webkit-background-clip: text;
   color: transparent;
-  font-size: 30px; /* Change this to the size you want */
+  font-size: 30px;
 }
 
 /*# sourceMappingURL=profile_style.css.map */

@@ -8,13 +8,14 @@
     Profile
 {% endblock %}
 {% block content %}
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-12 mb-4">
-                <img id="profile_image" src="{{ object.avatar_url }}" alt="profile picture" />
+                <img id="profile_image" src="{{ object.avatar_url }}" alt="profile picture" data-bs-toggle="modal"
+                     data-bs-target="#imageModal">
             </div>
             <div class="col-lg-6 col-md-6 col-12">
-                <h2 class="mb-3">{{ object.username }}</h2>
+                <h2 class="mb-5">{{ object.user.username }}</h2>
                 <div class="bio">{{ object.bio }}</div>
             </div>
         </div>
@@ -24,5 +25,14 @@
         <P class="mt-3">
             <span class="material-symbols-large material-symbols-outlined material-symbols-celebration">celebration</span>{{ object.birth_date }}
         </P>
+    </div>
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img id="modal_image" src="{{ object.avatar_url }}" alt="Avatar" class="img-fluid">
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
