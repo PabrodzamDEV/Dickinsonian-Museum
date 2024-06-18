@@ -14,7 +14,7 @@
 
 POST http://localhost:8000/api/poems/
 Content-Type: application/json
-Authorization: Token 6e09877ec943363a62e25f975d2f8dea9f7cdbea
+Authorization: 82a8e63b8e36d9570b25c0c57c71edff89cd35d9
 
 {
   "title": "My New Poem",
@@ -22,7 +22,7 @@ Authorization: Token 6e09877ec943363a62e25f975d2f8dea9f7cdbea
   "author": "My Name",
   "category": "nature",
   "language": "ENG",
-  "user": 1
+  "user": 2
 }
 
 

@@ -1,6 +1,7 @@
 # Import the viewsets module from rest_framework.
 # This module provides a set of generic viewset classes.
 from rest_framework import viewsets
+from rest_framework.authentication import TokenAuthentication
 
 # Import the UserSerializer and ProfileSerializer from the current directory.
 # These serializers convert complex data types, such as querysets and model instances, to native Python datatypes.
@@ -31,6 +32,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
 class PoemViewSet(viewsets.ModelViewSet):
     queryset = Poem.objects.all()
     serializer_class = PoemSerializer
+    authentication_classes = [TokenAuthentication]
 
 
 class GalleryPieceViewSet(viewsets.ModelViewSet):
